@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://pimenov.com.ua/assets/project-images/mina-monitor-cluster-06-07-2021.jpg">
+    <img src="https://pimenov.com.ua/assets/project-images/mina-monitor-cluster-banner.jpg">
 </p>  
   
 # mina-monitor-cluster

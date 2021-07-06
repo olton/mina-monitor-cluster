@@ -69,7 +69,7 @@ Run Monitor
 npm run
 ```
 
-If you want to install the `Monitor` on a `web server`, you must first **compile** the files.
+If you want to install the `Monitor` to the `web server`, you must first **compile** the files.
 To compile files run command:
 ```shell
 npm run build

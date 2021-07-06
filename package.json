@@ -1,0 +1,17 @@
+{
+    "name": "@olton/mina-monitor-cluster",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+        "start": "parcel serve ./src/index.html --open --out-dir .output --target browser",
+        "build": "parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
+    },
+    "devDependencies": {
+        "less": "^4.1.1",
+        "parcel-bundler": "^1.12.5",
+        "parcel-plugin-static-files-copy": "^2.6.0"
+    },
+    "staticFiles": {
+        "staticPath": ["src/config.json", "src/.htaccess"]
+    }
+}

@@ -1,0 +1,8 @@
+.cache
+.idea
+.output
+build
+node_modules
+coverage
+*.log
+src/config.json

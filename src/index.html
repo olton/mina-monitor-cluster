@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scrollbar-type-1 sb-lightBlue">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title></title>
+</head>
+<body>
+    <template id="node-template">
+        <span class='node-load-status'></span>
+        <span class='mif-eye'></span>
+        <div class="panel" data-role="panel" data-title-caption="<span class='node-name'>%NODE_NAME%</span>">
+            <div class="d-flex flex-column">
+                <div class="row mt-2-minus">
+                    <div class="cell-6 node-sync-status-container">
+                        <div class="text-center">
+                            <div class="node-sync-status big-value">NONE</div>
+                            <div class="text-muted text-small mt-2-minus">status</div>
+                            <div class="catchup-process catchup-process-left">
+                                <span class="mif-arrow-up"></span>
+                            </div>
+                            <div class="catchup-process catchup-process-right">
+                                <span class="mif-arrow-up"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell-6 border-left bd-system">
+                        <div class="text-center">
+                            <div class="node-uptime big-value">NONE</div>
+                            <div class="text-muted text-small mt-2-minus">uptime</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row border-top bd-system">
+                    <div class="cell-8 pl-0 pb-0">
+                        <div class="block-height-container">
+                            <span class="bell mif-bell ani-ring"></span>
+                            <div class="block-height big-value">0</div>
+                            <div class="text-small mt-1-minus text-muted">height</div>
+                        </div>
+                    </div>
+                    <div class="cell-4">
+                        <table class="table text-small subcompact cell-border mt-2 height-table">
+                            <tr>
+                                <td>max:</td>
+                                <td><span class="max-block">0</span></td>
+                            </tr>
+                            <tr>
+                                <td>unv:</td>
+                                <td><span class="max-unvalidated">0</span></td>
+                            </tr>
+                            <tr>
+                                <td>exp:</td>
+                                <td><span class="explorer-height">0</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mt-2 pt-2">
+                    <div class="cell-6 border bd-system">
+                        <div class="row m-0">
+                            <div class="cell-10 p-0">
+                                <div class="memory-fill"></div>
+                            </div>
+                            <div class="cell-2 p-0 text-indicators">
+                                <div class="text-center h-33">
+                                    <div class="total-mem text-bold"></div>
+                                    <div class="text-small total-muted">total</div>
+                                </div>
+                                <div class="text-center h-33">
+                                    <div class="used-mem text-bold"></div>
+                                    <div class="text-small total-muted">used</div>
+                                </div>
+                                <div class="text-center h-33">
+                                    <div class="free-mem text-bold"></div>
+                                    <div class="text-small total-muted">free</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row flex-justify-center text-muted text-small">Memory Load</div>
+                    </div>
+
+                    <div class="cell-6 border bd-system">
+                        <div class="row m-0">
+                            <div class="cell-10 p-0">
+                                <div class="cpu-fill"></div>
+                                <div class="cpu-cores-fill"></div>
+                            </div>
+                            <div class="cell-2 p-0 text-indicators">
+                                <div class="text-center h-33">
+                                    <div class="cores-count text-bold"></div>
+                                    <div class="text-small total-muted">cores</div>
+                                </div>
+                                <div class="text-center h-33">
+                                    <div class="cpu-load text-bold"></div>
+                                    <div class="text-small total-muted">%</div>
+                                </div>
+                                <div class="text-center h-33">
+                                    <div class="cpu-temp text-bold"></div>
+                                    <div class="text-small total-muted">&#8451;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row flex-justify-center text-muted text-small">CPU Usage</div>
+                    </div>
+
+                    <div class="cell-6 border bd-system">
+                        <div>
+                            <div class="tx-chart"></div>
+                            <div class="rx-chart"></div>
+                        </div>
+                        <div class="row flex-justify-center text-muted text-small">Network</div>
+                    </div>
+
+                    <div class="cell-6 border bd-system">
+                        <div class="peers-count">0</div>
+                        <div class="peers-chart"></div>
+                        <div class="row flex-justify-center text-muted text-small">Peers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <header class="container-fluid pb-3 pt-2">
+        <div class="logo-container d-flex flex-align-center flex-justify-center flex-column">
+            <div class="h5 text-light no-wrap m-0">
+                <span class="fg-accent text-bold">MINA</span><span class="fg-warning">MONITOR</span> <span class="text-bold fg-red">CLUSTER</span> <small class="fg-normal" id="version">v1.0.0</small>
+            </div>
+            <div class="text-small text-upper" style="line-height: 1">
+                Convenient monitoring of your Mina nodes!
+            </div>
+            <div class="text-small mt-1" style="line-height: 1">
+                <div class="reduce-2 no-wrap text-center text-left-md">
+                    Copyright &copy; 2021 by <a href="https://pimenov.com.ua">Serhii Pimenov</a>.
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Price Info from Coingecko -->
+    <div class="container-fluid">
+        <div id="price-info-container">
+            <div class="row text-small">
+                <div class="cell-sm-6 cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-cls-content="pl-0 pr-0">
+                        SUPPLY:&nbsp;<span id="total-supply" class="fg-accent text-bold">0</span>
+                    </div>
+                </div>
+                <div class="cell-sm-6 cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-cls-content="pl-0 pr-0">
+                        <div class="row m-0">
+                            <div class="cell-7 text-center">
+                                PRICE:&nbsp;<span id="current-price" class="fg-accent text-bold">0</span>&nbsp;<span id="currency"></span>
+                            </div>
+                            <div class="cell-5 border-left bd-system text-center">
+                                24H:&nbsp;<span id="price-arrow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-sm-6 cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-cls-content="pl-0 pr-0">
+                        CHANGE:&nbsp;<span id="price-change" class="fg-accent text-bold">0</span>
+                    </div>
+                </div>
+                <div class="cell-sm-6 cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-cls-content="pl-0 pr-0">
+                        HIGH&nbsp;<span id="price-high" class="fg-accent text-bold">0</span>&nbsp;-&nbsp;<span id="price-low" class="fg-accent text-bold">0</span>&nbsp;LOW
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Price Info from Coingecko -->
+
+    <!-- General info -->
+    <div class="container-fluid">
+        <div id="general-info-container">
+            <div class="row">
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Block height -->
+                    <div data-role="panel" data-title-caption="BLOCK HEIGHT">
+                        <div>
+                            <div id="block-height" class="big-value">0</div>
+                            <div class="text-small text-center border-top bd-system mt-2 pt-1">
+                                <span class="text-muted">speed:&nbsp;</span>
+                                <span id="block-speed">0</span>
+                                <span class="text-muted">&nbsp;minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Uptime -->
+                    <div data-role="panel" data-title-caption="UPTIME TRACKER">
+                        <div class="row m-0">
+                            <div class="cell-3 border-right bd-system text-center d-flex flex-column flex-justify-center flex-align-center">
+                                <div id="uptime-position" class="big-value mb-2">0</div>
+                                <div class="text-small fg-normal border-top bd-system w-100">
+                                    <span class="text-muted">position</span>
+                                </div>
+                                <div id="position-icon" class="mif-infinite"></div>
+                            </div>
+                            <div class="cell-9 d-flex flex-justify-center flex-align-center flex-column">
+                                <div id="uptime-key" class="big-value">0</div>
+                                <div class="text-small fg-normal w-100">
+                                    <div class="row m-0">
+                                        <div class="cell-6 text-center p-0">
+                                            <div class="text-small fg-normal border-top bd-system w-100">
+                                                <span class="text-muted">score</span>
+                                            </div>
+                                            <div id="uptime-score" class="fg-accent text-bold">0</div>
+                                        </div>
+                                        <div class="cell-6 border-left bd-system text-center p-0">
+                                            <div class="text-small fg-normal border-top bd-system w-100">
+                                                <span class="text-muted">rate</span>
+                                            </div>
+                                            <div id="uptime-rate" class="fg-accent text-bold">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Balance -->
+                    <div data-role="panel" data-title-caption="BALANCE">
+                        <div class="d-flex flex-justify-center flex-align-center flex-column">
+                            <div class="text-small fg-normal">
+                                <span id="balance-usd" class="fg-accent text-center text-bold">0</span>
+                            </div>
+                            <div id="balance-total" class="text-center big-value d-flex flex-align-end">0</div>
+                            <div class="text-small fg-normal">
+                                <span class="text-muted">liquid: </span>
+                                <span id="balance-liquid" class="fg-accent text-center text-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Delegations -->
+                    <div data-role="panel" data-title-caption="DELEGATIONS">
+                        <div class="row">
+                            <div class="cell-6">
+                                <div class="d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="delegators-total" class="big-value">0</div>
+                                    <div class="text-small fg-normal">
+                                        <span id="delegators-stack" class="fg-accent text-center text-bold">0</span>
+                                    </div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
+                                        <span class="text-muted">current</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-6 border-left bd-system">
+                                <div class="d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="delegators-total-next" class="big-value">0</div>
+                                    <div class="text-small fg-normal">
+                                        <span id="delegators-stack-next" class="fg-accent text-center text-bold">0</span>
+                                    </div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
+                                        <span class="text-muted">next</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Rewards -->
+                    <div data-role="panel" data-title-caption="REWARDS IN EPOCH">
+                        <div class="row h-100">
+                            <div class="cell-6">
+                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="blocks-in-epoch" class="big-value">0</div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
+                                        <span class="text-muted">blocks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-6 border-left bd-system">
+                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="rewards-in-epoch" class="big-value">0</div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
+                                        <span class="text-muted">mina</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Epoch -->
+                    <div data-role="panel" data-title-caption="EPOCH">
+                        <div class="d-flex flex-justify-center flex-align-center flex-column">
+                            <div class="row w-100">
+                                <div class="cell-3 text-center pl-0">
+                                    <div id="epoch-number" data-role="donut" data-value="0"
+                                         data-hole=".7" data-stroke="#f5f5f5" data-fill="#9C27B0"
+                                         data-animate="10" data-size="100%" data-on-draw-value="epochNumberDrawValue"
+                                         data-font-size="18" class="ml-1-minus"
+                                    ></div>
+                                </div>
+                                <div class="cell-9 border-left bd-system">
+                                    <div class="text-center">
+                                        <div class="text-muted text-small">time left</div>
+                                        <div id="epoch-countdown" style="min-height: 44px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Slot -->
+                    <div data-role="panel" data-title-caption="SLOT">
+                        <div class="row h-100">
+                            <div class="cell-6">
+                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="slot-number" class="big-value">0</div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
+                                        <span class="text-muted">current</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-6 border-left bd-system">
+                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="slot-since-genesis" class="big-value">0</div>
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
+                                        <span class="text-muted">since genesis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Next BLock -->
+                    <div data-role="panel" data-title-caption="NEXT BLOCK">
+                        <div>
+                            <div class="text-muted text-small text-center">
+                                the next block will be produced on
+                            </div>
+                            <div id="next-block-countdown" class="text-center">
+                                <span class="text-bold">calculating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="cell-lg-4 is-node" id='node-1'>
+                </div>
+
+                <div class="cell-lg-4 is-node" id='node-2'>
+                </div>
+
+                <div class="cell-lg-4 is-node" id='node-3'>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End of General info -->
+
+    <!-- Secondary info -->
+    <div class="container-fluid">
+        <div id="secondary-info-container">
+            <div class="row">
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Consensus -->
+                    <div data-role="panel" data-title-caption="CONSENSUS">
+                        <div class="d-flex flex-column flex-align-center h-100">
+                            <div>PROOF OF STAKE</div>
+                            <table class="table text-small info-table">
+                                <tr>
+                                    <td>Genesis Start</td>
+                                    <td id="consensus-genesis-start" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>K Factor</td>
+                                    <td id="consensus-k" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Network Delay</td>
+                                    <td id="consensus-network-delay" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Epoch Duration</td>
+                                    <td id="consensus-epoch-duration" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Slot Duration</td>
+                                    <td id="consensus-slot-duration" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Slots Per Epoch</td>
+                                    <td id="consensus-slots-per-epoch" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Delta</td>
+                                    <td id="consensus-delta" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Block Producer -->
+                    <div data-role="panel" data-title-caption="BLOCK PRODUCER">
+                        <div class="text-center">
+                            <div class="producer-count big-value"></div>
+                            <div class="text-muted text-small">count</div>
+                            <hr>
+                            <div class="producer-first big-value"></div>
+                            <div class="text-muted text-small">first address</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Snark worker -->
+                    <div data-role="panel" data-title-caption="SNARK WORKER">
+                        <div class="text-center">
+                            <div class="snark-fee big-value"></div>
+                            <div class="text-muted text-small">fee</div>
+                            <hr>
+                            <div class="snark-address big-value"></div>
+                            <div class="text-muted text-small">address</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Queries -->
+                    <div data-role="panel" data-title-caption="QUERIES LOG(s)">
+                        <div class="d-flex flex-column flex-align-center h-100">
+                            <table class="table text-small info-table">
+                                <tr>
+                                    <td>Balance</td>
+                                    <td id="query-balance" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Blockchain</td>
+                                    <td id="query-blockchain" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Block speed</td>
+                                    <td id="query-block-speed" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Consensus</td>
+                                    <td id="query-consensus" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Delegations</td>
+                                    <td id="query-delegations" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Next block</td>
+                                    <td id="query-next-block" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Rewards</td>
+                                    <td id="query-rewards" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Uptime</td>
+                                    <td id="query-uptime" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Mina Explorer</td>
+                                    <td id="query-explorer" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

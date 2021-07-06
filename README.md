@@ -66,7 +66,7 @@ In the `uptime.address` you must define address for which it is necessary to obt
 
 Run Monitor
 ```shell
-npm run
+npm start
 ```
 
 If you want to install the `Monitor` to the `web server`, you must first **compile** the files.

@@ -4,6 +4,7 @@ import {getFakeData, getFakeTriplets} from "./helpers/utils";
 import {getCpuInfo} from "./cpu";
 import {chartOptions, gaugeOptions} from "./helpers/charts";
 import {getNetworkInfo} from "./network";
+import {getSystemInfo} from "./system";
 
 export const nodeController = async (index, node) => {
     let template, clone, target
@@ -139,6 +140,7 @@ export const nodeController = async (index, node) => {
         onDrawLabelY: () => ""
     })
 
+    setTimeout(() => getSystemInfo(index, node), 0)
     setTimeout(() => getMemoryInfo(index, node), 0)
     setTimeout(() => getCpuInfo(index, node), 0)
     setTimeout(() => getNetworkInfo(index, node), 0)

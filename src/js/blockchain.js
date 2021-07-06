@@ -37,8 +37,6 @@ export const getBlockchain = async () => {
 
         progress.val(epochDurationProgress)
 
-        console.log(epochDurationProgress, +slot, globalThis.Monitor.slotDuration, globalThis.Monitor.epochDuration)
-
         let epochEnd = datetime(genesisStart).addSecond(epochDuration/1000 * (+epoch + 1)).format("YYYY/MM/DD HH:mm")
         let countdown
 

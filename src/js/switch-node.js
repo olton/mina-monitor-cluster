@@ -11,15 +11,13 @@ export const switchNode = (v) => {
         globalThis.Monitor.currentNode = currentNode
     }
 
-    const elCurrentNodes = $(".is-node")
+    Metro.storage.setItem("currentNode", globalThis.Monitor.currentNode)
+
+    const elNodes = $(".is-node")
     const elCurrentNode = $(`#node-${globalThis.Monitor.currentNode + 1}`)
 
-    elCurrentNodes.removeClass("current")
+    elNodes.removeClass("current")
     elCurrentNode.addClass("current")
-    // elCurrentNode.find(".panel").addClass("selected")
-    // elCurrentNodes.find(".panel").removeClass("selected")
-
-    console.log("Current Node switched to " + globalThis.Monitor.currentNode)
 }
 
 export const countRequest = () => {

@@ -58,7 +58,11 @@ fetch("./config.json").then(r => {
     globalThis.darkMode = config.theme === "auto" ? $.dark : config.theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
 
-    switchNode(0)
+    let startNode = Metro.storage.getItem("currentNode") || 0
+    if (startNode < 0 || startNode >= config.nodes.length) {
+        startNode = 0
+    }
+    switchNode(startNode)
 
     proc(getPrice, [config.price.currency, config.price.update_interval])
     proc(getExplorerSummary)

@@ -12,43 +12,47 @@
         <span class='mif-eye'></span>
         <div class="panel" data-role="panel" data-title-caption="<span class='node-name'>%NODE_NAME%</span>">
             <div class="d-flex flex-column">
-                <div class="node-info-general">
-                    <div class="row">
-                        <div class="cell-12 border-bottom bd-system">
-                            <div class="cpu-info text-center reduce-1">...</div>
-                            <div class="os-info text-small text-center text-bold">...</div>
-                        </div>
-                        <div class="cell-6">
-                            <div class="server-time text-small text-center"></div>
-                        </div>
-                        <div class="cell-6 border-left bd-system">
-                            <div class="server-uptime text-small text-center"></div>
+                <div class="row node-info-general border bd-system">
+                    <div class="cell-12 pb-0">
+                        <div class="row">
+                            <div class="cell-12 border-bottom bd-system">
+                                <div class="cpu-info text-center reduce-1">...</div>
+                                <div class="os-info text-small text-center text-bold">...</div>
+                            </div>
+                            <div class="cell-6 h-100">
+                                <div class="server-time text-small text-center"></div>
+                            </div>
+                            <div class="cell-6 h-100 border-left bd-system">
+                                <div class="server-uptime text-small text-center"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row border-top bd-system">
-                        <div class="cell-6 node-sync-status-container">
-                            <div class="text-center">
-                                <div class="node-sync-status big-value">NONE</div>
-                                <div class="text-muted text-small mt-2-minus node-health">UNKNOWN</div>
-                                <div class="catchup-process catchup-process-left">
-                                    <span class="mif-arrow-up"></span>
-                                </div>
-                                <div class="catchup-process catchup-process-right">
-                                    <span class="mif-arrow-up"></span>
+                    <div class="cell-12 border-top bd-system p-0">
+                        <div class="row">
+                            <div class="cell-6 node-sync-status-container">
+                                <div class="text-center">
+                                    <div class="node-sync-status big-value">NONE</div>
+                                    <div class="text-muted text-small mt-2-minus node-health">UNKNOWN</div>
+                                    <div class="catchup-process catchup-process-left">
+                                        <span class="mif-arrow-up"></span>
+                                    </div>
+                                    <div class="catchup-process catchup-process-right">
+                                        <span class="mif-arrow-up"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="cell-6 border-left bd-system">
-                            <div class="text-center">
-                                <div class="node-uptime big-value">NONE</div>
-                                <div class="text-muted text-small mt-1-minus">uptime</div>
+                            <div class="cell-6 border-left bd-system">
+                                <div class="text-center">
+                                    <div class="node-uptime big-value">NONE</div>
+                                    <div class="text-muted text-small mt-1-minus">uptime</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row border-top bd-system">
+                <div class="row border bd-system mt-1">
                     <div class="cell-8 pl-0 pb-0">
                         <div class="block-height-container">
                             <span class="bell mif-bell ani-ring"></span>
@@ -74,10 +78,10 @@
                     </div>
                 </div>
 
-                <div class="row mt-2 pt-2">
+                <div class="row mt-1">
                     <div class="cell-6 border bd-system">
                         <div class="row m-0">
-                            <div class="cell-10 p-0">
+                            <div class="cell-10 pt-0 pl-0 pb-0">
                                 <div class="memory-fill"></div>
                             </div>
                             <div class="cell-2 p-0 text-indicators">
@@ -100,7 +104,7 @@
 
                     <div class="cell-6 border bd-system">
                         <div class="row m-0">
-                            <div class="cell-10 p-0">
+                            <div class="cell-10 pt-0 pl-0 pb-0">
                                 <div class="cpu-fill"></div>
                                 <div class="cpu-cores-fill"></div>
                             </div>

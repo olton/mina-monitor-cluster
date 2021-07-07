@@ -19,10 +19,27 @@ export const getNodeStatus = async (index, node) => {
     const elSnarkAddress = $(".snark-address")
     const elPeersCount = elNode.find(".peers-count")
     const elLog = elNode.find(".node-load-status")
+    const elNodeInfoGeneral = elNode.find(".node-info-general")
+    const elNodeHealth = elNode.find(".node-health")
 
-    elLog.html(imgStop)
+    // elLog.html(imgStop)
 
-    const status = await getInfo(node, 'node-status')
+    let health = await getInfo(node, 'health')
+    let status = await getInfo(node, 'node-status')
+
+    elNodeInfoGeneral.removeClass("bg-alert")
+    if (health) {
+        if (health.length) {
+            elLog.html(imgStop)
+            elNodeInfoGeneral.addClass("bg-alert")
+            elNodeHealth.html($("<span>").html(health.join(" ")))
+        } else {
+            elLog.html(imgOk)
+            elNodeHealth.html($("<span>").addClass("label-success").html("OK"))
+        }
+    } else {
+        elLog.html(imgStop)
+    }
 
     if (status) {
         const node = status.data
@@ -62,7 +79,7 @@ export const getNodeStatus = async (index, node) => {
         elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING")
         elNode.addClass(syncStatus)
 
-        elNodeHeightContainer.removeClass("bg-info bg-alert bg-success bg-warning")
+        elNodeInfoGeneral.removeClass("bg-info bg-alert bg-success bg-warning")
         elNodeStatus.html(syncStatus)
 
         const uptime = Metro.utils.secondsToTime(uptimeSecs)
@@ -130,8 +147,6 @@ export const getNodeStatus = async (index, node) => {
         globalThis.Monitor.charts[index].peersChartStartPoint += 10
         globalThis.Monitor.charts[index].peersChart.add(0, [globalThis.Monitor.charts[index].peersChartStartPoint - 10, globalThis.Monitor.charts[index].peersChartStartPoint, peers.length], true)
         elPeersCount.html(peers.length)
-
-        elLog.html(imgOk)
     }
 
     setTimeout(() => getNodeStatus(index, node), globalThis.Monitor.config.intervals.daemon)

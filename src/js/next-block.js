@@ -27,7 +27,7 @@ export const getNextBlock = async () => {
             nextBlockProduction
         } = daemon
 
-        const times = nextBlockProduction.times
+        const times = nextBlockProduction ? nextBlockProduction.times : []
 
         if (times.length) {
             const blockDate = datetime(times[0].startTime)

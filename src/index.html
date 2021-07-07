@@ -12,36 +12,38 @@
         <span class='mif-eye'></span>
         <div class="panel" data-role="panel" data-title-caption="<span class='node-name'>%NODE_NAME%</span>">
             <div class="d-flex flex-column">
-                <div class="row mt-2-minus">
-                    <div class="cell-12 border-bottom bd-system">
-                        <div class="cpu-info text-center">...</div>
-                        <div class="os-info text-small text-center text-bold">...</div>
-                    </div>
-                    <div class="cell-6">
-                        <div class="server-time text-small text-center"></div>
-                    </div>
-                    <div class="cell-6 border-left bd-system">
-                        <div class="server-uptime text-small text-center"></div>
-                    </div>
-                </div>
-
-                <div class="row border-top bd-system">
-                    <div class="cell-6 node-sync-status-container">
-                        <div class="text-center">
-                            <div class="node-sync-status big-value">NONE</div>
-                            <div class="text-muted text-small mt-2-minus">status</div>
-                            <div class="catchup-process catchup-process-left">
-                                <span class="mif-arrow-up"></span>
-                            </div>
-                            <div class="catchup-process catchup-process-right">
-                                <span class="mif-arrow-up"></span>
-                            </div>
+                <div class="node-info-general">
+                    <div class="row">
+                        <div class="cell-12 border-bottom bd-system">
+                            <div class="cpu-info text-center reduce-1">...</div>
+                            <div class="os-info text-small text-center text-bold">...</div>
+                        </div>
+                        <div class="cell-6">
+                            <div class="server-time text-small text-center"></div>
+                        </div>
+                        <div class="cell-6 border-left bd-system">
+                            <div class="server-uptime text-small text-center"></div>
                         </div>
                     </div>
-                    <div class="cell-6 border-left bd-system">
-                        <div class="text-center">
-                            <div class="node-uptime big-value">NONE</div>
-                            <div class="text-muted text-small mt-2-minus">uptime</div>
+
+                    <div class="row border-top bd-system">
+                        <div class="cell-6 node-sync-status-container">
+                            <div class="text-center">
+                                <div class="node-sync-status big-value">NONE</div>
+                                <div class="text-muted text-small mt-2-minus node-health">UNKNOWN</div>
+                                <div class="catchup-process catchup-process-left">
+                                    <span class="mif-arrow-up"></span>
+                                </div>
+                                <div class="catchup-process catchup-process-right">
+                                    <span class="mif-arrow-up"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-6 border-left bd-system">
+                            <div class="text-center">
+                                <div class="node-uptime big-value">NONE</div>
+                                <div class="text-muted text-small mt-1-minus">uptime</div>
+                            </div>
                         </div>
                     </div>
                 </div>

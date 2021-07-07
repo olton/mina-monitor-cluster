@@ -59,6 +59,7 @@ export const chartOptions = {
         maxY: 0,
         minY: 0
     },
+    tooltip: false,
     onDrawLabelX: () => ''
 }
 

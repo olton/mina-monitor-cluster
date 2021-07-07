@@ -144,5 +144,5 @@ export const nodeController = async (index, node) => {
     setTimeout(() => getMemoryInfo(index, node), 0)
     setTimeout(() => getCpuInfo(index, node), 0)
     setTimeout(() => getNetworkInfo(index, node), 0)
-    setTimeout(() => getNodeStatus(index, node), 0)
+    setTimeout(() => getNodeStatus(index, node), 100)
 }

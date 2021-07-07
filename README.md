@@ -67,14 +67,25 @@ Create config file `config.json` in the `src` folder. Below you can see example 
 In the `host` property you must define addresses of the Mina Monitor Server interfaces.
 In the `uptime.address` you must define address for which it is necessary to obtain information about the position in the `uptime rating`.
 
-Run Monitor
+Run Monitor on windows
 ```shell
 npm start
 ```
 
+Run Monitor on linux
+```shell
+npm run client_x
+```
+
 If you want to install the `Monitor` to the `web server`, you must first **compile** the files.
-To compile files run command:
+To compile files run command on windows
 ```shell
 npm run build
 ```
+
+Build on linux
+```shell
+npm run build_x
+```
+
 After the command will execute, in folder `build` you can find files, which you can put into a web server.

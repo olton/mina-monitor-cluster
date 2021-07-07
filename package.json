@@ -3,8 +3,10 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "parcel serve ./src/index.html --open --out-dir .output --target browser",
-        "build": "parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
+        "start": "rd /s /q .output && parcel serve ./src/index.html --open --out-dir .output --target browser",
+        "build": "rd /s /q build && parcel build ./src/index.html --out-dir build --no-source-maps --public-url .",
+        "client_x": "rm -rf .output && parcel serve ./src/index.html --open --out-dir .output --target browser",
+        "build_x": "rm -rf build && parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
     },
     "devDependencies": {
         "less": "^4.1.1",

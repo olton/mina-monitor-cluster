@@ -11,7 +11,7 @@ export const getRewards = async () => {
     if (epoch && blockHeight) {
         elLog.html(imgStop)
 
-        let data = await getInfo(node, `blocks?epoch=${epoch}&blockHeightMin=0&blockHeightMax=${blockHeight}`)
+        let data = await getInfo(node,'winning-blocks')
 
         if (data) {
             let blocks = data.data.blocks

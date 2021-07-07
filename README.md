@@ -9,9 +9,8 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 
 
 **Important!**
-```
-For using Mina Monitor Cluster you must install [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
-```
+> For using Mina Monitor Cluster you must install [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
+
 
 ## Installation
 To install `Monitor`:

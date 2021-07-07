@@ -24,7 +24,7 @@ export const getDelegations = async () => {
         $("#delegators-stack-next").html(`${s2[0]}.<span class="reduce-4" style="line-height: 2">${s2[1]}</span>`)
 
         elLog.html(imgOk)
-        reload = 3 * 60000
+        reload = 180000
         countRequest()
     } else {
         reload = 0

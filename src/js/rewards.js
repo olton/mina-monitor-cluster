@@ -13,7 +13,7 @@ export const getRewards = async () => {
 
         let data = await getInfo(node,'winning-blocks')
 
-        if (data) {
+        if (data && data.data) {
             let blocks = data.data.blocks
             let rewards = blocks.reduce((acc, val)=>acc + parseInt(val.transactions.coinbase), 0)
 

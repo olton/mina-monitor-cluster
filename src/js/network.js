@@ -9,8 +9,6 @@ export const getNetworkInfo = async (index, node) => {
         globalThis.Monitor.charts[index].txChart.add(0, [datetime().time(), tx], true, {maxX: true, maxY: true})
         globalThis.Monitor.charts[index].rxChart.add(0, [datetime().time(), rx], true, {maxX: true, maxY: true})
 
-        console.log(tx, rx)
-
         let speedTitleTx = 'Kb'
         let speedTitleRx = 'Kb'
         let speedTx = tx / 1024

@@ -13,6 +13,7 @@
     --color-info: rgba(27, 161, 226, 0.56);
     --color-yellow: #ffdb10;
     --color-white: #fff;
+    --color-gray: #b6b6b6;
 }
 
 .bd-system {
@@ -185,19 +186,36 @@ body {
     }
 }
 
-.peers-count {
+.peers-count, .tx-count, .rx-count {
     position: absolute;
     top: 10px;
     right: 10px;
     background-color: var(--color-panel);
     border: 2px solid rgba(189, 219, 255, 0.71);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tx-count, .rx-count {
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    line-height: 1;
+    opacity: .8;
+}
+
+.tx-count {
+    top: 0;
+}
+.rx-count {
+    top: 70px;
 }
 
 .height-table {
@@ -261,6 +279,16 @@ body {
         * {
             background-color: var(--color-info)!important;
             color: var(--color-white) !important;
+        }
+    }
+}
+
+.UNKNOWN {
+    .node-info-general {
+        background-color: var(--color-gray)!important;
+        * {
+            background-color: var(--color-gray)!important;
+            color: var(--color-text) !important;
         }
     }
 }

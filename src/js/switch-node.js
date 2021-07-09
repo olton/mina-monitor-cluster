@@ -11,8 +11,15 @@ export const switchNode = (v) => {
         globalThis.Monitor.currentNode = currentNode
     }
 
-    Metro.storage.setItem("currentNode", globalThis.Monitor.currentNode)
+    if (globalThis.Monitor.nodes.length > 1) {
+        const syncStatus = globalThis.Monitor.nodes[globalThis.Monitor.currentNode].syncStatus
+        if (syncStatus && syncStatus !== 'SYNCED') {
+            switchNode()
+        }
+    }
 
+    Metro.storage.setItem("currentNode", globalThis.Monitor.currentNode)
+    console.log("Current node: ", globalThis.Monitor.currentNode)
     const elNodes = $(".is-node")
     const elCurrentNode = $(`#node-${globalThis.Monitor.currentNode + 1}`)
 

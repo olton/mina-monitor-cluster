@@ -76,6 +76,7 @@ fetch("./config.json").then(r => {
     proc(getNextBlock)
 
     $.each(config.nodes, (i, node) => {
+        globalThis.Monitor.nodes[i] = {}
         globalThis.Monitor.charts.push({
             memoryChart: null,
             cpuChart: null,

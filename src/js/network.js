@@ -4,10 +4,28 @@ export const getNetworkInfo = async (index, node) => {
     let net = await getInfo(node,'net-stat')
 
     if (net) {
-        globalThis.Monitor.charts[index].txChart.add(0, [datetime().time(), Math.round(net[0].tx_sec)], true, {maxX: true, maxY: true})
-        globalThis.Monitor.charts[index].rxChart.add(0, [datetime().time(), Math.round(net[0].rx_sec)], true, {maxX: true, maxY: true})
+        const tx = Math.round(net[0].tx_sec)
+        const rx = Math.round(net[0].rx_sec)
+        globalThis.Monitor.charts[index].txChart.add(0, [datetime().time(), tx], true, {maxX: true, maxY: true})
+        globalThis.Monitor.charts[index].rxChart.add(0, [datetime().time(), rx], true, {maxX: true, maxY: true})
 
-        $("#all-traffic").text( ((Math.round(net[0].rx_sec) + Math.round(net[0].tx_sec)) / 1024 / 1024).toFixed(2) )
+        console.log(tx, rx)
+
+        let speedTitleTx = 'Kb'
+        let speedTitleRx = 'Kb'
+        let speedTx = tx / 1024
+        let speedRx = rx / 1024
+        if (speedTx > 100) {
+            speedTx /= 1024
+            speedTitleTx = 'Mb'
+        }
+        if (speedRx > 100) {
+            speedRx /= 1024
+            speedTitleRx = 'Mb'
+        }
+
+        $(`#node-${index+1} .tx-count`).html(`${Math.round(speedTx)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleTx}</span>`)
+        $(`#node-${index+1} .rx-count`).html(`${Math.round(speedRx)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleTx}</span>`)
     }
 
     setTimeout(()=> getNetworkInfo(index, node), globalThis.Monitor.config.intervals.resources)

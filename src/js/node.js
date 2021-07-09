@@ -32,7 +32,7 @@ export const getNodeStatus = async (index, node) => {
         if (health.length) {
             elLog.html(imgStop)
             elNodeInfoGeneral.addClass("bg-alert")
-            elNodeHealth.html($("<span>").html(health.join(" ")))
+            elNodeHealth.html($("<span>").html(health.join(", ")))
         } else {
             elLog.html(imgOk)
             elNodeHealth.html($("<span>").addClass("label-success").html("OK"))
@@ -40,6 +40,8 @@ export const getNodeStatus = async (index, node) => {
     } else {
         elLog.html(imgStop)
     }
+
+    elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING")
 
     if (status) {
         const node = status.data
@@ -76,7 +78,6 @@ export const getNodeStatus = async (index, node) => {
             uptime: uptimeSecs
         }
 
-        elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING")
         elNode.addClass(syncStatus)
 
         elNodeInfoGeneral.removeClass("bg-info bg-alert bg-success bg-warning")
@@ -98,6 +99,10 @@ export const getNodeStatus = async (index, node) => {
                 elNodeBlockHeight.html(`${height}`)
             }
         }
+
+        elNodeMaxHeight.html(maxHeight)
+        elNodeUnvHeight.html(unvHeight)
+        elNodeExpHeight.html(expHeight)
 
         if (syncStatus === 'SYNCED') {
             elNodeHeightContainer.removeClassBy("bg-").removeClass("bell-alert")
@@ -147,6 +152,10 @@ export const getNodeStatus = async (index, node) => {
         globalThis.Monitor.charts[index].peersChartStartPoint += 10
         globalThis.Monitor.charts[index].peersChart.add(0, [globalThis.Monitor.charts[index].peersChartStartPoint - 10, globalThis.Monitor.charts[index].peersChartStartPoint, peers.length], true)
         elPeersCount.html(peers.length)
+    } else {
+        elNode.addClass("UNKNOWN")
+        elNodeStatus.html("UNKNOWN")
+        elNodeHealth.html($("<span>").addClass("label-success").html("UNKNOWN"))
     }
 
     setTimeout(() => getNodeStatus(index, node), globalThis.Monitor.config.intervals.daemon)

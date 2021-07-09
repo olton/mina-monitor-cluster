@@ -24,8 +24,8 @@ export const getNetworkInfo = async (index, node) => {
             speedTitleRx = 'Mb'
         }
 
-        $(`#node-${index+1} .tx-count`).html(`${Math.round(speedTx)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleTx}</span>`)
-        $(`#node-${index+1} .rx-count`).html(`${Math.round(speedRx)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleTx}</span>`)
+        $(`#node-${index+1} .tx-count`).html(`${(speedTx).toFixed(parseInt(speedTx) === 0 ? 1 : 0)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleTx}</span>`)
+        $(`#node-${index+1} .rx-count`).html(`${(speedRx).toFixed(parseInt(speedRx) === 0 ? 1 : 0)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleRx}</span>`)
     }
 
     setTimeout(()=> getNetworkInfo(index, node), globalThis.Monitor.config.intervals.resources)

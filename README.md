@@ -12,6 +12,20 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 > For using Mina Monitor Cluster you must install [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
 
 
+## Key Features
+
+- [x] Display of the main indicators of the Mina network (Block height, uptime, epoch and slot info)
+- [x] Displaying the status of the node daemon (SYNCED, CATCHUP, BOOTSTRAP, ...)
+- [x] Displaying the health of node (OK, Fork, Hanging)
+- [x] Displaying the server resources consumed by the node (CPU, RAM, NETWORK)
+- [x] Displaying the balance of the specified address, and the value of this balance in different currencies
+- [x] Displaying information about delegations to the specified validator address
+- [x] Displaying information about blocks won and rewards received in the current era
+- [x] Displays general information about the site server
+- [x] Convenient live graphs for displaying consumed resources
+- [x] Responsive interface (It is comfortable to look at both PC and phone and tablet)
+
+
 ## Installation
 To install `Monitor`:
 

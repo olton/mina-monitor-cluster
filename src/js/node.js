@@ -41,7 +41,7 @@ export const getNodeStatus = async (index, node) => {
         elLog.html(imgStop)
     }
 
-    elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING")
+    elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING UNKNOWN")
 
     if (status) {
         const node = status.data

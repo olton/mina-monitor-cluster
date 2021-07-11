@@ -32,7 +32,7 @@ export const getNodeStatus = async (index, node) => {
         if (health.length) {
             elLog.html(imgStop)
             elNodeInfoGeneral.addClass("bg-alert")
-            elNodeHealth.html($("<span>").html(health.join(", ")))
+            elNodeHealth.html($("<span>").addClass("label-alert").html(health.join(", ")))
         } else {
             elLog.html(imgOk)
             elNodeHealth.html($("<span>").addClass("label-success").html("OK"))

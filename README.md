@@ -66,10 +66,6 @@ Create config file `config.json` in the `src` folder. Below you can see example 
         "daemon": 30000,
         "resources": 2000
     },
-    "uptime": {
-        "update_interval": 600000,
-        "address": "B62qr..."
-    },
     "price": {
         "currency": "usd",
         "update_interval": 60000

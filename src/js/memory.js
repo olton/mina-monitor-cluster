@@ -32,5 +32,5 @@ export const getMemoryInfo = async (index, node) => {
         }
     }
 
-    setTimeout(() => getMemoryInfo(index, node), globalThis.Monitor.config.intervals.resources)
+    setTimeout(getMemoryInfo, globalThis.Monitor.config.intervals.resources, index, node)
 }

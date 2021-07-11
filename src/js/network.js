@@ -26,6 +26,5 @@ export const getNetworkInfo = async (index, node) => {
         $(`#node-${index+1} .rx-count`).html(`${(speedRx).toFixed(parseInt(speedRx) === 0 ? 1 : 0)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleRx}</span>`)
     }
 
-    setTimeout(()=> getNetworkInfo(index, node), globalThis.Monitor.config.intervals.resources)
-
+    setTimeout(getNetworkInfo, globalThis.Monitor.config.intervals.resources, index, node)
 }

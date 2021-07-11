@@ -55,7 +55,7 @@ export const getBlockchain = async () => {
         switchNode()
     }
 
-    setTimeout(()=>getBlockchain(), reload)
+    setTimeout(getBlockchain, reload)
 }
 
 export const getBlockSpeed = async () => {
@@ -81,5 +81,5 @@ export const getBlockSpeed = async () => {
         switchNode()
     }
 
-    setTimeout(()=>getBlockSpeed(), reload)
+    setTimeout(getBlockSpeed, reload)
 }

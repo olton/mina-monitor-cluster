@@ -39,5 +39,5 @@ export const getUptime = async () => {
         interval = 0
     }
 
-    setTimeout( () => getUptime(), interval)
+    setTimeout( getUptime, interval)
 }

@@ -88,7 +88,7 @@ fetch("./config.json").then(r => {
             netRxChart: null,
             netTxChart: null,
         })
-        setTimeout( () => nodeController(i, node), 0)
+        setTimeout(nodeController, 0, i, node)
     })
 })
 .catch(r => {

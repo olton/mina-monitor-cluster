@@ -19,5 +19,5 @@ export const getSystemInfo = async (index, node) => {
         $(`#node-${index+1} .server-uptime`).text(`${uptime.d}d, ${uptime.h}h ${uptime.m}m`)
     }
 
-    setTimeout(() => getSystemInfo(index, node), globalThis.Monitor.config.intervals.system)
+    setTimeout(getSystemInfo, globalThis.Monitor.config.intervals.system, index, node)
 }

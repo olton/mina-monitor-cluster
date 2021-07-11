@@ -44,5 +44,5 @@ export const getConsensus = async () => {
         switchNode()
     }
 
-    setTimeout(()=>getConsensus(), reload)
+    setTimeout(getConsensus, reload)
 }

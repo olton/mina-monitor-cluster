@@ -37,5 +37,5 @@ export const getPrice = async (currency = "usd", reload = 60000) => {
         globalThis.Monitor.totalSupply = totalSupply
     }
 
-    setTimeout(() => getPrice(currency, reload), reload)
+    setTimeout(getPrice, reload, currency, reload)
 }

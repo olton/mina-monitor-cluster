@@ -140,9 +140,9 @@ export const nodeController = async (index, node) => {
         onDrawLabelY: () => ""
     })
 
-    setTimeout(() => getSystemInfo(index, node), 0)
-    setTimeout(() => getMemoryInfo(index, node), 0)
-    setTimeout(() => getCpuInfo(index, node), 0)
-    setTimeout(() => getNetworkInfo(index, node), 0)
-    setTimeout(() => getNodeStatus(index, node), 100)
+    setTimeout(getSystemInfo,0, index, node)
+    setTimeout(getMemoryInfo,0, index, node)
+    setTimeout(getCpuInfo,0, index, node)
+    setTimeout(getNetworkInfo, 0, index, node)
+    setTimeout(getNodeStatus,100, index, node)
 }

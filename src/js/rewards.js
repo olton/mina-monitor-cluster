@@ -29,5 +29,5 @@ export const getRewards = async () => {
         }
     }
 
-    if (!noSlots) setTimeout(() => getRewards(), reload)
+    if (!noSlots) setTimeout(getRewards, reload)
 }

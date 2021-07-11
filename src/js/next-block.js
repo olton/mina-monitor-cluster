@@ -53,5 +53,5 @@ export const getNextBlock = async () => {
         switchNode()
     }
 
-    setTimeout(() => getNextBlock(), reload)
+    setTimeout(getNextBlock, reload)
 }

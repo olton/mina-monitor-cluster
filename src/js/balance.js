@@ -34,5 +34,5 @@ export const getBalance = async () => {
         switchNode()
     }
 
-    setTimeout(()=>getBalance(), reload)
+    setTimeout(getBalance, reload)
 }

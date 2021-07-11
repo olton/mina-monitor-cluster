@@ -31,5 +31,5 @@ export const getDelegations = async () => {
         switchNode()
     }
 
-    setTimeout(() => getDelegations(), reload)
+    setTimeout(getDelegations, reload)
 }

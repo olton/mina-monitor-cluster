@@ -158,5 +158,5 @@ export const getNodeStatus = async (index, node) => {
         elNodeHealth.html($("<span>").addClass("label-success").html("UNKNOWN"))
     }
 
-    setTimeout(() => getNodeStatus(index, node), globalThis.Monitor.config.intervals.daemon)
+    setTimeout(getNodeStatus, globalThis.Monitor.config.intervals.daemon, index, node)
 }

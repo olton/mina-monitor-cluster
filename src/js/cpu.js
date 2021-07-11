@@ -68,5 +68,5 @@ export const getCpuInfo = async (index, node) => {
         elCpuTemp.parent().addClass("bg-alert")
     }
 
-    setTimeout(() => getCpuInfo(index, node), globalThis.Monitor.config.intervals.resources)
+    setTimeout(getCpuInfo, globalThis.Monitor.config.intervals.resources, index, node)
 }

@@ -21,7 +21,7 @@ export const getMemoryInfo = async (index, node) => {
 
         elTotalMem.html(Math.round(memTotal))
         elFreeMem.html(Math.round(memFree))
-        elUsedMem.html(Math.round(memUsage))
+        elUsedMem.html(Math.round(memPercent))
 
         if (memPercent >= 80 && memPercent < 90) {
             elMemIndicators.addClass("bg-warning")

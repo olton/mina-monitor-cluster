@@ -19,7 +19,7 @@ export const getMemoryInfo = async (index, node) => {
         globalThis.Monitor.charts[index].memoryChart.add(0, [datetime().time() - 2000, memTotal], true)
         globalThis.Monitor.charts[index].memoryChart.add(1, [datetime().time() - 2000, memUsage], true)
 
-        elTotalMem.html(Math.round(memTotal))
+        elTotalMem.html(Math.ceil(memTotal))
         elFreeMem.html(Math.round(memFree))
         elUsedMem.html(Math.round(memPercent))
 

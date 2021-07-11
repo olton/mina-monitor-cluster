@@ -1,22 +1,16 @@
-import {getAPIData} from "./helpers/get-info"
+import {getInfo} from "./helpers/get-info"
 import {imgStop, imgOk} from "./helpers/consts"
 import {shortAddress} from "./helpers/utils";
 
 export const getUptime = async () => {
-    const {blockSpeed, config} = globalThis.Monitor
-    const {address, update_interval = 180000} = config.uptime
-    const url = `https://minastake.com/utils/uptime.php?publicKey=${address}`
+    const {config, currentNode} = globalThis.Monitor
+    const node = config.nodes[currentNode]
     const elLog = $("#query-uptime")
     let interval
 
-    if (!address) {
-        elLog.html(imgOk)
-        return
-    }
-
     elLog.html(imgStop)
 
-    const uptime = await getAPIData(url)
+    const uptime = await getInfo(node, "uptime")
 
     if (uptime) {
         let [position, publicKey, score, rate] = uptime
@@ -40,7 +34,7 @@ export const getUptime = async () => {
         $("#uptime-key").html( shortAddress(publicKey) )
 
         elLog.html(imgOk)
-        interval = blockSpeed ? blockSpeed : update_interval
+        interval = globalThis.Monitor.config.intervals.daemon
     } else {
         interval = 0
     }

@@ -75,7 +75,6 @@ Create config file `config.json` in the `src` folder. Below you can see example 
 ```
 
 In the `host` property you must define addresses of the Mina Monitor Server interfaces.
-In the `uptime.address` you must define address for which it is necessary to obtain information about the position in the `uptime rating`.
 
 Run Monitor on windows
 ```shell

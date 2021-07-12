@@ -8,6 +8,7 @@ export const getCpuInfo = async (index, node) => {
     const elCoresCount = $(`#node-${index+1} .cores-count`)
     const elCpuTemp = $(`#node-${index+1} .cpu-temp`)
     const elCpuCoresChart = $(`#node-${index+1} .cpu-cores-fill`)
+    const elCpuLoadAvg = $(`#node-${index+1} .load-avg`)
 
     if (data) {
         let {load = 0, user = 0, sys = 0, loadavg = [0, 0, 0], threads = []} = data
@@ -43,6 +44,7 @@ export const getCpuInfo = async (index, node) => {
             })
         }
 
+        elCpuLoadAvg.html(`[<span class="text-bold">${loadavg[0]}</span>, <span>${loadavg[1]}</span>, <span>${loadavg[2]}</span>]`)
     }
 
     let temp = await getInfo(node,"cpu-temp")

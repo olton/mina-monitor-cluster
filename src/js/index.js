@@ -6,7 +6,6 @@ import "../vendor/chart/chart"
 import {messages as Messages} from "./helpers/messages"
 import {title, version} from "./helpers/consts"
 import {nodeController} from "./node-controller";
-import {proc} from "./helpers/proc";
 import {getPrice} from "./price";
 import {getConsensus} from "./consensus";
 import {getUptime} from "./uptime";
@@ -64,16 +63,16 @@ fetch("./config.json").then(r => {
     }
     switchNode(startNode)
 
-    proc(getPrice, [config.price.currency, config.price.update_interval])
-    proc(getExplorerSummary)
-    proc(getConsensus)
-    proc(getUptime)
-    proc(getBalance)
-    proc(getBlockchain)
-    proc(getBlockSpeed)
-    proc(getDelegations)
-    proc(getRewards)
-    proc(getNextBlock)
+    setTimeout(getPrice, 0, config.price.currency, config.price.update_interval)
+    setTimeout(getExplorerSummary, 0)
+    setTimeout(getConsensus, 0)
+    setTimeout(getUptime, 0)
+    setTimeout(getBalance, 0)
+    setTimeout(getBlockchain, 0)
+    setTimeout(getBlockSpeed, 0)
+    setTimeout(getDelegations, 0)
+    setTimeout(getRewards, 0)
+    setTimeout(getNextBlock, 0)
 
     $.each(config.nodes, (i, node) => {
         globalThis.Monitor.nodes[i] = {}

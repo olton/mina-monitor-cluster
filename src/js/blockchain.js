@@ -42,7 +42,7 @@ export const getBlockchain = async () => {
 
         if (!epochTimer) {
             elEpochCountdown.find(".countdown").remove()
-            countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd).attr("data-animate", "slide").appendTo(elEpochCountdown)
+            countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd).attr("data-animate", "none").appendTo(elEpochCountdown)
             Metro.makePlugin(countdown, "countdown")
             globalThis.Monitor.epochTimer = true
         }

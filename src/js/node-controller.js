@@ -43,7 +43,7 @@ export const nodeController = async (index, node) => {
         height: 50,
         legend: false,
         boundaries: {
-            maxY: 100
+            maxY: 50
         },
         colors: [Metro.colors.toRGBA('#7b68ee', .5)],
         lines: [

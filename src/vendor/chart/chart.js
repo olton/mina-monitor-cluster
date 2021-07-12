@@ -734,8 +734,18 @@
         });
       }
 
+      setBackground(bg) {
+        if (bg) {
+          this.options.background = bg;
+        }
+
+        this.ctx.fillStyle = this.options.background;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+
       draw() {
         this.clear();
+        this.setBackground();
         this.title();
       }
 

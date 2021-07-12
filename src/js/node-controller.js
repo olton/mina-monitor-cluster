@@ -42,6 +42,7 @@ export const nodeController = async (index, node) => {
         ...chartOptions,
         height: 50,
         legend: false,
+        background: "rgba(236,236,236,0.2)",
         boundaries: {
             maxY: 50
         },

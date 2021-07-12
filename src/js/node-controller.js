@@ -49,7 +49,8 @@ export const nodeController = async (index, node) => {
         colors: [Metro.colors.toRGBA('#7b68ee', .5)],
         lines: [
             {
-                name: "Process"
+                name: "Process",
+                size: 2
             }
         ]
     })

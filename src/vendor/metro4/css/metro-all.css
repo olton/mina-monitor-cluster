@@ -1,7 +1,7 @@
 /*
  * Metro 4 Components Library v4.5.0  (https://metroui.org.ua)
  * Copyright 2012-2021 Sergey Pimenov
- * Built at 04/07/2021 21:11:56
+ * Built at 12/07/2021 19:32:57
  * Licensed under MIT
  */
 *,
@@ -47580,8 +47580,8 @@ body.vegas-container > .vegas-slide {
 .mif-10x {
   font-size: 5.5em;
 }
-.mif-sign-pen:before {
-  content: "\e9c9";
+.mif-memory:before {
+  content: "\e9d4";
 }
 .mif-external:before {
   content: "\e9c6";
@@ -47952,7 +47952,7 @@ body.vegas-container > .vegas-slide {
 .mif-widgets:before {
   content: "\e617";
 }
-.mif-usb:before {
+.mif-usb1:before {
   content: "\e638";
 }
 .mif-money:before {
@@ -48107,6 +48107,41 @@ body.vegas-container > .vegas-slide {
 }
 .mif-school:before {
   content: "\e61f";
+}
+.mif-telegram:before {
+  content: "\e9cf";
+}
+.mif-discord:before {
+  content: "\e9d0";
+}
+.mif-network:before {
+  content: "\e9d1";
+  color: #4b4b4b;
+}
+.mif-lan:before {
+  content: "\e9dc";
+  color: #4b4b4b;
+}
+.mif-net-server:before {
+  content: "\e9dd";
+  color: #4b4b4b;
+}
+.mif-computer:before {
+  content: "\e9de";
+  color: #4b4b4b;
+}
+.mif-hdd:before {
+  content: "\e9df";
+  color: #4b4b4b;
+}
+.mif-cpu:before {
+  content: "\e9e1";
+}
+.mif-sign-pen:before {
+  content: "\e9c9";
+}
+.mif-usb:before {
+  content: "\e9e7";
 }
 .mif-document-file-numbers:before {
   content: "\e917";
@@ -48861,7 +48896,7 @@ body.vegas-container > .vegas-slide {
 .mif-floppy-disk:before {
   content: "\e962";
 }
-.mif-drive:before {
+.mif-drive1:before {
   content: "\e963";
 }
 .mif-database:before {

@@ -36,7 +36,7 @@ export const nodeController = async (index, node) => {
     })
 
     const elMemProcessChart = $(`#node-${index + 1} .memory-process`)
-    globalThis.Monitor.charts[index].memProcessChart = chart.areaChart(elMemProcessChart[0], [
+    globalThis.Monitor.charts[index].memProcessChart = chart.lineChart(elMemProcessChart[0], [
         getFakeData(40)
     ], {
         ...chartOptions,
@@ -46,7 +46,7 @@ export const nodeController = async (index, node) => {
             maxY: 100
         },
         colors: [Metro.colors.toRGBA('#7b68ee', .5)],
-        areas: [
+        lines: [
             {
                 name: "Process"
             }

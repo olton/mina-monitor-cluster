@@ -20,7 +20,7 @@ export const getMemoryInfo = async (index, node) => {
         globalThis.Monitor.charts[index].memoryChart.setBoundaries({maxY: memTotal})
         globalThis.Monitor.charts[index].memoryChart.add(0, [datetime().time() - 2000, memTotal], true)
         globalThis.Monitor.charts[index].memoryChart.add(1, [datetime().time() - 2000, memUsage], true)
-        globalThis.Monitor.charts[index].memProcessChart.setBoundaries({maxY: processMem + processMem * .9})
+        globalThis.Monitor.charts[index].memProcessChart.setBoundaries({maxY: processMem * 2})
         globalThis.Monitor.charts[index].memProcessChart.add(0, [datetime().time() - 2000, processMem], true)
 
         elTotalMem.html(Math.ceil(memTotal))

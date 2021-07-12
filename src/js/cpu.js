@@ -44,7 +44,7 @@ export const getCpuInfo = async (index, node) => {
             })
         }
 
-        elCpuLoadAvg.html(`[<span class="text-bold">${loadavg[0]}</span>, <span>${loadavg[1]}</span>, <span>${loadavg[2]}</span>]`)
+        elCpuLoadAvg.html(`<span class="text-bold">${loadavg[0]}</span>, <span>${loadavg[1]}</span>, <span>${loadavg[2]}</span>`)
     }
 
     let temp = await getInfo(node,"cpu-temp")

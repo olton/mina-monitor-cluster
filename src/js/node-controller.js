@@ -16,13 +16,13 @@ export const nodeController = async (index, node) => {
 
     target.appendChild(clone)
 
-    const elMemoryChart = $(`#node-${index + 1} .memory-fill`)
+    const elMemoryChart = $(`#node-${index + 1} .memory-node`)
     globalThis.Monitor.charts[index].memoryChart = chart.areaChart(elMemoryChart[0], [
         getFakeData(40),
         getFakeData(40)
     ], {
         ...chartOptions,
-        height: 140,
+        height: 80,
         legend: false,
         colors: [Metro.colors.toRGBA('#7dc37b', .5), Metro.colors.toRGBA('#aa00ff', .5)],
         areas: [
@@ -31,6 +31,24 @@ export const nodeController = async (index, node) => {
             },
             {
                 name: "Used"
+            }
+        ]
+    })
+
+    const elMemProcessChart = $(`#node-${index + 1} .memory-process`)
+    globalThis.Monitor.charts[index].memProcessChart = chart.areaChart(elMemProcessChart[0], [
+        getFakeData(40)
+    ], {
+        ...chartOptions,
+        height: 50,
+        legend: false,
+        boundaries: {
+            maxY: 100
+        },
+        colors: [Metro.colors.toRGBA('#7b68ee', .5)],
+        areas: [
+            {
+                name: "Process"
             }
         ]
     })

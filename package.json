@@ -3,17 +3,26 @@
     "version": "1.0.1",
     "license": "MIT",
     "scripts": {
-        "start": "rd /s /q .output && parcel serve ./src/index.html --open --out-dir .output --target browser",
-        "build": "rd /s /q build && parcel build ./src/index.html --out-dir build --no-source-maps --public-url .",
-        "client_x": "rm -rf .output && parcel serve ./src/index.html --open --out-dir .output --target browser",
-        "build_x": "rm -rf build && parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
+        "start": "shx rm -rf .output/* && parcel serve ./src/index.html --open --out-dir .output --target browser",
+        "prebuild": "shx rm -rf build/*",
+        "build": "parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
     },
     "devDependencies": {
         "less": "^4.1.1",
         "parcel-bundler": "^1.12.5",
-        "parcel-plugin-static-files-copy": "^2.6.0"
+        "parcel-plugin-static-files-copy": "^2.6.0",
+        "shx": "^0.3.3"
     },
     "staticFiles": {
-        "staticPath": ["src/config.json", "src/.htaccess"]
-    }
+        "staticPath": [
+            "src/config.json",
+            "src/.htaccess"
+        ]
+    },
+    "browserslist": [
+        "last 1 Chrome versions",
+        "last 1 Firefox versions",
+        "last 1 Opera versions",
+        "last 1 Edge versions"
+    ]
 }

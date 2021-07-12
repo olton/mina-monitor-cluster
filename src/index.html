@@ -82,7 +82,8 @@
                     <div class="cell-6 border bd-system">
                         <div class="row m-0">
                             <div class="cell-10 pt-0 pl-0 pb-0">
-                                <div class="memory-fill"></div>
+                                <div class="memory-node" title="Node memory usage"></div>
+                                <div class="memory-process" title="Process memory usage"></div>
                             </div>
                             <div class="cell-2 p-0 text-indicators memory-indicators">
                                 <div class="text-center h-33">
@@ -99,14 +100,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row flex-justify-center text-muted text-small">Memory Load</div>
+                        <div class="row flex-justify-center text-muted text-small">Memory,&nbsp;<span>Process: <span class="text-bold label-normal process-mem">0</span> Mb</span></div>
                     </div>
 
                     <div class="cell-6 border bd-system">
                         <div class="row m-0">
                             <div class="cell-10 pt-0 pl-0 pb-0">
-                                <div class="cpu-fill"></div>
-                                <div class="cpu-cores-fill"></div>
+                                <div class="cpu-fill" title="CPU load"></div>
+                                <div class="cpu-cores-fill" title="Cores load"></div>
                             </div>
                             <div class="cell-2 p-0 text-indicators">
                                 <div class="text-center h-33">
@@ -123,22 +124,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row flex-justify-center text-muted text-small">CPU Usage</div>
+                        <div class="row flex-justify-center text-muted text-small">CPU</div>
                     </div>
 
                     <div class="cell-6 border bd-system">
                         <div>
                             <div class="tx-count">0</div>
                             <div class="rx-count">0</div>
-                            <div class="tx-chart"></div>
-                            <div class="rx-chart"></div>
+                            <div class="tx-chart" title="Data transferred"></div>
+                            <div class="rx-chart" title="Data received"></div>
                         </div>
                         <div class="row flex-justify-center text-muted text-small">Network</div>
                     </div>
 
                     <div class="cell-6 border bd-system">
                         <div class="peers-count">0</div>
-                        <div class="peers-chart"></div>
+                        <div class="peers-chart" title="Peers loaded"></div>
                         <div class="row flex-justify-center text-muted text-small">Peers</div>
                     </div>
                 </div>

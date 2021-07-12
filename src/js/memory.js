@@ -7,6 +7,7 @@ export const getMemoryInfo = async (index, node) => {
     const elUsedMem = $(`#node-${index+1} .used-mem`)
     const elMemIndicators = $(`#node-${index+1} .memory-indicators`)
     const elProcessMem = $(`#node-${index+1} .process-mem`)
+    const elNodeMem = $(`#node-${index+1} .node-mem`)
 
     elMemIndicators.removeClass("bg-warning bg-alert")
 
@@ -29,6 +30,7 @@ export const getMemoryInfo = async (index, node) => {
         elFreeMem.html(Math.round(memFree))
         elUsedMem.html(Math.round(memPercent))
         elProcessMem.html(processMem.toFixed(2))
+        elNodeMem.html(memUsage.toFixed(2))
 
         if (memPercent >= 80 && memPercent < 90) {
             elMemIndicators.addClass("bg-warning")

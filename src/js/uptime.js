@@ -12,7 +12,7 @@ export const getUptime = async () => {
 
     const uptime = await getInfo(node, "uptime")
 
-    if (uptime) {
+    if (uptime && Array.isArray(uptime) && uptime.length) {
         let [position, publicKey, score, rate] = uptime
         let color = "neutral", icon = "infinite"
 
@@ -34,10 +34,13 @@ export const getUptime = async () => {
         $("#uptime-key").html( shortAddress(publicKey) )
 
         elLog.html(imgOk)
-        interval = globalThis.Monitor.config.intervals.daemon
     } else {
-        interval = 0
+        $("#uptime-position").html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)
+        $("#position-icon").removeClassBy("label-").removeClassBy("mif-").addClass(`label-normal`).addClass(`mif-infinite`)
+        $("#uptime-rate").text("NONE")
+        $("#uptime-score").text("NONE")
+        $("#uptime-key").html("NONE")
     }
 
-    setTimeout( getUptime, interval)
+    setTimeout(getUptime, globalThis.Monitor.config.intervals.daemon)
 }

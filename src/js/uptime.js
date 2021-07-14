@@ -33,8 +33,6 @@ export const getUptime = async () => {
         $("#uptime-score").text(score)
         $("#uptime-key").html( shortAddress(publicKey.trim()) )
 
-        console.log(publicKey.trim())
-
         elLog.html(imgOk)
     } else {
         $("#uptime-position").html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)

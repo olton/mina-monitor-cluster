@@ -31,7 +31,9 @@ export const getUptime = async () => {
         $("#position-icon").removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         $("#uptime-rate").text((parseFloat(rate)) + "%")
         $("#uptime-score").text(score)
-        $("#uptime-key").html( shortAddress(publicKey) )
+        $("#uptime-key").html( shortAddress(publicKey.trim()) )
+
+        console.log(publicKey.trim())
 
         elLog.html(imgOk)
     } else {

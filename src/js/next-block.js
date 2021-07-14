@@ -41,6 +41,7 @@ export const getNextBlock = async () => {
                 globalThis.Monitor.nextBlock = blockDate
             }
         } else {
+            elNextBlockText.html("")
             elNextBlock.html(`<span class="text-bold">${syncStatus === 'BOOTSTRAP' ? 'No data available' : 'None this epoch :('}</span>`)
             if (syncStatus !== 'BOOTSTRAP') {
                 globalThis.Monitor.noSlots = true

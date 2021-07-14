@@ -6,6 +6,7 @@ export const getNextBlock = async () => {
     let reload
     const node = globalThis.Monitor.config.nodes[globalThis.Monitor.currentNode]
     const elNextBlock = $(".next-block-countdown")
+    const elNextBlockText = $(".next-block-text")
     const elLog = $("#query-next-block")
 
     if (globalThis.Monitor.noSlots) {
@@ -33,6 +34,7 @@ export const getNextBlock = async () => {
             const blockDate = datetime(+times[0].startTime)
 
             if (globalThis.Monitor.nextBlock !== blockDate) {
+                elNextBlockText.html(blockDate.format("ddd, DD MMM, HH:mm"))
                 elNextBlock.clear()
                 const countdown = $("<div>").attr("data-role", "countdown").attr("data-date", blockDate).attr("data-animate", "none").appendTo(elNextBlock)
                 Metro.makePlugin(countdown, "countdown")

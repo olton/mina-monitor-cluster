@@ -5,7 +5,7 @@ import {imgOk, imgStop} from "./helpers/consts"
 export const getNextBlock = async () => {
     let reload
     const node = globalThis.Monitor.config.nodes[globalThis.Monitor.currentNode]
-    const elNextBlock = $("#next-block-countdown")
+    const elNextBlock = $(".next-block-countdown")
     const elLog = $("#query-next-block")
 
     if (globalThis.Monitor.noSlots) {
@@ -30,11 +30,11 @@ export const getNextBlock = async () => {
         const times = nextBlockProduction ? nextBlockProduction.times : []
 
         if (times.length) {
-            const blockDate = datetime(times[0].startTime)
+            const blockDate = datetime(+times[0].startTime)
 
             if (globalThis.Monitor.nextBlock !== blockDate) {
-                elNextBlock.find(".countdown").remove()
-                const countdown = $("<div>").attr("data-role", "countdown").attr("data-date", blockDate).attr("data-animate", "slide").appendTo(elNextBlock)
+                elNextBlock.clear()
+                const countdown = $("<div>").attr("data-role", "countdown").attr("data-date", blockDate).attr("data-animate", "none").appendTo(elNextBlock)
                 Metro.makePlugin(countdown, "countdown")
                 globalThis.Monitor.nextBlock = blockDate
             }

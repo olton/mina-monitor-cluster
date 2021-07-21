@@ -21,11 +21,19 @@ export const getNodeStatus = async (index, node) => {
     const elLog = elNode.find(".node-load-status")
     const elNodeInfoGeneral = elNode.find(".node-info-general")
     const elNodeHealth = elNode.find(".node-health")
+    const elNodeResponseTime = elNode.find(".node-response-time")
 
     // elLog.html(imgStop)
 
     let health = await getInfo(node, 'health')
     let status = await getInfo(node, 'node-status')
+    let responseTime = await getInfo(node, 'node-response-time')
+
+    if (isNaN(responseTime)) {
+        responseTime = 0
+    }
+
+    elNodeResponseTime.html((responseTime / 1000).toFixed(2) + "s")
 
     elNodeInfoGeneral.removeClass("bg-alert")
     if (health) {

@@ -1,3 +1,8 @@
+### 1.0.3
++ [x] Added node `response time` indicator
++ [ ] Mode for `two` and `one` node
++ [ ] Control for `snark-worker` 
+ 
 ### 1.0.2
 + [x] Fixed calculating next block
 + [x] Improved next block visibility

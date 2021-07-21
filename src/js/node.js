@@ -22,6 +22,9 @@ export const getNodeStatus = async (index, node) => {
     const elNodeInfoGeneral = elNode.find(".node-info-general")
     const elNodeHealth = elNode.find(".node-health")
     const elNodeResponseTime = elNode.find(".node-response-time")
+    const elNodeBlockProducer = elNode.find(".block-producer")
+    const elNodeSnarkWorker = elNode.find(".snark-worker")
+    const elNodeSnarkWorkerFee = elNode.find(".snark-worker-fee")
 
     // elLog.html(imgStop)
 
@@ -33,7 +36,16 @@ export const getNodeStatus = async (index, node) => {
         responseTime = 0
     }
 
-    elNodeResponseTime.html((responseTime / 1000).toFixed(2) + "s")
+    responseTime /= 1000
+
+    elNodeResponseTime.removeClass("alert success")
+    elNodeResponseTime.html(responseTime.toFixed(2) + "s")
+    if (responseTime <= 1) {
+        elNodeResponseTime.addClass("success")
+    }
+    if (responseTime >= 10) {
+        elNodeResponseTime.addClass("alert")
+    }
 
     elNodeInfoGeneral.removeClass("bg-alert")
     if (health) {
@@ -144,6 +156,26 @@ export const getNodeStatus = async (index, node) => {
                 }
             }
         }
+
+
+        if (blockProductionKeys && blockProductionKeys.length) {
+            elNodeBlockProducer
+                .html(shortAddress(blockProductionKeys[0]))
+                .attr("title", blockProductionKeys[0])
+                .attr("data-name", blockProductionKeys[0])
+        } else {
+            elNodeBlockProducer.html("NONE")
+        }
+
+        if (snarkWorker) {
+            elNodeSnarkWorker
+                .html(shortAddress(snarkWorker))
+                .attr("data-name", snarkWorker)
+        } else {
+            elNodeSnarkWorker.html("NONE")
+        }
+
+        elNodeSnarkWorkerFee.html(snarkWorkFee / 10**9)
 
         elProducerFirst.clear()
 

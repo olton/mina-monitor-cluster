@@ -38,10 +38,13 @@ export const getNodeStatus = async (index, node) => {
 
     responseTime /= 1000
 
-    elNodeResponseTime.removeClass("alert success")
+    elNodeResponseTime.removeClass("alert success warning")
     elNodeResponseTime.html(responseTime.toFixed(2) + "s")
     if (responseTime <= 1) {
         elNodeResponseTime.addClass("success")
+    }
+    if (Metro.utils.between(responseTime, 1, 10)) {
+        elNodeResponseTime.addClass("warning")
     }
     if (responseTime >= 10) {
         elNodeResponseTime.addClass("alert")

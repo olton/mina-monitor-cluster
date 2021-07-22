@@ -40,7 +40,9 @@ globalThis.Monitor = {
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)
 
-fetch("./config.json").then(r => {
+const configFile = "./config.json"
+
+fetch(configFile).then(r => {
     if (!r.ok) {
         throw new Error(Messages.CONFIG_READ_ERROR)
     }
@@ -79,7 +81,10 @@ fetch("./config.json").then(r => {
     const nodesLength = config.nodes.length
 
     $.each(config.nodes, (i, node) => {
-        elNodesContainer.append($(`<div class='is-node' id='node-${i+1}'>`).addClass(nodesLength === 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12'))
+        elNodesContainer.append(
+            $(`<div class='is-node' id='node-${i+1}'>`)
+                .addClass(nodesLength === 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
+        )
         globalThis.Monitor.nodes[i] = {}
         globalThis.Monitor.charts.push({
             memoryChart: null,

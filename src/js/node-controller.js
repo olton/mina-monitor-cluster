@@ -7,10 +7,18 @@ import {getNetworkInfo} from "./network";
 import {getSystemInfo} from "./system";
 
 export const nodeController = async (index, node) => {
-    let template, clone, target
+    let template, clone, target, nodesCount = globalThis.Monitor.config.nodes.length
 
-    template = document.querySelector("#node-template")
+    if (nodesCount === 1) {
+        template = document.querySelector("#node-template-1")
+    } else if (nodesCount >=2 && nodesCount < 4) {
+        template = document.querySelector("#node-template")
+    } else {
+        return
+    }
+
     template.content.querySelector(".panel").setAttribute("data-title-caption", node.name.toUpperCase())
+
     clone = document.importNode(template.content, true)
     target = document.querySelector(`#node-${index + 1}`)
 

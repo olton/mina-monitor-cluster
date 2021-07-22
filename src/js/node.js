@@ -26,8 +26,6 @@ export const getNodeStatus = async (index, node) => {
     const elNodeSnarkWorker = elNode.find(".snark-worker")
     const elNodeSnarkWorkerFee = elNode.find(".snark-worker-fee")
 
-    // elLog.html(imgStop)
-
     let health = await getInfo(node, 'health')
     let status = await getInfo(node, 'node-status')
     let responseTime = await getInfo(node, 'node-response-time')
@@ -160,7 +158,6 @@ export const getNodeStatus = async (index, node) => {
             }
         }
 
-
         if (blockProductionKeys && blockProductionKeys.length) {
             elNodeBlockProducer
                 .html(shortAddress(blockProductionKeys[0]))
@@ -179,18 +176,6 @@ export const getNodeStatus = async (index, node) => {
         }
 
         elNodeSnarkWorkerFee.html(snarkWorkFee / 10**9)
-
-        elProducerFirst.clear()
-
-        if (blockProductionKeys && blockProductionKeys.length) {
-            elProducerCount.html(blockProductionKeys.length)
-            elProducerFirst.html(shortAddress(blockProductionKeys[0])).attr("title", blockProductionKeys[0])
-        } else {
-            elProducerCount.html("NONE")
-        }
-
-        elSnarkFee.html(snarkWorkFee / 10**9)
-        elSnarkAddress.html(snarkWorker ? shortAddress(snarkWorker) : "NONE").attr("title", snarkWorker ? snarkWorker : "")
 
         globalThis.Monitor.charts[index].peersChartStartPoint += 10
         globalThis.Monitor.charts[index].peersChart.add(0, [globalThis.Monitor.charts[index].peersChartStartPoint - 10, globalThis.Monitor.charts[index].peersChartStartPoint, peers.length], true)

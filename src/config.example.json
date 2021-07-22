@@ -1,0 +1,30 @@
+{
+    "theme": "auto",
+    "nodes": [
+        {
+            "name": "server1",
+            "host": "127.0.0.1:8000",
+            "secure": false
+        },
+        {
+            "name": "server2",
+            "host": "127.0.0.2:8000",
+            "secure": false
+        },
+        {
+            "name": "server3",
+            "host": "127.0.0.3:8000",
+            "secure": false
+        }
+    ],
+    "intervals": {
+        "system": 60000,
+        "daemon": 15000,
+        "resources": 2000
+    },
+    "price": {
+        "currency": "usd",
+        "update_interval": 60000
+    },
+    "blockDiff": 2
+}

@@ -4,7 +4,7 @@ import "../css/index.less"
 import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
 import {messages as Messages} from "./helpers/messages"
-import {title, version} from "./helpers/consts"
+import {title} from "./helpers/consts"
 import {nodeController} from "./node-controller";
 import {getPrice} from "./price";
 import {getConsensus} from "./consensus";
@@ -17,6 +17,8 @@ import {getRewards} from "./rewards";
 import {getExplorerSummary} from "./explorer";
 import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
+
+export const version = `1.0.3`
 
 globalThis.Monitor = {
     config: null,

@@ -37,12 +37,14 @@ export const getBlockchain = async () => {
 
         progress.val(epochDurationProgress)
 
-        let epochEnd = datetime(genesisStart).addSecond(epochDuration/1000 * (+epoch + 1)).format("YYYY/MM/DD HH:mm")
+        let epochEnd = datetime(genesisStart).addSecond(epochDuration/1000 * (+epoch + 1))
         let countdown
+
+        $(".end-epoch-text").html(epochEnd.format("ddd, DD MMM, HH:mm"))
 
         if (!epochTimer) {
             elEpochCountdown.find(".countdown").remove()
-            countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd).attr("data-animate", "none").appendTo(elEpochCountdown)
+            countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd.format("YYYY/MM/DD HH:mm")).attr("data-animate", "none").appendTo(elEpochCountdown)
             Metro.makePlugin(countdown, "countdown")
             globalThis.Monitor.epochTimer = true
         }

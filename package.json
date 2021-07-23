@@ -31,6 +31,6 @@
         "last 1 Edge versions"
     ],
     "watchreload": {
-        "files": "src/**/*.html"
+        "files": "src/templates/*.html"
     }
 }

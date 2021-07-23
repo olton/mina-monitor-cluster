@@ -12,7 +12,6 @@
         "parcel-bundler": "^1.12.5",
         "parcel-plugin-html-partials": "^0.0.6",
         "parcel-plugin-static-files-copy": "^2.6.0",
-        "parcel-plugin-watch-reload": "^1.0.3",
         "shx": "^0.3.3"
     },
     "staticFiles": {
@@ -29,8 +28,5 @@
         "last 1 Firefox versions",
         "last 1 Opera versions",
         "last 1 Edge versions"
-    ],
-    "watchreload": {
-        "files": "src/templates/*.html"
-    }
+    ]
 }

@@ -1,0 +1,195 @@
+<template id="node-template-1">
+    <span class='node-load-status'></span>
+    <span class='mif-eye'></span>
+
+    <div class="panel" data-role="panel">
+        <div class="node-container">
+            <div class="row">
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="SERVER INFO">
+                        <div>
+                            <div class="pb-4">
+                                <div class="cpu-info text-center reduce-1">...</div>
+                                <div class="os-info text-small text-center text-bold">...</div>
+                            </div>
+
+                            <div class="row border-top bd-system">
+                                <div class="cell-6">
+                                    <div class="server-time text-center"></div>
+                                    <div class="text-small text-muted text-center">server time</div>
+                                </div>
+                                <div class="cell-6 border-left bd-system">
+                                    <div class="server-uptime text-center"></div>
+                                    <div class="text-small text-muted text-center">server uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="DAEMON STATUS">
+                        <div>
+                            <div class="node-sync-status big-value text-center">NONE</div>
+                            <div class="text-muted text-small mt-2-minus node-health text-center">UNKNOWN</div>
+                            <div class="row border-top bd-system mt-2 pt-2">
+                                <div class="cell-6 text-center">
+                                    <div class="node-uptime big-value" style="padding: 0; height: auto">NONE</div>
+                                    <div class="text-muted text-small mt-1-minus">node uptime</div>
+                                </div>
+                                <div class="cell-6 text-center">
+                                    <div class="node-response-time big-value" style="padding: 0; height: auto">NONE
+                                    </div>
+                                    <div class="text-muted text-small mt-1-minus">node response</div>
+                                </div>
+                            </div>
+
+                            <div class="catchup-process catchup-process-left">
+                                <span class="mif-arrow-up"></span>
+                            </div>
+                            <div class="catchup-process catchup-process-right">
+                                <span class="mif-arrow-up"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="BLOCK HEIGHT">
+                        <div class="row">
+                            <div class="cell-8 pl-0 pb-0">
+                                <div class="block-height-container">
+                                    <span class="bell mif-bell ani-ring"></span>
+                                    <div class="block-height big-value">0</div>
+                                    <div class="text-small mt-1-minus text-muted">height</div>
+                                </div>
+                            </div>
+                            <div class="cell-4">
+                                <table class="table text-small subcompact cell-border mt-1-minus height-table">
+                                    <tr>
+                                        <td>max:</td>
+                                        <td><span class="max-block">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>unv:</td>
+                                        <td><span class="max-unvalidated">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>exp:</td>
+                                        <td><span class="explorer-height">0</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="BP &amp; SW">
+                        <div class="text-center">
+                            <div class="block-producer text-bold">NONE</div>
+                            <div class="text-muted reduce-4">block producer</div>
+
+                            <div class="row border-top bd-system mt-2 pt-2">
+                                <div class="cell-8">
+                                    <div class="snark-worker reduce-2 text-bold">NONE</div>
+                                    <div class="text-muted reduce-4">snark worker</div>
+                                </div>
+                                <div class="cell-4 border-left bd-system">
+                                    <div class="snark-worker-fee reduce-2 text-bold">0</div>
+                                    <div class="text-muted reduce-4">fee</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="MEMORY">
+                        <div class="">
+                            <div class="row m-0">
+                                <div class="cell-10 pt-0 pl-0 pb-0">
+                                    <div class="memory-process" title="Process memory usage"></div>
+                                    <div class="memory-node" title="Node memory usage"></div>
+                                </div>
+                                <div class="cell-2 p-0 text-indicators memory-indicators">
+                                    <div class="text-center h-33">
+                                        <div class="total-mem text-bold"></div>
+                                        <div class="text-small total-muted">total</div>
+                                    </div>
+                                    <div class="text-center h-33">
+                                        <div class="used-mem text-bold"></div>
+                                        <div class="text-small total-muted">%</div>
+                                    </div>
+                                    <div class="text-center h-33">
+                                        <div class="free-mem text-bold"></div>
+                                        <div class="text-small total-muted">free</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flex-justify-center text-small text-muted">
+                                <span class="mif-memory mif-2x" title="Node Memory Usage"></span>&nbsp;<span
+                                    class="text-bold label-normal node-mem">0</span>&nbsp;GiB&nbsp;&nbsp;
+                                <span class="mif-cog mif-2x" title="Process Memory Usage"></span>&nbsp;<span
+                                    class="text-bold label-normal process-mem">0</span>&nbsp;Mb
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="CPU">
+                        <div class="">
+                            <div class="row m-0">
+                                <div class="cell-10 pt-0 pl-0 pb-0">
+                                    <div class="cpu-fill" title="CPU load"></div>
+                                    <div class="cpu-cores-fill" title="Cores load"></div>
+                                </div>
+                                <div class="cell-2 p-0 text-indicators">
+                                    <div class="text-center h-33">
+                                        <div class="cores-count text-bold"></div>
+                                        <div class="text-small total-muted">cores</div>
+                                    </div>
+                                    <div class="text-center h-33">
+                                        <div class="cpu-load text-bold"></div>
+                                        <div class="text-small total-muted">%</div>
+                                    </div>
+                                    <div class="text-center h-33">
+                                        <div class="cpu-temp text-bold"></div>
+                                        <div class="text-small total-muted">&#8451;</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flex-justify-center text-small text-muted">
+                                <span class="mif-cpu mif-2x"></span>&nbsp;&nbsp;AVG&nbsp;&nbsp;
+                                <span class="load-avg text-small label-normal" title="Load average">0, 0, 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="NETWORK">
+                        <div class="">
+                            <div>
+                                <div class="tx-count">0</div>
+                                <div class="rx-count">0</div>
+                                <div class="tx-chart" title="Data transferred"></div>
+                                <div class="rx-chart" title="Data received"></div>
+                            </div>
+                            <div class="row flex-justify-center text-small text-muted">
+                                <span class="mif-net-server mif-2x"></span>&nbsp;&nbsp;Network
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-6 cell-lg-3">
+                    <div data-role="panel" data-title-caption="PEERS">
+                        <div class="">
+                            <div class="peers-count">0</div>
+                            <div class="peers-chart" title="Peers loaded"></div>
+                            <div class="row flex-justify-center text-small text-muted">
+                                <span class="mif-broadcast mif-2x"></span>&nbsp;&nbsp;Peers
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

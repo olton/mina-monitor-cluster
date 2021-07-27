@@ -2,6 +2,7 @@
 + [x] Added node `response time` indicator
 + [x] Added info about BP and SW to node panel
 + [x] Mode for `two` and `one` node
++ [x] Updated for using new responses
  
 ### 1.0.2
 + [x] Fixed calculating next block

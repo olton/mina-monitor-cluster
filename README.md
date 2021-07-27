@@ -9,7 +9,7 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 
 
 **Important!**
-> For using Mina Monitor Cluster you must install [Mina Monitor Server Side (ver >= 1.1.1)](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
+> For using Mina Monitor Cluster you must install actual [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
 
 
 ## Key Features
@@ -18,12 +18,15 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 - [x] Displaying the status of the node daemon (SYNCED, CATCHUP, BOOTSTRAP, ...)
 - [x] Displaying the health of node (OK, Fork, Hanging)
 - [x] Displaying the server resources consumed by the node (CPU, RAM, NETWORK)
-- [x] Displaying the balance of the specified address, and the value of this balance in different currencies
+- [x] Displaying the balance of the specified address and the value of this balance in different currencies
 - [x] Displaying information about delegations to the specified validator address
 - [x] Displaying information about blocks won and rewards received in the current era
 - [x] Displays general information about the site server
 - [x] Convenient live graphs for displaying consumed resources
 - [x] Responsive interface (It is comfortable to look at both PC and phone and tablet)
+- [x] Displaying the status of several (up to 3) nodes on one page
+- [x] Cyclic bypass of nodes, polling of general information for the address is carried out sequentially from synchronized nodes
+- [x] Displaying the response rate of a GraphQL node to the main request
 
 
 ## Installation
@@ -76,25 +79,15 @@ Create config file `config.json` in the `src` folder. Below you can see example 
 
 In the `host` property you must define addresses of the Mina Monitor Server interfaces.
 
-Run Monitor on windows
+Run Monitor
 ```shell
 npm start
 ```
 
-Run Monitor on linux
-```shell
-npm run client_x
-```
-
 If you want to install the `Monitor` to the `web server`, you must first **compile** the files.
-To compile files run command on windows
+To compile files run command
 ```shell
 npm run build
-```
-
-Build on linux
-```shell
-npm run build_x
 ```
 
 After the command will execute, in folder `build` you can find files, which you can put into a web server.

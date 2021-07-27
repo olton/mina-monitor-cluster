@@ -16,6 +16,8 @@
     --color-yellow: #ffdb10;
     --color-white: #fff;
     --color-gray: #b6b6b6;
+    --color-active: #24292e;
+    --color-inactive: #b6b6b6;
 }
 
 .bd-system {
@@ -286,9 +288,42 @@ body {
 .one-node {
     .node-response-time {
         font-size: 16px;
-        padding: 4px 8px;
-        border-radius: 8px;
+        padding: 2px 8px;
         font-weight: bold;
+    }
+}
+
+.node-health-container {
+    .mif-warning {
+        position: absolute;
+        display: none;
+        top: 4px;
+        left: 4px;
+    }
+
+    &.warning {
+        .mif-warning {
+            display: block;
+        }
+    }
+}
+
+.producer-work, .snark-worker-work {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: var(--color-inactive);
+}
+
+.one-node {
+    .producer-work, .snark-worker-work {
+        top: 0;
+    }
+}
+
+.producer-work, .snark-worker-work {
+    &.ani-spin {
+        color: var(--color-active);
     }
 }
 
@@ -334,6 +369,16 @@ body {
 
     100% {
         top: 0;
+    }
+}
+
+@keyframes flash-bg {
+    0% {
+        background-color: var(--color-panel);
+    }
+    100% {
+        background-color: var(--color-alert);
+        color: var(--color-white)!important;
     }
 }
 

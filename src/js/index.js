@@ -42,7 +42,7 @@ globalThis.Monitor = {
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)
 
-const configFile = "./config.one.json"
+const configFile = "./config.json"
 
 fetch(configFile).then(r => {
     if (!r.ok) {

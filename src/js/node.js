@@ -13,10 +13,6 @@ export const getNodeStatus = async (index, node) => {
     const elNodeMaxHeight = elNode.find(".max-block")
     const elNodeUnvHeight = elNode.find(".max-unvalidated")
     const elNodeExpHeight = elNode.find(".explorer-height")
-    const elProducerCount = $(".producer-count")
-    const elProducerFirst = $(".producer-first")
-    const elSnarkFee = $(".snark-fee")
-    const elSnarkAddress = $(".snark-address")
     const elPeersCount = elNode.find(".peers-count")
     const elLog = elNode.find(".node-load-status")
     const elNodeInfoGeneral = elNode.find(".node-info-general")
@@ -25,6 +21,9 @@ export const getNodeStatus = async (index, node) => {
     const elNodeBlockProducer = elNode.find(".block-producer")
     const elNodeSnarkWorker = elNode.find(".snark-worker")
     const elNodeSnarkWorkerFee = elNode.find(".snark-worker-fee")
+    const elNodeHealthContainer = elNode.find(".node-health-container")
+    const elProducerCog = elNode.find(".producer-work")
+    const elSnarkWorkerCog = elNode.find(".snark-worker-work")
 
     let health = await getInfo(node, 'health')
     let status = await getInfo(node, 'node-status')
@@ -49,11 +48,13 @@ export const getNodeStatus = async (index, node) => {
     }
 
     elNodeInfoGeneral.removeClass("bg-alert")
+    elNodeHealthContainer.removeClass("warning")
     if (health) {
         if (health.length) {
             elLog.html(imgStop)
             elNodeInfoGeneral.addClass("bg-alert")
             elNodeHealth.html($("<span>").addClass("label-alert").html(health.join(", ")))
+            elNodeHealthContainer.addClass("warning")
         } else {
             elLog.html(imgOk)
             elNodeHealth.html($("<span>").addClass("label-success").html("OK"))
@@ -63,6 +64,8 @@ export const getNodeStatus = async (index, node) => {
     }
 
     elNode.removeClass("CATCHUP SYNCED BOOTSTRAP OFFLINE CONNECTING UNKNOWN")
+    elProducerCog.removeClass("ani-spin")
+    elSnarkWorkerCog.removeClass("ani-spin")
 
     if (status) {
         const node = status.data
@@ -159,6 +162,7 @@ export const getNodeStatus = async (index, node) => {
         }
 
         if (blockProductionKeys && blockProductionKeys.length) {
+            elProducerCog.addClass("ani-spin")
             elNodeBlockProducer
                 .html(shortAddress(blockProductionKeys[0]))
                 .attr("title", blockProductionKeys[0])
@@ -168,6 +172,7 @@ export const getNodeStatus = async (index, node) => {
         }
 
         if (snarkWorker) {
+            elSnarkWorkerCog.addClass("ani-spin")
             elNodeSnarkWorker
                 .html(shortAddress(snarkWorker))
                 .attr("data-name", snarkWorker)

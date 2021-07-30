@@ -1,6 +1,6 @@
 {
     "name": "@olton/mina-monitor-cluster",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "scripts": {
         "start": "shx rm -rf .output/* && parcel serve ./src/index.html --open --out-dir .output --target browser",

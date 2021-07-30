@@ -18,7 +18,7 @@ import {getExplorerSummary} from "./explorer";
 import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
 
-const version = `1.0.3`
+const version = `1.0.4`
 
 globalThis.Monitor = {
     config: null,

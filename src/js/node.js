@@ -35,12 +35,17 @@ export const getNodeStatus = async (index, node) => {
 
     responseTime /= 1000
 
+    globalThis.Monitor.charts[index].nodeResponseChart.add(0, [datetime().time(), responseTime], true)
+
     elNodeResponseTime.removeClass("alert success warning")
     elNodeResponseTime.html(responseTime.toFixed(2) + "s")
     if (responseTime <= 1) {
         elNodeResponseTime.addClass("success")
     }
-    if (Metro.utils.between(responseTime, 1, 10)) {
+    if (Metro.utils.between(responseTime, 1, 5)) {
+        elNodeResponseTime.addClass("yellow-warning")
+    }
+    if (Metro.utils.between(responseTime, 5, 10)) {
         elNodeResponseTime.addClass("warning")
     }
     if (responseTime >= 10) {

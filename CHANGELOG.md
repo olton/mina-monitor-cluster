@@ -1,3 +1,7 @@
+### 1.0.4
++ [x] Increased chart size to 100 points
++ [x] Added node response chart
+
 ### 1.0.3
 + [x] Added node `response time` indicator
 + [x] Added info about BP and SW to node panel

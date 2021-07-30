@@ -26,8 +26,8 @@ export const nodeController = async (index, node) => {
 
     const elMemoryChart = $(`#node-${index + 1} .memory-node`)
     globalThis.Monitor.charts[index].memoryChart = chart.areaChart(elMemoryChart[0], [
-        getFakeData(40),
-        getFakeData(40)
+        getFakeData(100),
+        getFakeData(100)
     ], {
         ...chartOptions,
         height: 80,
@@ -45,7 +45,7 @@ export const nodeController = async (index, node) => {
 
     const elMemProcessChart = $(`#node-${index + 1} .memory-process`)
     globalThis.Monitor.charts[index].memProcessChart = chart.lineChart(elMemProcessChart[0], [
-        getFakeData(40)
+        getFakeData(100)
     ], {
         ...chartOptions,
         height: 50,
@@ -65,7 +65,7 @@ export const nodeController = async (index, node) => {
 
     const elCpuChart = $(`#node-${index + 1} .cpu-fill`)
     globalThis.Monitor.charts[index].cpuChart = chart.areaChart(elCpuChart[0], [
-        getFakeData(40)
+        getFakeData(100)
     ], {
         ...chartOptions,
         height: 55,
@@ -83,7 +83,7 @@ export const nodeController = async (index, node) => {
 
     const elTxChart = $(`#node-${index + 1} .tx-chart`)
     globalThis.Monitor.charts[index].txChart = chart.areaChart(elTxChart[0], [
-        getFakeData(40)
+        getFakeData(100)
     ], {
         ...chartOptions,
         height: 65,
@@ -100,7 +100,7 @@ export const nodeController = async (index, node) => {
 
     const elRxChart = $(`#node-${index + 1} .rx-chart`)
     globalThis.Monitor.charts[index].rxChart = chart.areaChart(elRxChart[0], [
-        getFakeData(40)
+        getFakeData(100)
     ], {
         ...chartOptions,
         height: 65,
@@ -120,7 +120,7 @@ export const nodeController = async (index, node) => {
     globalThis.Monitor.charts[index].peersChart = chart.histogramChart(elPeersChart[0], [
         getFakeTriplets(20, 40, 60, 1)
     ], {
-        height: 140,
+        height: 65,
         bars: [{
             name: "Peers",
             stroke: '#fff',
@@ -166,6 +166,25 @@ export const nodeController = async (index, node) => {
         },
         onDrawLabelX: () => "",
         onDrawLabelY: () => ""
+    })
+
+    const elNodeResponseChart = $(`#node-${index + 1} .node-response-chart`)
+    globalThis.Monitor.charts[index].nodeResponseChart = chart.areaChart(elNodeResponseChart[0], [
+        getFakeData(200)
+    ], {
+        ...chartOptions,
+        height: 65,
+        legend: false,
+        boundaries: {
+            maxY: 60
+        },
+        colors: ["#ff1493"],
+        areas: [
+            {
+                name: "Response",
+                size: 2
+            }
+        ]
     })
 
     setTimeout(getSystemInfo,0, index, node)

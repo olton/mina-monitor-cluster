@@ -13,7 +13,8 @@ export const switchNode = (v) => {
 
     if (globalThis.Monitor.nodes.length > 1) {
         const syncStatus = globalThis.Monitor.nodes[globalThis.Monitor.currentNode].syncStatus
-        if (syncStatus && syncStatus !== 'SYNCED') {
+        const health = globalThis.Monitor.health[globalThis.Monitor.currentNode]
+        if (health.length || (syncStatus && syncStatus !== 'SYNCED')) {
             switchNode()
         }
     }

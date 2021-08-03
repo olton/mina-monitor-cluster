@@ -36,7 +36,8 @@ globalThis.Monitor = {
     epoch: 0,
     slotDuration: 180000,
     epochDuration: 1285200000,
-    charts: []
+    charts: [],
+    health: []
 }
 
 $("title").text(title.replace('%VER%', version))
@@ -62,6 +63,30 @@ fetch(configFile).then(r => {
     globalThis.darkMode = config.theme === "auto" ? $.dark : config.theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
 
+    const elNodesContainer = $("#nodes-row")
+    const nodesLength = config.nodes.length
+
+    $.each(config.nodes, (i, node) => {
+        elNodesContainer.append(
+            $(`<div class='is-node' id='node-${i+1}'>`)
+                .addClass(nodesLength === 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
+        )
+        globalThis.Monitor.nodes[i] = {}
+        globalThis.Monitor.health[i] = []
+        globalThis.Monitor.charts.push({
+            memoryChart: null,
+            cpuChart: null,
+            memoryGauge: null,
+            cpuGauge: null,
+            cpuCores: null,
+            cpuTemp: null,
+            peersChart: null,
+            netRxChart: null,
+            netTxChart: null,
+        })
+        setTimeout(nodeController, 0, i, node)
+    })
+
     let startNode = Metro.storage.getItem("currentNode") || 0
     if (startNode < 0 || startNode >= config.nodes.length) {
         startNode = 0
@@ -78,29 +103,6 @@ fetch(configFile).then(r => {
     setTimeout(getDelegations, 0)
     setTimeout(getRewards, 0)
     setTimeout(getNextBlock, 0)
-
-    const elNodesContainer = $("#nodes-row")
-    const nodesLength = config.nodes.length
-
-    $.each(config.nodes, (i, node) => {
-        elNodesContainer.append(
-            $(`<div class='is-node' id='node-${i+1}'>`)
-                .addClass(nodesLength === 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
-        )
-        globalThis.Monitor.nodes[i] = {}
-        globalThis.Monitor.charts.push({
-            memoryChart: null,
-            cpuChart: null,
-            memoryGauge: null,
-            cpuGauge: null,
-            cpuCores: null,
-            cpuTemp: null,
-            peersChart: null,
-            netRxChart: null,
-            netTxChart: null,
-        })
-        setTimeout(nodeController, 0, i, node)
-    })
 
     $(document).on("click", ".block-producer, .snark-work", function() {
         const val = $(this).attr("data-name")

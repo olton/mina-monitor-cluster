@@ -29,6 +29,8 @@ export const getNodeStatus = async (index, node) => {
     let status = await getInfo(node, 'node-status')
     let responseTime = await getInfo(node, 'node-response-time')
 
+    globalThis.Monitor.health[index] = health
+
     if (isNaN(responseTime)) {
         responseTime = 0
     }
@@ -133,19 +135,25 @@ export const getNodeStatus = async (index, node) => {
         elNodeUnvHeight.html(unvHeight)
         elNodeExpHeight.html(expHeight)
 
-        if (syncStatus === 'SYNCED') {
-            elNodeHeightContainer.removeClassBy("bg-").removeClass("bell-alert")
+        elNodeHeightContainer.removeClassBy("bg-")
+        elNodeHeightContainer.removeClass("bell-alert")
+        elNodeMaxHeight.removeClass("ani-flash")
+        elNodeMaxHeight.closest("td").removeClass("bg-alert")
+        elNodeUnvHeight.removeClass("ani-flash")
+        elNodeUnvHeight.closest("td").removeClass("bg-alert")
+        elNodeExpHeight.removeClass("ani-flash")
+        elNodeExpHeight.closest("td").removeClass("bg-info bg-alert")
 
-            elNodeMaxHeight.removeClass("ani-flash").html(maxHeight)
-            elNodeMaxHeight.closest("td").removeClass("bg-alert")
+        if (syncStatus === 'SYNCED') {
+
+            elNodeMaxHeight.html(maxHeight)
             if (MAX_DIFF > blockDiff) {
                 elNodeMaxHeight.addClass("ani-flash")
                 elNodeMaxHeight.closest("td").addClass("bg-alert")
                 elNodeHeightContainer.addClass("bell-alert")
             }
 
-            elNodeUnvHeight.removeClass("ani-flash").html(unvHeight)
-            elNodeUnvHeight.closest("td").removeClass("bg-alert")
+            elNodeUnvHeight.html(unvHeight)
             if (UNV_DIFF > blockDiff || UNV_DIFF_FORWARD > blockDiff) {
                 elNodeUnvHeight.addClass("ani-flash")
                 elNodeUnvHeight.closest("td").addClass("bg-alert")
@@ -153,15 +161,12 @@ export const getNodeStatus = async (index, node) => {
             }
 
             if (expHeight) {
-                elNodeExpHeight.removeClass("ani-flash")
-                elNodeExpHeight.closest("td").removeClass("bg-info bg-alert")
-                if (EXP_DIFF > blockDiff) {
+                if ((EXP_DIFF > blockDiff) || (EXP_DIFF < 0 && Math.abs(EXP_DIFF) >= blockDiff)) {
                     elNodeExpHeight.addClass("ani-flash")
                     elNodeExpHeight.closest("td").addClass("bg-alert")
+                }
+                if (EXP_DIFF > blockDiff) {
                     elNodeHeightContainer.addClass("bell-alert")
-                } else if (EXP_DIFF < 0 && Math.abs(EXP_DIFF) >= blockDiff) {
-                    elNodeExpHeight.addClass("ani-flash")
-                    elNodeExpHeight.closest("td").addClass("bg-info")
                 }
             }
         }

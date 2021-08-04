@@ -1,6 +1,7 @@
 ### 1.0.4
 + [x] Increased chart size to 100 points
 + [x] Added node response chart
++ [x] Cluster get price from Monitor Server, so you can set different currencies on the server and see price for defined ones
 
 ### 1.0.3
 + [x] Added node `response time` indicator

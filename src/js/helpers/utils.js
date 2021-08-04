@@ -54,3 +54,5 @@ export const getFakeTriplets = (count, min, max, zero) => {
 
     return a
 }
+
+export const isNum = (v) => !isNaN(v)

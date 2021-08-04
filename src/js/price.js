@@ -1,7 +1,10 @@
-import {getAPIData} from "./helpers/get-info";
+import {getAPIData, getInfo} from "./helpers/get-info";
+import {parseTime} from "./helpers/parse-time";
 
-export const getPrice = async (currency = "usd", reload = 60000) => {
-    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=%CURRENCY%&ids=mina-protocol`.replace("%CURRENCY%", currency.toLowerCase())
+// TODO Синхронизировать обновление стоимости баланса
+
+export const getPrice = async () => {
+    const node = globalThis.Monitor.config.nodes[globalThis.Monitor.currentNode]
 
     const elCurrentPrice = $("#current-price")
     const elCurrency = $("#currency")
@@ -11,10 +14,11 @@ export const getPrice = async (currency = "usd", reload = 60000) => {
     const elPriceArrow = $("#price-arrow")
     const elTotalSupply = $("#total-supply")
 
-    const data = await getAPIData(url)
+    const data = await getInfo(node, "price")
 
     if (data) {
         const mina = data[0]
+        const currency = mina.currency
         const price = (+mina.current_price).toFixed(2)
         const priceDelta = (mina.price_change_24h).toFixed(2)
         const priceDeltaSign = priceDelta > 0 ? "+" : "";
@@ -27,15 +31,16 @@ export const getPrice = async (currency = "usd", reload = 60000) => {
         elCurrentPrice.html(`${price}`)
         elCurrency.html(currency.toUpperCase())
         elPriceChange.html(`${priceChange}`)
-        elPriceHigh.html(mina.ath)
-        elPriceLow.html(mina.atl)
+        elPriceHigh.html(+(mina.ath).toFixed(2))
+        elPriceLow.html(+(mina.atl).toFixed(2))
         elTotalSupply.html(totalSupply.format(0, null, " ", "."))
 
         elPriceArrow.html(`<span class="text-bold fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
 
         globalThis.Monitor.price = +price
+        globalThis.Monitor.price_currency = currency
         globalThis.Monitor.totalSupply = totalSupply
     }
 
-    setTimeout(getPrice, reload, currency, reload)
+    setTimeout(getPrice, parseTime(globalThis.Monitor.config.intervals.price))
 }

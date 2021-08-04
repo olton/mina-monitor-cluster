@@ -1,4 +1,5 @@
 import {getInfo} from "./helpers/get-info"
+import {parseTime} from "./helpers/parse-time";
 
 export const getMemoryInfo = async (index, node) => {
     const data = await getInfo(node, 'mem')
@@ -41,5 +42,5 @@ export const getMemoryInfo = async (index, node) => {
         }
     }
 
-    setTimeout(getMemoryInfo, globalThis.Monitor.config.intervals.resources, index, node)
+    setTimeout(getMemoryInfo, parseTime(globalThis.Monitor.config.intervals.resources), index, node)
 }

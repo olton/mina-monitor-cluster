@@ -1,6 +1,7 @@
 import {getInfo} from "./helpers/get-info"
 import {imgStop, imgOk} from "./helpers/consts"
 import {shortAddress} from "./helpers/utils";
+import {parseTime} from "./helpers/parse-time";
 
 export const getUptime = async () => {
     const {config, currentNode} = globalThis.Monitor
@@ -42,5 +43,5 @@ export const getUptime = async () => {
         $("#uptime-key").html("NONE")
     }
 
-    setTimeout(getUptime, globalThis.Monitor.config.intervals.daemon)
+    setTimeout(getUptime, parseTime(globalThis.Monitor.config.intervals.daemon))
 }

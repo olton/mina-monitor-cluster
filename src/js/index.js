@@ -17,6 +17,7 @@ import {getRewards} from "./rewards";
 import {getExplorerSummary} from "./explorer";
 import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
+import {parseTime} from "./helpers/parse-time";
 
 const version = `1.0.4`
 
@@ -26,6 +27,7 @@ globalThis.Monitor = {
     currentNode: 0,
     balance: 0,
     price: 0,
+    price_currency: 0,
     totalSupply: 0,
     noSlots: false,
     genesisStart: "2021-03-17 02:00:00.000000+02:00",
@@ -93,7 +95,7 @@ fetch(configFile).then(r => {
     }
     switchNode(startNode)
 
-    setTimeout(getPrice, 0, config.price.currency, config.price.update_interval)
+    setTimeout(getPrice, 0)
     setTimeout(getExplorerSummary, 0)
     setTimeout(getConsensus, 0)
     setTimeout(getUptime, 0)

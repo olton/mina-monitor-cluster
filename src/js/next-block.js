@@ -1,6 +1,7 @@
 import {getInfo} from "./helpers/get-info"
 import {countRequest, switchNode} from "./switch-node"
 import {imgOk, imgStop} from "./helpers/consts"
+import {parseTime} from "./helpers/parse-time";
 
 export const getNextBlock = async () => {
     let reload
@@ -49,7 +50,7 @@ export const getNextBlock = async () => {
         }
 
         elLog.html(imgOk)
-        reload = globalThis.Monitor.config.intervals.daemon
+        reload = parseTime(globalThis.Monitor.config.intervals.daemon)
         countRequest()
     } else {
         reload = 0

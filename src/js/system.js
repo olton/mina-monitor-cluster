@@ -1,4 +1,5 @@
 import {getInfo} from "./helpers/get-info"
+import {parseTime} from "./helpers/parse-time";
 
 export const getSystemInfo = async (index, node) => {
     let cpuInfo = await getInfo(node, 'cpu')
@@ -19,5 +20,5 @@ export const getSystemInfo = async (index, node) => {
         $(`#node-${index+1} .server-uptime`).text(`${uptime.d}d, ${uptime.h}h ${uptime.m}m`)
     }
 
-    setTimeout(getSystemInfo, globalThis.Monitor.config.intervals.system, index, node)
+    setTimeout(getSystemInfo, parseTime(globalThis.Monitor.config.intervals.system), index, node)
 }

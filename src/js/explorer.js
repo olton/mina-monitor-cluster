@@ -1,5 +1,6 @@
 import {getAPIData, getInfo} from "./helpers/get-info"
 import {imgStop, imgOk} from "./helpers/consts"
+import {parseTime} from "./helpers/parse-time";
 
 const EXPLORER_API = `https://api.minaexplorer.com`
 
@@ -24,5 +25,5 @@ export const getExplorerSummary = async () => {
         elLog.html(imgOk)
     }
 
-    setTimeout(getExplorerSummary, globalThis.Monitor.config.intervals.daemon)
+    setTimeout(getExplorerSummary, parseTime(globalThis.Monitor.config.intervals.daemon))
 }

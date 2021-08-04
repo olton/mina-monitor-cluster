@@ -1,12 +1,14 @@
 import {getInfo} from "./helpers/get-info"
 import {countRequest, switchNode} from "./switch-node"
 import {imgStop, imgOk} from "./helpers/consts"
+import {parseTime} from "./helpers/parse-time";
 
 export const getBlockchain = async () => {
     const elLog = $("#query-blockchain")
     const elEpochCountdown = $("#epoch-countdown")
     let reload
     let {config, currentNode, genesisStart, epochDuration, epochTimer} = globalThis.Monitor
+    const defaultReload = parseTime(config.intervals.daemon)
     let node = config.nodes[currentNode]
 
     elLog.html(imgStop)
@@ -50,7 +52,7 @@ export const getBlockchain = async () => {
         }
 
         elLog.html(imgOk)
-        reload = globalThis.Monitor.config.intervals.daemon
+        reload = defaultReload
         countRequest()
     } else {
         reload = 0
@@ -63,6 +65,7 @@ export const getBlockchain = async () => {
 export const getBlockSpeed = async () => {
     let reload
     const node = globalThis.Monitor.config.nodes[globalThis.Monitor.currentNode]
+    const defaultReload = parseTime(globalThis.Monitor.config.intervals.daemon)
     const elLog = $("#query-block-speed")
 
     elLog.html(imgStop)
@@ -76,7 +79,7 @@ export const getBlockSpeed = async () => {
 
         elLog.html(imgOk)
 
-        reload = speed
+        reload = defaultReload
         countRequest()
     } else {
         reload = 0

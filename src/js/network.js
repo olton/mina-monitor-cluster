@@ -1,4 +1,5 @@
 import {getInfo} from "./helpers/get-info";
+import {parseTime} from "./helpers/parse-time";
 
 export const getNetworkInfo = async (index, node) => {
     let net = await getInfo(node,'net-stat')
@@ -26,5 +27,5 @@ export const getNetworkInfo = async (index, node) => {
         $(`#node-${index+1} .rx-count`).html(`${(speedRx).toFixed(parseInt(speedRx) === 0 ? 1 : 0)}<span class="reduce-2 mt-2-minus text-normal">${speedTitleRx}</span>`)
     }
 
-    setTimeout(getNetworkInfo, globalThis.Monitor.config.intervals.resources, index, node)
+    setTimeout(getNetworkInfo, parseTime(globalThis.Monitor.config.intervals.resources), index, node)
 }

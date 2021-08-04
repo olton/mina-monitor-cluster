@@ -1,6 +1,7 @@
 import {getInfo} from "./helpers/get-info";
 import {imgOk, imgStop} from "./helpers/consts";
 import {shortAddress} from "./helpers/utils";
+import {parseTime} from "./helpers/parse-time";
 
 export const getNodeStatus = async (index, node) => {
     const {blockDiff} = globalThis.Monitor.config
@@ -201,5 +202,5 @@ export const getNodeStatus = async (index, node) => {
         elNodeHealth.html($("<span>").addClass("label-success").html("UNKNOWN"))
     }
 
-    setTimeout(getNodeStatus, globalThis.Monitor.config.intervals.daemon, index, node)
+    setTimeout(getNodeStatus, parseTime(globalThis.Monitor.config.intervals.daemon), index, node)
 }

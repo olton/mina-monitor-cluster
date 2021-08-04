@@ -1,11 +1,12 @@
 import {getInfo} from "./helpers/get-info"
 import {countRequest, switchNode} from "./switch-node"
 import {imgStop, imgOk} from "./helpers/consts"
+import {parseTime} from "./helpers/parse-time";
 
 export const getBalance = async () => {
     const {config, currentNode} = globalThis.Monitor
     const node = config.nodes[currentNode]
-    const {currency = 'usd'} = config.price
+    const defaultReload = parseTime(config.intervals.daemon)
     const elLog = $("#query-balance")
     let reload
 
@@ -24,10 +25,10 @@ export const getBalance = async () => {
 
         $("#balance-total").html(`${b[0]}.<span class="reduce-4" style="line-height: 2">${b[1]}</span>`)
         $("#balance-liquid").html(`${l[0]}.<span class="reduce-3" style="line-height: 2">${l[1]}</span>`)
-        $("#balance-usd").html(`${u[0]}.<span style="line-height: 2">${u[1]}</span> ${currency.toUpperCase()}`)
+        $("#balance-usd").html(`${u[0]}.<span style="line-height: 2">${u[1]}</span> ${globalThis.Monitor.price_currency.toUpperCase()}`)
 
         elLog.html(imgOk)
-        reload = globalThis.Monitor.config.intervals.daemon
+        reload = defaultReload
         countRequest()
     } else {
         reload = 0

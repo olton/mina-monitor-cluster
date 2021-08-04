@@ -1,4 +1,5 @@
 import {getInfo} from "./helpers/get-info";
+import {parseTime} from "./helpers/parse-time";
 
 export const getCpuInfo = async (index, node) => {
     let data = await getInfo(node,'cpu-load')
@@ -70,5 +71,5 @@ export const getCpuInfo = async (index, node) => {
         elCpuTemp.parent().addClass("bg-alert")
     }
 
-    setTimeout(getCpuInfo, globalThis.Monitor.config.intervals.resources, index, node)
+    setTimeout(getCpuInfo, parseTime(globalThis.Monitor.config.intervals.resources), index, node)
 }

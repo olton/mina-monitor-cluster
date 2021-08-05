@@ -17,10 +17,10 @@ export const getUptime = async () => {
         let [position, publicKey, score, rate] = uptime
         let color = "neutral", icon = "infinite"
 
-        if (Metro.utils.between(position, 0, 75)) {
+        if (Metro.utils.between(position, 0, 80, true)) {
             color = 'success'
             icon = 'checkmark'
-        } else if (Metro.utils.between(position, 75, 100, true)) {
+        } else if (Metro.utils.between(position, 81, 100, true)) {
             color = 'warning'
             icon = 'warning'
         } else if (Metro.utils.between(position, 101, 120, true)) {

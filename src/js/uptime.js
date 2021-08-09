@@ -9,12 +9,19 @@ export const getUptime = async () => {
     const elLog = $("#query-uptime")
     let interval
 
+    const elUptimePosition = $("#uptime-position")
+    const elUptimePositionIcon = $("#position-icon")
+    const elUptimeRate = $("#uptime-rate")
+    const elUptimeScore = $("#uptime-score")
+    const elUptimeAddress = $("#uptime-key")
+    const elUptimeRange = $("#uptime-position-range")
+
     elLog.html(imgStop)
 
-    const uptime = await getInfo(node, "uptime")
+    const uptime = await getInfo(node, "uptime2")
 
-    if (uptime && Array.isArray(uptime) && uptime.length) {
-        let [position, publicKey, score, rate] = uptime
+    if (uptime && uptime.address) {
+        let {position, address, score, rate, group, positions} = uptime
         let color = "neutral", icon = "infinite"
 
         if (Metro.utils.between(position, 0, 80, true)) {
@@ -28,19 +35,21 @@ export const getUptime = async () => {
             icon = 'bin'
         }
 
-        $("#uptime-position").text(position).removeClassBy("label-").addClass(`label-${color}`)
-        $("#position-icon").removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
-        $("#uptime-rate").text((parseFloat(rate)) + "%")
-        $("#uptime-score").text(score)
-        $("#uptime-key").html( shortAddress(publicKey.trim()) )
+        elUptimePosition.text(position).removeClassBy("label-").addClass(`label-${color}`)
+        elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
+        elUptimeRate.text((parseFloat(rate)) + "%")
+        elUptimeScore.text(score)
+        elUptimeAddress.html( shortAddress(address.trim()) )
+        elUptimeRange.html(`${positions[0]} .. ${positions[positions.length-1]}`)
 
         elLog.html(imgOk)
     } else {
-        $("#uptime-position").html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)
-        $("#position-icon").removeClassBy("label-").removeClassBy("mif-").addClass(`label-normal`).addClass(`mif-infinite`)
-        $("#uptime-rate").text("NONE")
-        $("#uptime-score").text("NONE")
-        $("#uptime-key").html("NONE")
+        elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)
+        elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-normal`).addClass(`mif-infinite`)
+        elUptimeRate.text("NONE")
+        elUptimeScore.text("NONE")
+        elUptimeAddress.html("NONE")
+        elUptimeRange.html(`0 .. 0`)
     }
 
     setTimeout(getUptime, parseTime(globalThis.Monitor.config.intervals.daemon))

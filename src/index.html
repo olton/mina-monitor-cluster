@@ -85,7 +85,8 @@
                     <div data-role="panel" data-title-caption="UPTIME TRACKER">
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center d-flex flex-column flex-justify-center flex-align-center">
-                                <div id="uptime-position" class="big-value mb-2">0</div>
+                                <div id="uptime-position" class="big-value">0</div>
+                                <div id="uptime-position-range" class="text-small">0 .. 0</div>
                                 <div class="text-small fg-normal border-top bd-system w-100">
                                     <span class="text-muted">position</span>
                                 </div>
@@ -117,14 +118,26 @@
                 <div class="cell-md-6 cell-lg-3">
                     <!-- Balance -->
                     <div data-role="panel" data-title-caption="BALANCE">
-                        <div class="d-flex flex-justify-center flex-align-center flex-column">
-                            <div class="text-small fg-normal">
-                                <span id="balance-usd" class="fg-accent text-center text-bold">0</span>
+                        <div class="row">
+                            <div class="cell-9">
+                                <div class="text-center">
+                                    <div class="text-small fg-normal">
+                                        <span id="balance-usd" class="fg-accent text-center text-bold">0</span>
+                                    </div>
+                                    <div id="balance-total" class="text-center big-value d-flex flex-align-end">0</div>
+                                    <div class="text-small fg-normal">
+                                        <span class="text-muted">liquid: </span>
+                                        <span id="balance-liquid" class="fg-accent text-center text-bold">0</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="balance-total" class="text-center big-value d-flex flex-align-end">0</div>
-                            <div class="text-small fg-normal">
-                                <span class="text-muted">liquid: </span>
-                                <span id="balance-liquid" class="fg-accent text-center text-bold">0</span>
+                            <div class="cell-3 border-left bd-system">
+                                <div class="d-flex flex-justify-center flex-align-center flex-column h-100">
+                                    <div id="mina-price" class="text-center big-value-2 w-100">0</div>
+                                    <div class="text-small fg-normal border-top bd-system mt-auto w-100 text-center pt-1">
+                                        <span id="mina-price-currency" class=" text-muted">usd</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

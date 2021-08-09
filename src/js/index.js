@@ -17,7 +17,6 @@ import {getRewards} from "./rewards";
 import {getExplorerSummary} from "./explorer";
 import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
-import {parseTime} from "./helpers/parse-time";
 
 const version = `1.0.4`
 

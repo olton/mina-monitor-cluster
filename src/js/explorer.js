@@ -25,5 +25,5 @@ export const getExplorerSummary = async () => {
         elLog.html(imgOk)
     }
 
-    setTimeout(getExplorerSummary, parseTime(globalThis.Monitor.config.intervals.daemon))
+    setTimeout(getExplorerSummary, parseTime(globalThis.Monitor.config.intervals.explorer))
 }

@@ -1,5 +1,6 @@
-import {getAPIData, getInfo} from "./helpers/get-info";
+import {getInfo} from "./helpers/get-info";
 import {parseTime} from "./helpers/parse-time";
+import {updateBalanceCost} from "./balance";
 
 // TODO Синхронизировать обновление стоимости баланса
 
@@ -13,6 +14,8 @@ export const getPrice = async () => {
     const elPriceLow = $("#price-low")
     const elPriceArrow = $("#price-arrow")
     const elTotalSupply = $("#total-supply")
+    const elMinaPrice = $("#mina-price")
+    const elMinaPriceCurrency = $("#mina-price-currency")
 
     const data = await getInfo(node, "price")
 
@@ -28,6 +31,10 @@ export const getPrice = async () => {
         const priceChange = `<span class="${priceDeltaColor}">${+(mina.price_change_percentage_24h).toFixed(2)}%</span>`
         const totalSupply = +(mina.total_supply).toFixed(0)
 
+
+
+        elMinaPrice.html(`${price}`)
+        elMinaPriceCurrency.html(currency.toUpperCase())
         elCurrentPrice.html(`${price}`)
         elCurrency.html(currency.toUpperCase())
         elPriceChange.html(`${priceChange}`)
@@ -40,6 +47,8 @@ export const getPrice = async () => {
         globalThis.Monitor.price = +price
         globalThis.Monitor.price_currency = currency
         globalThis.Monitor.totalSupply = totalSupply
+
+        updateBalanceCost()
     }
 
     setTimeout(getPrice, parseTime(globalThis.Monitor.config.intervals.price))

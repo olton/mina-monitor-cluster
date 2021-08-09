@@ -26,5 +26,6 @@
         "currency": "usd",
         "update_interval": 60000
     },
-    "blockDiff": 2
+    "blockDiff": 2,
+    "timesToSwitchNode": 12
 }

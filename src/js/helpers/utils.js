@@ -56,3 +56,11 @@ export const getFakeTriplets = (count, min, max, zero) => {
 }
 
 export const isNum = (v) => !isNaN(v)
+
+export const isset = (v) => {
+    try {
+        return typeof v !== 'undefined'
+    } catch (e) {
+        return false
+    }
+}

@@ -93,20 +93,20 @@
                                 <div id="position-icon" class="mif-infinite"></div>
                             </div>
                             <div class="cell-9 d-flex flex-justify-center flex-align-center flex-column">
-                                <div id="uptime-key" class="big-value mb-2">0</div>
+                                <div id="uptime-key" class="big-value">0</div>
                                 <div class="text-small fg-normal w-100">
-                                    <div class="row m-0">
-                                        <div class="cell-6 text-center p-0">
-                                            <div class="text-small fg-normal border-top bd-system w-100">
+                                    <div class="row pt-1 border-top bd-system mt-5">
+                                        <div class="cell-6 text-center">
+                                            <div id="uptime-score" class="fg-accent text-bold">0</div>
+                                            <div class="text-small fg-normal w-100 mt-1-minus">
                                                 <span class="text-muted">score</span>
                                             </div>
-                                            <div id="uptime-score" class="fg-accent text-bold">0</div>
                                         </div>
-                                        <div class="cell-6 border-left bd-system text-center p-0">
-                                            <div class="text-small fg-normal border-top bd-system w-100">
+                                        <div class="cell-6 border-left bd-system text-center">
+                                            <div id="uptime-rate" class="fg-accent text-bold">0</div>
+                                            <div class="text-small fg-normal w-100 mt-1-minus">
                                                 <span class="text-muted">rate</span>
                                             </div>
-                                            <div id="uptime-rate" class="fg-accent text-bold">0</div>
                                         </div>
                                     </div>
                                 </div>
@@ -119,22 +119,34 @@
                     <!-- Balance -->
                     <div data-role="panel" data-title-caption="BALANCE">
                         <div class="row">
-                            <div class="cell-9">
+                            <div class="cell-9 pt-0">
                                 <div class="text-center">
-                                    <div class="text-small fg-normal">
+                                    <div class="text-small fg-normal border-bottom bd-system">
                                         <span id="balance-usd" class="fg-accent text-center text-bold">0</span>
                                     </div>
-                                    <div id="balance-total" class="text-center big-value d-flex flex-align-end">0</div>
+                                    <div id="balance-total" class="text-center big-value d-block mb-1">0</div>
                                     <div class="text-small fg-normal">
-                                        <span class="text-muted">liquid: </span>
-                                        <span id="balance-liquid" class="fg-accent text-center text-bold">0</span>
+                                        <div class="row">
+                                            <div class="cell-6 text-center p-0  border-top bd-system">
+                                                <div id="balance-liquid" class="fg-accent text-bold mt-1">0</div>
+                                                <div class="text-small fg-normal w-100 mt-1-minus">
+                                                    <span class="text-muted">liquid</span>
+                                                </div>
+                                            </div>
+                                            <div class="cell-6 border-left border-top bd-system text-center p-0">
+                                                <div id="balance-locked" class="fg-accent text-bold mt-1">0</div>
+                                                <div class="text-small fg-normal w-100 mt-1-minus">
+                                                    <span class="text-muted">locked</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="cell-3 border-left bd-system">
-                                <div class="d-flex flex-justify-center flex-align-center flex-column h-100">
-                                    <div id="mina-price" class="text-center big-value-2 w-100">0</div>
-                                    <div class="text-small fg-normal border-top bd-system mt-auto w-100 text-center pt-1">
+                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <div id="mina-price" class="text-center big-value-2">0</div>
+                                    <div class="text-small fg-normal text-center pt-1">
                                         <span id="mina-price-currency" class=" text-muted">usd</span>
                                     </div>
                                 </div>

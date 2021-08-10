@@ -17,6 +17,7 @@ import {getRewards} from "./rewards";
 import {getExplorerSummary} from "./explorer";
 import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
+import {registerStateProxy} from "./proxy-state";
 
 const version = `1.0.4`
 
@@ -41,6 +42,8 @@ globalThis.Monitor = {
     health: []
 }
 
+globalThis.state = null
+
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)
 
@@ -58,6 +61,8 @@ fetch(configFile).then(r => {
     if (!config.nodes.length) {
         throw new Error("Nodes is not defined! You must define at least one node!")
     }
+
+    registerStateProxy()
 
     console.log("Monitor config file was loaded successfully")
 

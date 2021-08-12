@@ -29,7 +29,7 @@ export const copy2clipboard = (str) => {
     document.body.removeChild(el)
 }
 
-export const shortAddress = (v, l = 5) => `<span class="reduce-2">${v.substring(0, l) + ' ... ' + v.substring(v.length - l)}</span>`
+export const shortAddress = (v, l = 5) => `<span>${v.substring(0, l) + ' ... ' + v.substring(v.length - l)}</span>`
 
 export const rand = (min, max) => Math.floor(min + Math.random() * (max + 1 - min))
 
@@ -56,3 +56,11 @@ export const getFakeTriplets = (count, min, max, zero) => {
 }
 
 export const isNum = (v) => !isNaN(v)
+
+export const isset = (v, nullable = true) => {
+    try {
+        return nullable ? typeof v !== 'undefined' : typeof v !== 'undefined' && v !== null
+    } catch (e) {
+        return false
+    }
+}

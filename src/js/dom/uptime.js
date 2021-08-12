@@ -29,8 +29,8 @@ export const updateUptime = () => {
         elUptimePosition.text(position).removeClassBy("label-").addClass(`label-${color}`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         elUptimeRate.text((parseFloat(rate)) + "%")
-        elUptimeScore.text(score)
-        elUptimeAddress.html(shortAddress(address.trim()))
+        elUptimeScore.text(Number(score).format(0, null, " ", "."))
+        elUptimeAddress.html("<span class='reduce-1'>"+shortAddress(address.trim())+"</span>")
         elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)
     } else {
         elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)

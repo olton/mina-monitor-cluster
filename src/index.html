@@ -26,88 +26,112 @@
         </div>
     </header>
 
-    <!-- Price Info from Coingecko -->
-    <div class="container-fluid">
-        <div id="price-info-container">
-            <div class="row text-small">
-                <div class="cell-sm-6 cell-md-6 cell-lg-3">
-                    <div data-role="panel" data-cls-content="pl-0 pr-0">
-                        SUPPLY:&nbsp;<span id="total-supply" class="fg-accent text-bold">0</span>
-                    </div>
-                </div>
-                <div class="cell-sm-6 cell-md-6 cell-lg-3">
-                    <div data-role="panel" data-cls-content="pl-0 pr-0">
-                        <div class="row m-0">
-                            <div class="cell-7 text-center">
-                                PRICE:&nbsp;<span id="current-price" class="fg-accent text-bold">0</span>&nbsp;<span id="currency"></span>
-                            </div>
-                            <div class="cell-5 border-left bd-system text-center">
-                                24H:&nbsp;<span id="price-arrow"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell-sm-6 cell-md-6 cell-lg-3">
-                    <div data-role="panel" data-cls-content="pl-0 pr-0">
-                        CHANGE:&nbsp;<span id="price-change" class="fg-accent text-bold">0</span>
-                    </div>
-                </div>
-                <div class="cell-sm-6 cell-md-6 cell-lg-3">
-                    <div data-role="panel" data-cls-content="pl-0 pr-0">
-                        HIGH&nbsp;<span id="price-high" class="fg-accent text-bold">0</span>&nbsp;-&nbsp;<span id="price-low" class="fg-accent text-bold">0</span>&nbsp;LOW
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Price Info from Coingecko -->
-
     <!-- General info -->
     <div class="container-fluid">
         <div id="general-info-container">
             <div class="row">
                 <div class="cell-md-6 cell-lg-3">
-                    <!-- Block height -->
-                    <div data-role="panel" data-title-caption="BLOCK HEIGHT">
-                        <div>
-                            <div id="block-height" class="big-value">0</div>
-                            <div class="text-small text-center border-top bd-system mt-2 pt-1">
-                                <span class="text-muted">speed:&nbsp;</span>
-                                <span id="block-speed">0</span>
-                                <span class="text-muted">&nbsp;minutes</span>
+                    <!-- Uptime -->
+                    <div data-role="panel" data-title-caption="UPTIME TRACKER">
+                        <div class="row m-0">
+                            <div class="cell-3 border-right bd-system text-center">
+                                <div id="uptime-position" class="big-value">0</div>
+                                <div id="uptime-position-range" class="text-small mb-2">0 .. 0</div>
+                                <div class="text-small fg-normal">
+                                    <span class="text-muted">position</span>
+                                </div>
+                                <div id="position-icon" class="mif-infinite"></div>
+                            </div>
+                            <div class="cell-9 text-center">
+                                <div id="uptime-key" class="big-value">0</div>
+                                <div class="text-center text-muted text-small mb-2">tracked address</div>
+                                <div class="row pt-1 border-top bd-system">
+                                    <div class="cell-6 text-center">
+                                        <div id="uptime-score" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal mt-1-minus">
+                                            <span class="text-muted">score</span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-6 border-left bd-system text-center">
+                                        <div id="uptime-rate" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal mt-1-minus">
+                                            <span class="text-muted">rate</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="cell-md-6 cell-lg-3">
-                    <!-- Uptime -->
-                    <div data-role="panel" data-title-caption="UPTIME TRACKER">
+                    <!-- Blockchain -->
+                    <div data-role="panel" data-title-caption="BLOCKCHAIN">
                         <div class="row m-0">
-                            <div class="cell-3 border-right bd-system text-center d-flex flex-column flex-justify-center flex-align-center">
-                                <div id="uptime-position" class="big-value">0</div>
-                                <div id="uptime-position-range" class="text-small">0 .. 0</div>
-                                <div class="text-small fg-normal border-top bd-system w-100">
-                                    <span class="text-muted">position</span>
+                            <div class="cell-9 text-center">
+                                <div id="block-height" class="big-value">0</div>
+                                <div class="text-small text-muted mb-2">block height</div>
+                                <div class="row pt-1 border-top bd-system">
+                                    <div class="cell-6">
+                                        <div id="slot-number" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">slot</span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-6 border-left bd-system">
+                                        <div id="slot-since-genesis" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">since genesis</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div id="position-icon" class="mif-infinite"></div>
                             </div>
-                            <div class="cell-9 d-flex flex-justify-center flex-align-center flex-column">
-                                <div id="uptime-key" class="big-value">0</div>
-                                <div class="text-small fg-normal w-100">
-                                    <div class="row pt-1 border-top bd-system mt-5">
-                                        <div class="cell-6 text-center">
-                                            <div id="uptime-score" class="fg-accent text-bold">0</div>
-                                            <div class="text-small fg-normal w-100 mt-1-minus">
-                                                <span class="text-muted">score</span>
-                                            </div>
+                            <div class="cell-3 border-left bd-system">
+                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <div class="text-small fg-normal text-center pt-1">
+                                        <span class=" text-muted">speed</span>
+                                    </div>
+                                    <div id="block-speed" class="text-center big-value-2">0</div>
+                                    <div class="text-small fg-normal text-center pt-1">
+                                        <span class=" text-muted">bl/min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Price -->
+                    <div data-role="panel" data-title-caption="PRICE">
+                        <div class="row m-0">
+                            <div class="cell-8 text-center">
+                                <div id="balance-in-currency" class="big-value">0</div>
+                                <div class="text-center text-small text-muted mb-2">balance cost</div>
+                                <div class="row pt-1 border-top bd-system">
+                                    <div class="cell-6 text-center">
+                                        <span id="price-arrow" class="big-value-2">0</span>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">change 24h</span>
                                         </div>
-                                        <div class="cell-6 border-left bd-system text-center">
-                                            <div id="uptime-rate" class="fg-accent text-bold">0</div>
-                                            <div class="text-small fg-normal w-100 mt-1-minus">
-                                                <span class="text-muted">rate</span>
-                                            </div>
+                                    </div>
+                                    <div class="cell-6 border-left bd-system text-center">
+                                        <span id="price-change" class="big-value-2">0%</span>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">change %</span>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-4 border-left bd-system text-center">
+                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <div class="fg-noraml text-small border-bottom bd-system pb-1">
+                                        <div class="text-muted">hi - low</div>
+                                        <span id="price-high">0</span>&nbsp;-&nbsp;<span id="price-low">0</span>
+                                    </div>
+                                    <div id="mina-price" class="big-value-2">0</div>
+                                    <div class="fg-normal">
+                                        <span id="mina-price-currency">usd</span>
                                     </div>
                                 </div>
                             </div>
@@ -118,36 +142,47 @@
                 <div class="cell-md-6 cell-lg-3">
                     <!-- Balance -->
                     <div data-role="panel" data-title-caption="BALANCE">
-                        <div class="row">
-                            <div class="cell-9 pt-0">
-                                <div class="text-center">
-                                    <div class="text-small fg-normal border-bottom bd-system">
-                                        <span id="balance-usd" class="fg-accent text-center text-bold">0</span>
+                        <div class="text-center">
+                            <div id="balance-total" class="big-value">0</div>
+                            <div class="text-small text-muted mb-2">tracked balance</div>
+                            <div class="text-small fg-normal">
+                                <div class="row pt-1 border-top bd-system">
+                                    <div class="cell-6 text-center p-0">
+                                        <div id="balance-liquid" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">liquid</span>
+                                        </div>
                                     </div>
-                                    <div id="balance-total" class="text-center big-value d-block mb-1">0</div>
-                                    <div class="text-small fg-normal">
-                                        <div class="row">
-                                            <div class="cell-6 text-center p-0  border-top bd-system">
-                                                <div id="balance-liquid" class="fg-accent text-bold mt-1">0</div>
-                                                <div class="text-small fg-normal w-100 mt-1-minus">
-                                                    <span class="text-muted">liquid</span>
-                                                </div>
-                                            </div>
-                                            <div class="cell-6 border-left border-top bd-system text-center p-0">
-                                                <div id="balance-locked" class="fg-accent text-bold mt-1">0</div>
-                                                <div class="text-small fg-normal w-100 mt-1-minus">
-                                                    <span class="text-muted">locked</span>
-                                                </div>
-                                            </div>
+                                    <div class="cell-6 border-left bd-system text-center p-0">
+                                        <span class="mif-lock producer-work"></span>
+                                        <div id="balance-locked" class="big-value-2 fg-accent">0</div>
+                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                            <span class="text-muted">locked</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="cell-3 border-left bd-system">
-                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-                                    <div id="mina-price" class="text-center big-value-2">0</div>
-                                    <div class="text-small fg-normal text-center pt-1">
-                                        <span id="mina-price-currency" class=" text-muted">usd</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell-md-6 cell-lg-3">
+                    <!-- Epoch -->
+                    <div data-role="panel" data-title-caption="EPOCH">
+                        <div class="d-flex flex-justify-center flex-align-center flex-column">
+                            <div class="row w-100">
+                                <div class="cell-3 text-center pl-0">
+                                    <div id="epoch-number" data-role="donut" data-value="0"
+                                         data-hole=".7" data-stroke="#f5f5f5" data-fill="#9C27B0"
+                                         data-animate="10" data-size="100%" data-on-draw-value="epochNumberDrawValue"
+                                         data-font-size="18" class="ml-2-minus mt-2"
+                                    ></div>
+                                </div>
+                                <div class="cell-9 border-left bd-system">
+                                    <div class="text-center">
+                                        <div class="text-muted text-small">time left</div>
+                                        <div id="epoch-countdown"></div>
+                                        <div class="end-epoch-text text-center text-bold text-small border-top bd-system mt-1 pt-1"></div>
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +226,7 @@
                         <div class="row h-100">
                             <div class="cell-6">
                                 <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="blocks-in-epoch" class="big-value">0</div>
+                                    <div id="blocks-in-epoch" class="big-value h-100">0</div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
                                         <span class="text-muted">blocks</span>
                                     </div>
@@ -199,57 +234,9 @@
                             </div>
                             <div class="cell-6 border-left bd-system">
                                 <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="rewards-in-epoch" class="big-value">0</div>
+                                    <div id="rewards-in-epoch" class="big-value h-100">0</div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
                                         <span class="text-muted">mina</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cell-md-6 cell-lg-3">
-                    <!-- Epoch -->
-                    <div data-role="panel" data-title-caption="EPOCH">
-                        <div class="d-flex flex-justify-center flex-align-center flex-column">
-                            <div class="row w-100">
-                                <div class="cell-3 text-center pl-0">
-                                    <div id="epoch-number" data-role="donut" data-value="0"
-                                         data-hole=".7" data-stroke="#f5f5f5" data-fill="#9C27B0"
-                                         data-animate="10" data-size="100%" data-on-draw-value="epochNumberDrawValue"
-                                         data-font-size="18" class="ml-2-minus mt-2"
-                                    ></div>
-                                </div>
-                                <div class="cell-9 border-left bd-system">
-                                    <div class="text-center">
-                                        <div class="text-muted text-small">time left</div>
-                                        <div id="epoch-countdown"></div>
-                                        <div class="end-epoch-text text-center text-bold text-small border-top bd-system mt-1 pt-1"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cell-md-6 cell-lg-3">
-                    <!-- Slot -->
-                    <div data-role="panel" data-title-caption="SLOT">
-                        <div class="row h-100">
-                            <div class="cell-6">
-                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="slot-number" class="big-value">0</div>
-                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
-                                        <span class="text-muted">current</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell-6 border-left bd-system">
-                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="slot-since-genesis" class="big-value">0</div>
-                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
-                                        <span class="text-muted">since genesis</span>
                                     </div>
                                 </div>
                             </div>
@@ -336,10 +323,6 @@
                                 <tr>
                                     <td>Blockchain</td>
                                     <td id="query-blockchain" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Block speed</td>
-                                    <td id="query-block-speed" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
                                 </tr>
                                 <tr>
                                     <td>Consensus</td>

@@ -7,9 +7,7 @@ import {isset} from "./helpers/utils";
 export const getBalance = async () => {
     const {config, currentNode} = globalThis.Monitor
     const node = config.nodes[currentNode]
-    const defaultReload = parseTime(config.intervals.daemon)
     const elLog = $("#query-balance")
-    let reload
 
     elLog.html(imgStop)
 
@@ -18,12 +16,10 @@ export const getBalance = async () => {
     if (isset(status.data.account.balance)) {
         globalThis.state.balance = status.data.account.balance
         elLog.html(imgOk)
-        reload = defaultReload
         countRequest()
     } else {
-        reload = 0
         switchNode()
     }
 
-    setTimeout(getBalance, reload)
+    setTimeout(getBalance, parseTime(config.intervals.daemon))
 }

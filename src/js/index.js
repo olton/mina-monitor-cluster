@@ -11,7 +11,7 @@ import {getConsensus} from "./consensus";
 import {getUptime} from "./uptime";
 import {getBalance} from "./balance";
 import {switchNode} from "./switch-node";
-import {getBlockchain, getBlockSpeed} from "./blockchain";
+import {getBlockchain} from "./blockchain";
 import {getDelegations} from "./delegations";
 import {getRewards} from "./rewards";
 import {getExplorerSummary} from "./explorer";
@@ -75,7 +75,7 @@ fetch(configFile).then(r => {
     $.each(config.nodes, (i, node) => {
         elNodesContainer.append(
             $(`<div class='is-node' id='node-${i+1}'>`)
-                .addClass(nodesLength === 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
+                .addClass(nodesLength >= 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
         )
         globalThis.Monitor.nodes[i] = {}
         globalThis.Monitor.health[i] = []
@@ -105,7 +105,6 @@ fetch(configFile).then(r => {
     setTimeout(getUptime, 0)
     setTimeout(getBalance, 0)
     setTimeout(getBlockchain, 0)
-    setTimeout(getBlockSpeed, 0)
     setTimeout(getDelegations, 0)
     setTimeout(getRewards, 0)
     setTimeout(getNextBlock, 0)
@@ -120,5 +119,5 @@ fetch(configFile).then(r => {
 })
 
 globalThis.epochNumberDrawValue = () => {
-    return globalThis.Monitor.epoch
+    return globalThis.state === null ? 0 : globalThis.state.blockchain.epoch
 }

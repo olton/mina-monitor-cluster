@@ -8,7 +8,6 @@ export const updatePrice = () => {
     const elPriceHigh = $("#price-high")
     const elPriceLow = $("#price-low")
     const elPriceArrow = $("#price-arrow")
-    const elTotalSupply = $("#total-supply")
     const elMinaPrice = $("#mina-price")
     const elMinaPriceCurrency = $("#mina-price-currency")
 
@@ -26,7 +25,6 @@ export const updatePrice = () => {
     elPriceChange.html(`${priceChange}`)
     elPriceHigh.html(+(ath).toFixed(2))
     elPriceLow.html(+(atl).toFixed(2))
-    elTotalSupply.html(totalSupply.format(0, null, " ", "."))
 
-    elPriceArrow.html(`<span class="text-bold fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
+    elPriceArrow.html(`<span class="fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
 }

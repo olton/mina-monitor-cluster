@@ -15,7 +15,10 @@ export const getBlockchain = async () => {
 
     if (isset(blockchain.data.bestChain) && blockchain.data.bestChain.length) {
 
-        globalThis.state.blockchain = {...blockchain.data.bestChain[0].protocolState.consensusState, blockSpeed: speed}
+        globalThis.state.blockchain = {
+            ...blockchain.data.bestChain[0].protocolState.consensusState,
+            blockSpeed: speed
+        }
 
         elLog.html(imgOk)
         countRequest()

@@ -21,7 +21,7 @@ export const updateBalanceCost = () => {
 
     const balance = +globalThis.state.balance.total
     const {current_price, currency} = globalThis.state.price
-    const u = (balance/10**9 * current_price).format(2, null, " ", ".").split(".")
+    const u = (balance/10**9 * current_price).format(4, null, " ", ".").split(".")
 
-    $("#balance-in-currency").html(`${u[0]}<div class="sub-value reduce-5 mt-2-minus" style="line-height: 2">&nbsp;${currency}</div>`)
+    $("#balance-in-currency").html(`${u[0]}<div class="sub-value reduce-5 mt-2-minus" style="line-height: 2">&nbsp;${u[1]}</div>`)
 }

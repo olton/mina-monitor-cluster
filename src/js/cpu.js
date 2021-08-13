@@ -3,6 +3,8 @@ import {parseTime} from "./helpers/parse-time";
 
 export const getCpuInfo = async (index, node) => {
     let data = await getInfo(node,'cpu-load')
+    let temp = await getInfo(node,"cpu-temp")
+
     let threadsCount = 0, coresCount = 0, cpuTemp = 0, cpuLoad = 0
 
     const elCpuLoad = $(`#node-${index+1} .cpu-load`)
@@ -48,7 +50,6 @@ export const getCpuInfo = async (index, node) => {
         elCpuLoadAvg.html(`<span class="text-bold">${loadavg[0]}</span>, <span>${loadavg[1]}</span>, <span>${loadavg[2]}</span>`)
     }
 
-    let temp = await getInfo(node,"cpu-temp")
 
     if (temp && temp.main) {
         let tempAvg = (temp.cores.reduce((acc, v)=>acc+ +v, 0) / temp.cores.length).toFixed(0)

@@ -29,7 +29,7 @@ import {processConsensus} from "./modules/consensus";
 import {processVersion} from "./modules/version";
 
 
-const version = `1.0.4`
+const version = `1.1.5`
 
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)

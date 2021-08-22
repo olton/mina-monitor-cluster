@@ -46,7 +46,6 @@ npm install
 Create config file `config.json` in the `src` folder. Below you can see example of the `config`:
 ```json
 {
-    "theme": "auto",
     "nodes": [
         {
             "name": "server1",
@@ -64,16 +63,7 @@ Create config file `config.json` in the `src` folder. Below you can see example 
             "secure": false
         }
     ],
-    "intervals": {
-        "system": 60000,
-        "daemon": 30000,
-        "resources": 2000
-    },
-    "price": {
-        "currency": "usd",
-        "update_interval": 60000
-    },
-    "blockDiff": 2
+    "theme": "auto"
 }
 ```
 

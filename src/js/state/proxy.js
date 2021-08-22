@@ -1,16 +1,18 @@
-import {updateBalance, updateBalanceCost} from "./dom/balance";
-import {updatePrice} from "./dom/price";
-import {updateUptime} from "./dom/uptime";
-import {updateBlockchain, updateBlockSpeed} from "./dom/blockchain";
-import {updateRewards} from "./dom/rewards";
-import {updateConsensus} from "./dom/consensus";
-import {updateDelegations} from "./dom/delegations";
+import {updateBalance, updateBalanceCost, updateTiming} from "./balance";
+import {updatePrice} from "./price";
+import {updateUptime} from "./uptime";
+import {updateBlockchain} from "./blockchain";
+import {updateRewards} from "./rewards";
+import {updateConsensus} from "./consensus";
+import {updateDelegations} from "./delegations";
+import {updateNextBlock} from "./next-block";
 
 export const registerStateProxy = () => {
     globalThis.state = new Proxy({
         blockchain: null,
         uptime: null,
         balance: 0,
+        timing: null,
         price: null,
         rewards: null,
         speed: 0,
@@ -49,6 +51,14 @@ export const registerStateProxy = () => {
             if (prop === 'delegations') {
                 obj[prop] = val
                 updateDelegations()
+            }
+            if (prop === 'timing') {
+                obj[prop] = val
+                updateTiming()
+            }
+            if (prop === 'nextBlock') {
+                obj[prop] = val
+                updateNextBlock()
             }
 
             return true

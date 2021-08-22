@@ -43,6 +43,16 @@ export const getFakeData = (len, inc = 2000, init = 0) => {
     return a
 }
 
+export const getFakeDataLinear = (len, inc = 1, init = 0) => {
+    const a = []
+    let d = -(inc * len)
+    for (let i = 0; i < len; i++) {
+        a.push([d, init])
+        d += inc
+    }
+    return a
+}
+
 export const getFakeTriplets = (count, min, max, zero) => {
     let y = 0, x = 0, a = [], d = 10
 

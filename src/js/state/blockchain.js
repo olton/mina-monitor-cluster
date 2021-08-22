@@ -10,8 +10,7 @@ export const updateBlockchain = ({resetCountdown = false}) => {
         blockHeight,
         epoch,
         slot,
-        slotSinceGenesis,
-        blockSpeed
+        slotSinceGenesis
     } = globalThis.state.blockchain
 
     $("#slot-number").text(Number(slot).format(0, null, " ", "."))
@@ -33,6 +32,4 @@ export const updateBlockchain = ({resetCountdown = false}) => {
         countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd.format("YYYY/MM/DD HH:mm")).attr("data-animate", "none").appendTo(elEpochCountdown)
         Metro.makePlugin(countdown, "countdown")
     }
-
-    $("#block-speed").html(`<span>${(blockSpeed / 60000).toFixed(2)}</span>`)
 }

@@ -4,3 +4,4 @@ export const epochDuration = 1285200000
 export const title = `Mina Monitor Cluster %VER%`
 export const imgStop = `<span class="mif-stop label-alert">`
 export const imgOk = `<span class="mif-checkmark label-success">`
+export const infinite = `<span class="mif-infinite"></span>`

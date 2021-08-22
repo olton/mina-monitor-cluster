@@ -81,7 +81,7 @@
                                     <div class="cell-6 border-left bd-system">
                                         <div id="slot-since-genesis" class="big-value-2 fg-accent">0</div>
                                         <div class="text-small fg-normal w-100 mt-1-minus">
-                                            <span class="text-muted">since genesis</span>
+                                            <span class="text-muted">total slots</span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                     </div>
                                     <div id="block-speed" class="text-center big-value-2">0</div>
                                     <div class="text-small fg-normal text-center pt-1">
-                                        <span class=" text-muted">bl/min</span>
+                                        <span class=" text-muted">min/block</span>
                                     </div>
                                 </div>
                             </div>
@@ -144,8 +144,8 @@
                     <div data-role="panel" data-title-caption="BALANCE">
                         <div class="text-center">
                             <div id="balance-total" class="big-value">0</div>
-                            <div class="text-small text-muted mb-2">tracked balance</div>
-                            <div class="text-small fg-normal">
+                            <div class="text-small text-muted">tracked balance</div>
+                            <div>
                                 <div class="row pt-1 border-top bd-system">
                                     <div class="cell-6 text-center p-0">
                                         <div id="balance-liquid" class="big-value-2 fg-accent">0</div>
@@ -161,6 +161,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="border-top bd-system text-small mt-1 pt-1">
+                                <span class="text-muted">unlocked</span>&nbsp;<span id="cliff-amount" class="text-bold">0</span>&nbsp;
+                                <span class="text-muted">at</span>&nbsp;<span id="cliff-time" class="text-bold">--/--/-- --:--</span>&nbsp;
                             </div>
                         </div>
                     </div>
@@ -272,7 +276,7 @@
     <div class="container-fluid">
         <div id="secondary-info-container">
             <div class="row">
-                <div class="cell-md-6 cell-lg-6">
+                <div class="cell-12">
                     <!-- Consensus -->
                     <div data-role="panel" data-title-caption="CONSENSUS">
                         <div class="d-flex flex-column flex-align-center h-100">
@@ -305,48 +309,6 @@
                                 <tr>
                                     <td>Delta</td>
                                     <td id="consensus-delta" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cell-md-6 cell-lg-6">
-                    <!-- Queries -->
-                    <div data-role="panel" data-title-caption="QUERIES LOG(s)">
-                        <div class="d-flex flex-column flex-align-center h-100">
-                            <table class="table text-small info-table">
-                                <tr>
-                                    <td>Balance</td>
-                                    <td id="query-balance" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Blockchain</td>
-                                    <td id="query-blockchain" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Consensus</td>
-                                    <td id="query-consensus" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Delegations</td>
-                                    <td id="query-delegations" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Next block</td>
-                                    <td id="query-next-block" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Rewards</td>
-                                    <td id="query-rewards" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Uptime</td>
-                                    <td id="query-uptime" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>Mina Explorer</td>
-                                    <td id="query-explorer" class="text-right text-bold"><span class="mif-stop label-alert"></span></td>
                                 </tr>
                             </table>
                         </div>

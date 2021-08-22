@@ -90,3 +90,67 @@ export const gaugeOptions = {
     backStyle: '#f0f6fc',
     onDrawValue: (v, p) => +p.toFixed(0) + "%"
 }
+
+export const histogramOptions = {
+    bars: [{
+        name: "Bar",
+        stroke: '#fff',
+        color: Metro.colors.toRGBA('#00AFF0', .5)
+    }],
+    boundaries: {
+        maxY: 100,
+        minY: 0
+    },
+    graphSize: 20,
+    legend: {
+        position: 'top-left',
+        vertical: true,
+        background: Metro.colors.toRGBA('#ffffff', .5),
+        margin: {
+            left: 4,
+            top: 4
+        },
+        border: {
+            color: "#fafbfc"
+        },
+        padding: 2,
+        font: {
+            color: "#24292e",
+            size: 10
+        },
+    },
+    axis: {
+        x: {
+            line: {
+                color: "#fafbfc",
+                shortLineSize: 0
+            },
+            label: {
+                count: 10,
+                color: "#24292e",
+            },
+            arrow: false
+        },
+        y: {
+            line: {
+                color: "#fafbfc"
+            },
+            label: {
+                count: 10,
+                font: {
+                    size: 10
+                },
+                color: "#24292e",
+                skip: 2,
+                fixed: 0
+            },
+            arrow: false,
+        }
+    },
+    padding: 1,
+    border: {
+        color: "transparent"
+    },
+    onDrawLabelX: () => "",
+    onDrawLabelY: () => ""
+}

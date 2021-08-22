@@ -5,49 +5,37 @@ import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
 import {messages as Messages} from "./helpers/messages"
 import {title} from "./helpers/consts"
-import {nodeController} from "./node-controller";
-import {getPrice} from "./price";
-import {getConsensus} from "./consensus";
-import {getUptime} from "./uptime";
-import {getBalance} from "./balance";
-import {switchNode} from "./switch-node";
-import {getBlockchain} from "./blockchain";
-import {getDelegations} from "./delegations";
-import {getRewards} from "./rewards";
-import {getExplorerSummary} from "./explorer";
-import {getNextBlock} from "./next-block";
 import {copy2clipboard} from "./helpers/utils";
-import {registerStateProxy} from "./proxy-state";
+import {processServerCpu, processServerInfo, processServerTime} from "./modules/server-info";
+import {processCpuLoad, processCpuTemp} from "./modules/cpu";
+import {processMem} from "./modules/mem";
+import {processDaemonInfo} from "./modules/daemon";
+import {processNetConn, processNetStat} from "./modules/network";
+import {processNodePeers} from "./modules/peers";
+import {processResponse} from "./modules/response";
+import {processHealth} from "./modules/health";
+import {processExplorer} from "./modules/explorer";
+import {registerStateProxy} from "./state/proxy";
+import {processBalance} from "./modules/balance";
+import {processState} from "./modules/state";
+import {processBlockchain} from "./modules/blockchain";
+import {processSpeed} from "./modules/speed";
+import {processUptime} from "./modules/uptime";
+import {processDelegations} from "./modules/delegations";
+import {processMinaPrice} from "./modules/price";
+import {processRewards} from "./modules/rewards";
+import {processNextBlock} from "./modules/next-block";
+import {processConsensus} from "./modules/consensus";
+import {processVersion} from "./modules/version";
+
 
 const version = `1.0.4`
-
-globalThis.Monitor = {
-    config: null,
-    nodes: [],
-    currentNode: 0,
-    balance: 0,
-    price: 0,
-    price_currency: 0,
-    totalSupply: 0,
-    noSlots: false,
-    genesisStart: "2021-03-17 02:00:00.000000+02:00",
-    epochTimer: false,
-    counter: 0,
-    explorerHeight: 0,
-    nextBlock: 0,
-    epoch: 0,
-    slotDuration: 180000,
-    epochDuration: 1285200000,
-    charts: [],
-    health: []
-}
-
-globalThis.state = null
 
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)
 
 const configFile = "./config.json"
+
 
 fetch(configFile).then(r => {
     if (!r.ok) {
@@ -56,58 +44,108 @@ fetch(configFile).then(r => {
     return r.json()
 })
 .then( config => {
-    globalThis.Monitor.config = config
+    const {theme = "auto", timesToSwitchNode = 12, nodes = []} = config
 
-    if (!config.nodes.length) {
+    if (!nodes.length) {
         throw new Error("Nodes is not defined! You must define at least one node!")
     }
 
-    registerStateProxy()
-
     console.log("Monitor config file was loaded successfully")
 
-    globalThis.darkMode = config.theme === "auto" ? $.dark : config.theme === "dark"
+    globalThis.charts = []
+
+    globalThis.darkMode = theme === "auto" ? $.dark : theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
 
-    const elNodesContainer = $("#nodes-row")
-    const nodesLength = config.nodes.length
+    registerStateProxy()
 
-    $.each(config.nodes, (i, node) => {
+    const elNodesContainer = $("#nodes-row")
+    const nodesLength = nodes.length
+
+    $.each(nodes, (i, node) => {
+        let elNodePanel, template, clone
+
+        globalThis.charts[i] = {
+            cpuChart: null,
+            cpuCores: null,
+            memChart: null,
+            memProcess: null,
+            txChart: null,
+            rxChart: null,
+            peersChart: null,
+            peersChartStartPoint: 200,
+            responseChart: null,
+            responseChartStartPoint: 200,
+        }
+
         elNodesContainer.append(
-            $(`<div class='is-node' id='node-${i+1}'>`)
+            elNodePanel = $(`<div class='is-node' id='node-${i+1}'>`)
                 .addClass(nodesLength >= 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
         )
-        globalThis.Monitor.nodes[i] = {}
-        globalThis.Monitor.health[i] = []
-        globalThis.Monitor.charts.push({
-            memoryChart: null,
-            cpuChart: null,
-            memoryGauge: null,
-            cpuGauge: null,
-            cpuCores: null,
-            cpuTemp: null,
-            peersChart: null,
-            netRxChart: null,
-            netTxChart: null,
-        })
-        setTimeout(nodeController, 0, i, node)
+
+        template = nodesLength === 1 ? document.querySelector("#node-template-1") : document.querySelector("#node-template")
+        template.content.querySelector(".panel").setAttribute("data-title-caption", node.name.toUpperCase())
+        clone = document.importNode(template.content, true)
+        elNodePanel[0].appendChild(clone)
+
+        const connect = index => {
+            const ws = new WebSocket(`${node.https ? 'wss' : 'ws'}://${node.host}`)
+            ws.onmessage = event => {
+                try {
+                    const content = JSON.parse(event.data)
+                    if (!content.action) return
+                    const {action, data} = content
+
+                    switch (action) {
+                        case 'platform': processServerInfo(i, node, data); break;
+                        case 'time': processServerTime(i, node, data); break;
+                        case 'cpu': processServerCpu(i, node, data); break;
+                        case 'price': processMinaPrice(i, node, data); break;
+                        case 'uptime': processUptime(i, node, data); break;
+                        case 'mem': processMem(i, node, data); break;
+                        case 'cpuLoad': processCpuLoad(i, node, data); break;
+                        case 'cpuTemp': processCpuTemp(i, node, data); break;
+                        case 'netConn': processNetConn(i, node, data); break;
+                        case 'netStat': processNetStat(i, node, data); break;
+                        case 'delegations': processDelegations(i, node, data); break;
+                        case 'peers': processNodePeers(i, node, data); break;
+                        case 'state': processState(i, node, data); break;
+                        case 'health': processHealth(i, node, data); break;
+                        case 'balance': processBalance(i, node, data); break;
+                        case 'speed': processSpeed(i, node, data); break;
+                        case 'blockchain': processBlockchain(i, node, data); break;
+                        case 'nextBlock': processNextBlock(i, node, data); break;
+                        case 'daemon': processDaemonInfo(i, node, data); break;
+                        case 'consensus': processConsensus(i, node, data); break;
+                        case 'version': processVersion(i, node, data); break;
+                        case 'rewards': processRewards(i, node, data); break;
+                        case 'explorer': processExplorer(i, node, data); break;
+                        case 'responseTime': processResponse(i, node, data); break;
+                        case 'welcome': console.log(data); break;
+                        //default: console.log(action, data)
+                    }
+                } catch (e) {
+                    console.log(e.message)
+                    console.log(event.data)
+                }
+            }
+
+            ws.onerror = error => {
+                console.error('Socket encountered error: ', error.message, 'Closing socket');
+                ws.close();
+            }
+
+            ws.onclose = event => {
+                console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
+                setTimeout(connect, 1000)
+            }
+
+            ws.onopen = event => {
+            }
+        }
+
+        connect()
     })
-
-    let startNode = Metro.storage.getItem("currentNode") || 0
-    if (startNode < 0 || startNode >= config.nodes.length) {
-        startNode = 0
-    }
-    switchNode(startNode)
-
-    setTimeout(getPrice, 0)
-    setTimeout(getExplorerSummary, 0)
-    setTimeout(getConsensus, 0)
-    setTimeout(getUptime, 0)
-    setTimeout(getBalance, 0)
-    setTimeout(getBlockchain, 0)
-    setTimeout(getDelegations, 0)
-    setTimeout(getRewards, 0)
-    setTimeout(getNextBlock, 0)
 
     $(document).on("click", ".block-producer, .snark-work", function() {
         const val = $(this).attr("data-name")
@@ -119,5 +157,5 @@ fetch(configFile).then(r => {
 })
 
 globalThis.epochNumberDrawValue = () => {
-    return globalThis.state === null ? 0 : globalThis.state.blockchain.epoch
+    return globalThis.state ? globalThis.state.blockchain.epoch : 0
 }

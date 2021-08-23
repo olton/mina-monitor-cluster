@@ -10,22 +10,6 @@
     @partial("templates/one.html")
     @partial("templates/multiple.html")
 
-    <header class="container-fluid pb-3 pt-2">
-        <div class="logo-container d-flex flex-align-center flex-justify-center flex-column">
-            <div class="h5 text-light no-wrap m-0">
-                <span class="fg-accent text-bold">MINA</span><span class="fg-warning">MONITOR</span> <span class="text-bold fg-red">CLUSTER</span> <small class="fg-normal" id="version">v1.0.0</small>
-            </div>
-            <div class="text-small text-upper" style="line-height: 1">
-                Convenient monitoring of your Mina nodes!
-            </div>
-            <div class="text-small mt-1" style="line-height: 1">
-                <div class="reduce-2 no-wrap text-center text-left-md">
-                    Copyright &copy; 2021 by <a href="https://pimenov.com.ua">Serhii Pimenov</a>.
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- General info -->
     <div class="container-fluid">
         <div id="general-info-container">
@@ -276,11 +260,12 @@
     <div class="container-fluid">
         <div id="secondary-info-container">
             <div class="row">
-                <div class="cell-12">
+                <div class="cell-lg-6">
                     <!-- Consensus -->
                     <div data-role="panel" data-title-caption="CONSENSUS">
                         <div class="d-flex flex-column flex-align-center h-100">
                             <div>PROOF OF STAKE</div>
+                            <hr class="thin w-100">
                             <table class="table text-small info-table">
                                 <tr>
                                     <td>Genesis Start</td>
@@ -314,6 +299,42 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="cell-lg-6">
+                    <div data-role="panel" data-title-caption="INFO">
+                        <div class="d-flex flex-column flex-align-center h-100">
+                            <div>YOU CAN SUPPORT AUTHOR</div>
+                            <hr class="thin w-100">
+                            <table class="table text-small info-table">
+                                <tr>
+                                    <td>MINA</td>
+                                    <td class="text-right text-bold"><span class="donate-address" data-name="B62qqQjC8zaU8XXaeqb9rZXFSX9x12mCgjrdCQuJbXuxU2KUPFcH7aY">B62qqQjC8zaU8XXaeqb9rZXFSX9x12mCgjrdCQuJbXuxU2KUPFcH7aY</span></td>
+                                </tr>
+                                <tr>
+                                    <td>USDT</td>
+                                    <td class="text-right text-bold"><span class="donate-address" data-name="0x0b18bdd9f484ba0ed7e1337d2ecf0179f4ab98f5">0x0b18bdd9f484ba0ed7e1337d2ecf0179f4ab98f5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>ETH</td>
+                                    <td class="text-right text-bold"><span class="donate-address" data-name="0x94310c2ceBDd08989d591c223332e7c19bbA6CBe">0x94310c2ceBDd08989d591c223332e7c19bbA6CBe</span></td>
+                                </tr>
+                                <tr>
+                                    <td>BTC</td>
+                                    <td class="text-right text-bold"><span class="donate-address" data-name="37DeKs8Te1QJLUKixn4M31n84dQP4RkLjr">37DeKs8Te1QJLUKixn4M31n84dQP4RkLjr</span></td>
+                                </tr>
+                                <tr>
+                                    <td>SOL</td>
+                                    <td class="text-right text-bold"><span class="donate-address" data-name="4kNZbkszAWd6G6ofbiEEQzXZ24JzXm7PqVc3GbULN7NF">4kNZbkszAWd6G6ofbiEEQzXZ24JzXm7PqVc3GbULN7NF</span></td>
+                                </tr>
+                            </table>
+                            <hr class="thin w-100">
+                            <div class="text-muted">
+                                Copyright &copy; 2021 by <a href="https://pimenov.com.ua">Serhii Pimenov</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

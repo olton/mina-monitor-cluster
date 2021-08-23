@@ -3,7 +3,6 @@ import {updatePrice} from "./price";
 import {updateUptime} from "./uptime";
 import {updateBlockchain} from "./blockchain";
 import {updateRewards} from "./rewards";
-import {updateConsensus} from "./consensus";
 import {updateDelegations} from "./delegations";
 import {updateNextBlock} from "./next-block";
 
@@ -43,10 +42,6 @@ export const registerStateProxy = () => {
             if (prop === 'rewards') {
                 obj[prop] = val
                 updateRewards()
-            }
-            if (prop === 'consensus') {
-                obj[prop] = val
-                updateConsensus()
             }
             if (prop === 'delegations') {
                 obj[prop] = val

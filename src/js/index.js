@@ -25,7 +25,6 @@ import {processDelegations} from "./modules/delegations";
 import {processMinaPrice} from "./modules/price";
 import {processRewards} from "./modules/rewards";
 import {processNextBlock} from "./modules/next-block";
-import {processConsensus} from "./modules/consensus";
 import {processVersion} from "./modules/version";
 
 
@@ -118,7 +117,6 @@ fetch(configFile).then(r => {
                         case 'blockchain': processBlockchain(i, node, data); break;
                         case 'nextBlock': processNextBlock(i, node, data); break;
                         case 'daemon': processDaemonInfo(i, node, data); break;
-                        case 'consensus': processConsensus(i, node, data); break;
                         case 'version': processVersion(i, node, data); break;
                         case 'rewards': processRewards(i, node, data); break;
                         case 'explorer': processExplorer(i, node, data); break;
@@ -153,7 +151,7 @@ fetch(configFile).then(r => {
         connect()
     })
 
-    $(document).on("click", ".block-producer, .snark-work", function() {
+    $(document).on("click", ".block-producer, .snark-work, .donate-address", function() {
         const val = $(this).attr("data-name")
         if (val) copy2clipboard(val)
     })

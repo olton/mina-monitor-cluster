@@ -2,7 +2,7 @@ import {epochDuration, genesisStart, slotDuration} from "../helpers/consts";
 
 export const updateBlockchain = ({resetCountdown = false}) => {
 
-    if (!globalThis.state.blockchain) return
+    if (!state.blockchain) return
 
     const elEpochCountdown = $("#epoch-countdown")
 
@@ -11,7 +11,7 @@ export const updateBlockchain = ({resetCountdown = false}) => {
         epoch,
         slot,
         slotSinceGenesis
-    } = globalThis.state.blockchain
+    } = state.blockchain
 
     $("#slot-number").text(Number(slot).format(0, null, " ", "."))
     $("#slot-since-genesis").text(Number(slotSinceGenesis).format(0, null, " ", "."))

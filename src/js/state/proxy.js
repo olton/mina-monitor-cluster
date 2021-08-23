@@ -36,7 +36,7 @@ export const registerStateProxy = () => {
                 updateUptime()
             }
             if (prop === 'blockchain') {
-                const resetCountdown = globalThis.state.blockchain === null ? true : globalThis.state.blockchain.epoch !== val.epoch
+                const resetCountdown = state.blockchain === null ? true : state.blockchain.epoch !== val.epoch
                 obj[prop] = val
                 updateBlockchain({resetCountdown})
             }

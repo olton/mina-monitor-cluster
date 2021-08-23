@@ -34,8 +34,8 @@ export const processResponse = (i, node, data) => {
         elResponseTime.addClass("alert")
     }
 
-    if (!globalThis.charts[i].responseChart) {
-        globalThis.charts[i].responseChart = chart.histogramChart(elResponseChart[0], [
+    if (!charts[i].responseChart) {
+        charts[i].responseChart = chart.histogramChart(elResponseChart[0], [
             getFakeTriplets(20, 40, 60, 1)
         ], {
             ...histogramOptions,
@@ -52,6 +52,6 @@ export const processResponse = (i, node, data) => {
         })
     }
 
-    globalThis.charts[i].responseChartStartPoint += 10
-    globalThis.charts[i].responseChart.add(0, [globalThis.charts[i].responseChartStartPoint - 10, globalThis.charts[i].responseChartStartPoint, responseTime], true)
+    charts[i].responseChartStartPoint += 10
+    charts[i].responseChart.add(0, [charts[i].responseChartStartPoint - 10, charts[i].responseChartStartPoint, responseTime], true)
 }

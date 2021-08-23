@@ -4,7 +4,7 @@ import "../css/index.less"
 import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
 import {messages as Messages} from "./helpers/messages"
-import {title} from "./helpers/consts"
+import {imgOk, imgStop, title} from "./helpers/consts"
 import {copy2clipboard} from "./helpers/utils";
 import {processServerCpu, processServerInfo, processServerTime} from "./modules/server-info";
 import {processCpuLoad, processCpuTemp} from "./modules/cpu";
@@ -29,13 +29,17 @@ import {processConsensus} from "./modules/consensus";
 import {processVersion} from "./modules/version";
 
 
-const version = `1.1.5`
+const version = `2.0.0`
 
 $("title").text(title.replace('%VER%', version))
 $("#version").text(version)
 
 const configFile = "./config.json"
 
+globalThis.charts = []
+globalThis.state = null
+globalThis.darkMode = null
+globalThis.wsc = []
 
 fetch(configFile).then(r => {
     if (!r.ok) {
@@ -44,15 +48,13 @@ fetch(configFile).then(r => {
     return r.json()
 })
 .then( config => {
-    const {theme = "auto", timesToSwitchNode = 12, nodes = []} = config
+    const {theme = "auto", nodes = []} = config
 
     if (!nodes.length) {
         throw new Error("Nodes is not defined! You must define at least one node!")
     }
 
     console.log("Monitor config file was loaded successfully")
-
-    globalThis.charts = []
 
     globalThis.darkMode = theme === "auto" ? $.dark : theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
@@ -65,7 +67,7 @@ fetch(configFile).then(r => {
     $.each(nodes, (i, node) => {
         let elNodePanel, template, clone
 
-        globalThis.charts[i] = {
+        charts[i] = {
             cpuChart: null,
             cpuCores: null,
             memChart: null,
@@ -88,7 +90,7 @@ fetch(configFile).then(r => {
         clone = document.importNode(template.content, true)
         elNodePanel[0].appendChild(clone)
 
-        const connect = index => {
+        const connect = () => {
             const ws = new WebSocket(`${node.https ? 'wss' : 'ws'}://${node.host}`)
             ws.onmessage = event => {
                 try {
@@ -136,12 +138,16 @@ fetch(configFile).then(r => {
             }
 
             ws.onclose = event => {
+                $(`#node-${i+1} .node-load-status`).html(imgStop)
                 console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
                 setTimeout(connect, 1000)
             }
 
             ws.onopen = event => {
+                $(`#node-${i+1} .node-load-status`).html(imgOk)
             }
+
+            globalThis.wsc.push(ws)
         }
 
         connect()
@@ -157,5 +163,5 @@ fetch(configFile).then(r => {
 })
 
 globalThis.epochNumberDrawValue = () => {
-    return globalThis.state ? globalThis.state.blockchain.epoch : 0
+    return state ? state.blockchain.epoch : 0
 }

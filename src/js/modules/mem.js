@@ -22,8 +22,8 @@ export const processMem = (i, node, data) => {
     const memPercent = Math.round(data.used * 100 / data.total)
     const processMem = !data.process ? 0 : data.process.heapUsed / 1024 ** 2
 
-    if (!globalThis.charts[i].memChart) {
-        globalThis.charts[i].memChart = chart.areaChart(elMemChart[0], [
+    if (!charts[i].memChart) {
+        charts[i].memChart = chart.areaChart(elMemChart[0], [
             getFakeData(100),
             getFakeData(100)
         ], {
@@ -42,12 +42,12 @@ export const processMem = (i, node, data) => {
         })
     }
 
-    globalThis.charts[i].memChart.setBoundaries({maxY: memTotal})
-    globalThis.charts[i].memChart.add(0, [datetime().time() - 2000, memTotal], true)
-    globalThis.charts[i].memChart.add(1, [datetime().time() - 2000, memUsage], true)
+    charts[i].memChart.setBoundaries({maxY: memTotal})
+    charts[i].memChart.add(0, [datetime().time() - 2000, memTotal], true)
+    charts[i].memChart.add(1, [datetime().time() - 2000, memUsage], true)
 
-    if (!globalThis.charts[i].memProcess) {
-        globalThis.charts[i].memProcess = chart.lineChart(elProcessChart[0], [
+    if (!charts[i].memProcess) {
+        charts[i].memProcess = chart.lineChart(elProcessChart[0], [
             getFakeData(100)
         ], {
             ...chartOptions,
@@ -67,9 +67,9 @@ export const processMem = (i, node, data) => {
         })
     }
 
-    if (globalThis.charts[i].memProcess.options.boundaries.maxY < processMem * 2)
-        globalThis.charts[i].memProcess.setBoundaries({maxY: processMem * 2})
-    globalThis.charts[i].memProcess.add(0, [datetime().time() - 2000, processMem], true)
+    if (charts[i].memProcess.options.boundaries.maxY < processMem * 2)
+        charts[i].memProcess.setBoundaries({maxY: processMem * 2})
+    charts[i].memProcess.add(0, [datetime().time() - 2000, processMem], true)
 
     elTotalMem.html(Math.ceil(memTotal))
     elFreeMem.html(Math.round(memFree))

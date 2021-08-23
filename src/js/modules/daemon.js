@@ -43,8 +43,9 @@ export const processDaemonInfo = (i, node, daemon) => {
     const height = +blockchainLength
     const maxHeight = +highestBlockLengthReceived
     const unvHeight = +highestUnvalidatedBlockLengthReceived
-    const diffMax = maxHeight - height
-    const diffUnv = unvHeight - height
+    const diffMax = Math.abs(maxHeight - height) >= 2
+    const diffUnv = Math.abs(unvHeight - height) >= 2
+    const diffMaxValue = maxHeight - height
 
     elProducerCog.removeClass("ani-spin")
     elSnarkWorkerCog.removeClass("ani-spin")
@@ -56,7 +57,7 @@ export const processDaemonInfo = (i, node, daemon) => {
         elBlockHeightMax.html(infinite)
         elBlockHeightUnv.html(infinite)
     } else {
-        elBlockHeight.html(height.format(0, null, " ", ".") + (diffMax && diffMax > 0 ? ` <span class="label-alert text-small ml-1 mt-1-minus">(-${diffMax})</span>` : ""))
+        elBlockHeight.html(height.format(0, null, " ", ".") + (diffMaxValue && diffMaxValue > 0 ? ` <span class="label-alert text-small ml-1 mt-1-minus">(-${diffMaxValue})</span>` : ""))
         elBlockHeightMax.html(maxHeight.format(0, null, " ", "."))
         elBlockHeightUnv.html(unvHeight.format(0, null, " ", "."))
     }

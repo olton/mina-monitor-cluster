@@ -9,8 +9,8 @@ export const processNodePeers = (i, node, data) => {
     const elPeersCount = $(`${id} .peers-count`)
     const elPeersChart = $(`${id} .peers-chart`)
 
-    if (!globalThis.charts[i].peersChart) {
-        globalThis.charts[i].peersChart = chart.histogramChart(elPeersChart[0], [
+    if (!charts[i].peersChart) {
+        charts[i].peersChart = chart.histogramChart(elPeersChart[0], [
             getFakeTriplets(20, 40, 60, 1)
         ], {
             ...histogramOptions,
@@ -23,8 +23,8 @@ export const processNodePeers = (i, node, data) => {
         })
     }
 
-    globalThis.charts[i].peersChartStartPoint += 10
-    globalThis.charts[i].peersChart.add(0, [globalThis.charts[i].peersChartStartPoint - 10, globalThis.charts[i].peersChartStartPoint, peersCount], true)
+    charts[i].peersChartStartPoint += 10
+    charts[i].peersChart.add(0, [charts[i].peersChartStartPoint - 10, charts[i].peersChartStartPoint, peersCount], true)
 
     elPeersCount.html(peersCount)
 }

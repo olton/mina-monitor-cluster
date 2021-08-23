@@ -1,7 +1,7 @@
 export const updatePrice = () => {
-    if (!globalThis.state.price) return
+    if (!state.price) return
 
-    const {current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = globalThis.state.price
+    const {current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = state.price
     const elCurrentPrice = $("#current-price")
     const elCurrency = $("#currency")
     const elPriceChange = $("#price-change")

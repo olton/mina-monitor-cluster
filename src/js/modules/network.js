@@ -12,8 +12,8 @@ export const processNetStat = (i, node, data) => {
 
     const [net] = data
 
-    if (!globalThis.charts[i].txChart) {
-        globalThis.charts[i].txChart = chart.areaChart(elTxChart[0], [
+    if (!charts[i].txChart) {
+        charts[i].txChart = chart.areaChart(elTxChart[0], [
             getFakeData(100)
         ], {
             ...chartOptions,
@@ -30,8 +30,8 @@ export const processNetStat = (i, node, data) => {
         })
     }
 
-    if (!globalThis.charts[i].rxChart) {
-        globalThis.charts[i].rxChart = chart.areaChart(elRxChart[0], [
+    if (!charts[i].rxChart) {
+        charts[i].rxChart = chart.areaChart(elRxChart[0], [
             getFakeData(100)
         ], {
             ...chartOptions,
@@ -50,8 +50,8 @@ export const processNetStat = (i, node, data) => {
 
     const tx = Math.round(net.tx_sec)
     const rx = Math.round(net.rx_sec)
-    globalThis.charts[i].txChart.add(0, [datetime().time(), tx], true, {maxX: true, maxY: true})
-    globalThis.charts[i].rxChart.add(0, [datetime().time(), rx], true, {maxX: true, maxY: true})
+    charts[i].txChart.add(0, [datetime().time(), tx], true, {maxX: true, maxY: true})
+    charts[i].rxChart.add(0, [datetime().time(), rx], true, {maxX: true, maxY: true})
 
     let speedTitleTx = 'Kb'
     let speedTitleRx = 'Kb'

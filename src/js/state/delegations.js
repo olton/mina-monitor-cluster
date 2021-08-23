@@ -1,7 +1,7 @@
 export const updateDelegations = () => {
-    if (!globalThis.state.delegations) return
+    if (!state.delegations) return
 
-    const {current, next} = globalThis.state.delegations
+    const {current, next} = state.delegations
 
     const s1 = (current.stake).format(4, null, " ", ".").split(".")
     const s2 = (next.stake).format(4, null, " ", ".").split(".")

@@ -1,5 +1,5 @@
 export const updateConsensus = () => {
-    if (!globalThis.state.consensus) return
+    if (!state.consensus) return
 
     const {
         acceptableNetworkDelay,
@@ -9,7 +9,7 @@ export const updateConsensus = () => {
         k,
         slotDuration,
         slotsPerEpoch
-    } = globalThis.state.consensus
+    } = state.consensus
 
     const duration = Metro.utils.secondsToTime(epochDuration/1000)
 

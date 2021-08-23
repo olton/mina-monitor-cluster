@@ -1,9 +1,9 @@
 import {shortAddress} from "../helpers/utils";
 
 export const updateUptime = () => {
-    if (!globalThis.state.uptime) return
+    if (!state.uptime) return
 
-    let {position, address, score, rate, group, positions} = globalThis.state.uptime
+    let {position, address, score, rate, group, positions} = state.uptime
 
     const elUptimePosition = $("#uptime-position")
     const elUptimePositionIcon = $("#position-icon")
@@ -31,7 +31,7 @@ export const updateUptime = () => {
         elUptimeRate.text((parseFloat(rate)) + "%")
         elUptimeScore.text(Number(score).format(0, null, " ", "."))
         elUptimeAddress.html("<span class='reduce-1'>"+shortAddress(address.trim())+"</span>")
-        elUptimeRange.html(`&lt; ${positions[0]} .. ${positions[positions.length - 1]} &gt;`)
+        elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)
     } else {
         elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-normal`).addClass(`mif-infinite`)

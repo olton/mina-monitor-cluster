@@ -13,8 +13,8 @@ export const processCpuLoad = (i, node, data) => {
 
     let {load = 0, user = 0, sys = 0, loadavg = [0, 0, 0], threads = []} = data
 
-    if (!globalThis.charts[i].cpuChart) {
-        globalThis.charts[i].cpuChart = chart.areaChart(elCpuChart[0], [
+    if (!charts[i].cpuChart) {
+        charts[i].cpuChart = chart.areaChart(elCpuChart[0], [
             getFakeData(100)
         ], {
             ...chartOptions,
@@ -32,10 +32,10 @@ export const processCpuLoad = (i, node, data) => {
         })
     }
 
-    globalThis.charts[i].cpuChart.add(0, [datetime().time(), load], true)
+    charts[i].cpuChart.add(0, [datetime().time(), load], true)
 
-    if (!globalThis.charts[i].cpuCores) {
-        globalThis.charts[i].cpuCores = chart.segment(elCpuCoresChart[0], threads, {
+    if (!charts[i].cpuCores) {
+        charts[i].cpuCores = chart.segment(elCpuCoresChart[0], threads, {
             height: 80,
             padding: 0,
             margin: 0,
@@ -57,7 +57,7 @@ export const processCpuLoad = (i, node, data) => {
     }
 
     threads.forEach( (v, k) => {
-        globalThis.charts[i].cpuCores.setData(v, k)
+        charts[i].cpuCores.setData(v, k)
     })
 
     elCpuLoad.html(`${load}`)

@@ -5,9 +5,11 @@ export const processState = (i, node, data) => {
     const elStateFrame = $(`${id} .node-info-general`)
     const elSyncStatus = $(`${id} .node-sync-status`)
     const elPanel = $(`${id} > .panel`)
+    const elNodeHealthParent = $(`${id} .node-sync-status-container`)
 
     elStateFrame.removeClass('BOOTSTRAP CATCHUP OFFLINE CONNECTING')
     elPanel.removeClass('disabled')
+    elNodeHealthParent.removeClass("alert")
 
     elSyncStatus.html(data)
 

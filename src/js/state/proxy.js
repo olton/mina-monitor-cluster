@@ -1,10 +1,10 @@
-import {updateBalance, updateBalanceCost, updateTiming} from "./balance";
-import {updatePrice} from "./price";
-import {updateUptime} from "./uptime";
-import {updateBlockchain} from "./blockchain";
-import {updateRewards} from "./rewards";
-import {updateDelegations} from "./delegations";
-import {updateNextBlock} from "./next-block";
+import {updateBalance, updateBalanceCost, updateTiming} from "../modules/balance";
+import {updatePrice} from "../modules/price";
+import {updateUptime} from "../modules/uptime";
+import {updateBlockchain} from "../modules/blockchain";
+import {updateRewards} from "../modules/rewards";
+import {updateDelegations} from "../modules/delegations";
+import {updateNextBlock} from "../modules/next-block";
 
 export const registerStateProxy = () => {
     globalThis.state = new Proxy({

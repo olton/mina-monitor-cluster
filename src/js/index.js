@@ -3,8 +3,7 @@ import "../vendor/metro4/css/metro-all.css"
 import "../css/index.less"
 import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
-import {messages as Messages} from "./helpers/messages"
-import {imgOk, imgStop, title} from "./helpers/consts"
+import {IMG_OK, IMG_STOP, TITLE, MSG_CONFIG_READ_ERROR} from "./helpers/consts"
 import {copy2clipboard} from "./helpers/utils";
 import {processServerCpu, processServerInfo, processServerTime} from "./modules/server-info";
 import {processCpuLoad, processCpuTemp} from "./modules/cpu";
@@ -30,7 +29,7 @@ import {processVersion} from "./modules/version";
 
 const version = `2.0.0`
 
-$("title").text(title.replace('%VER%', version))
+$("title").text(TITLE.replace('%VER%', version))
 $("#version").text(version)
 
 const configFile = "./config.json"
@@ -42,7 +41,7 @@ globalThis.wsc = []
 
 fetch(configFile).then(r => {
     if (!r.ok) {
-        throw new Error(Messages.CONFIG_READ_ERROR)
+        throw new Error(MSG_CONFIG_READ_ERROR)
     }
     return r.json()
 })
@@ -136,13 +135,13 @@ fetch(configFile).then(r => {
             }
 
             ws.onclose = event => {
-                $(`#node-${i+1} .node-load-status`).html(imgStop)
+                $(`#node-${i+1} .node-load-status`).html(IMG_STOP)
                 console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
                 setTimeout(connect, 1000)
             }
 
             ws.onopen = event => {
-                $(`#node-${i+1} .node-load-status`).html(imgOk)
+                $(`#node-${i+1} .node-load-status`).html(IMG_OK)
             }
 
             globalThis.wsc.push(ws)

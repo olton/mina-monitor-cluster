@@ -21,6 +21,7 @@ export const processResponse = (i, node, data) => {
     }
     elResponseCount.html(countVal.toFixed(1) + `<span class='reduce-2 mt-2-minus text-normal'>${countTitle}</span>`)
 
+    elResponseTime.removeClass("success yellow-warning warning alert")
     if (responseTime <= 1) {
         elResponseTime.addClass("success")
     }

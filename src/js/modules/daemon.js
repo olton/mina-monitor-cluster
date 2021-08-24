@@ -1,4 +1,4 @@
-import {infinite} from "../helpers/consts";
+import {INFINITE} from "../helpers/consts";
 import {shortAddress} from "../helpers/utils";
 
 export const processDaemonInfo = (i, node, daemon) => {
@@ -53,9 +53,9 @@ export const processDaemonInfo = (i, node, daemon) => {
     elNodeSyncStatus.html(syncStatus)
 
     if (badStates.includes(syncStatus)) {
-        elBlockHeight.html(infinite)
-        elBlockHeightMax.html(infinite)
-        elBlockHeightUnv.html(infinite)
+        elBlockHeight.html(INFINITE)
+        elBlockHeightMax.html(INFINITE)
+        elBlockHeightUnv.html(INFINITE)
     } else {
         elBlockHeight.html(height.format(0, null, " ", ".") + (diffMaxValue && diffMaxValue > 0 ? ` <span class="label-alert text-small ml-1 mt-1-minus">(-${diffMaxValue})</span>` : ""))
         elBlockHeightMax.html(maxHeight.format(0, null, " ", "."))
@@ -79,7 +79,7 @@ export const processDaemonInfo = (i, node, daemon) => {
 
     const uptime = Metro.utils.secondsToTime(uptimeSecs)
     if (badStates.includes(syncStatus)) {
-        elNodeUptime.html(infinite)
+        elNodeUptime.html(INFINITE)
     } else {
         elNodeUptime.html(`${uptime.d}d, ${uptime.h}h ${uptime.m}m`)
     }

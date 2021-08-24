@@ -30,11 +30,9 @@ export const updateBlockchain = ({resetCountdown = false}) => {
     $("#block-height").text(Number(blockHeight).format(0, null, " ", "."))
 
     const epochDurationProgress = (+slot * SLOT_DURATION * 100) / EPOCH_DURATION
-    const progress1 = Metro.getPlugin('#epoch-number-light', 'donut')
-    const progress2 = Metro.getPlugin('#epoch-number-dark', 'donut')
+    const progress = Metro.getPlugin('#epoch-number', 'donut')
 
-    progress1.val(epochDurationProgress)
-    progress2.val(epochDurationProgress)
+    progress.val(epochDurationProgress)
 
     let epochEnd = datetime(GENESIS_START).addSecond(EPOCH_DURATION/1000 * (+epoch + 1))
     let countdown

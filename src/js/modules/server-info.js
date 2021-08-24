@@ -17,7 +17,7 @@ export const processServerCpu = (i, node, data) => {
     const elCpuCores = $(`${id} .cores-count`)
 
     elCpuInfo.html(model)
-    elCpuCores.html(cores/2)
+    elCpuCores.html(cores)
 }
 
 export const processServerTime = (i, node, data) => {

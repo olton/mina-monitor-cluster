@@ -84,10 +84,10 @@ fetch(configFile).then(r => {
 
         elNodesContainer.append(
             elNodePanel = $(`<div class='is-node' id='node-${i+1}'>`)
-                .addClass(nodesLength >= 3 ? 'cell-lg-6 cell-xl-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
+                .addClass(nodesLength >= 3 ? 'cell-lg-6 cell-xl-4' : 'cell-lg-6')
         )
 
-        template = nodesLength === 1 ? document.querySelector("#node-template-1") : document.querySelector("#node-template")
+        template = document.querySelector("#node-template")
         template.content.querySelector(".panel").setAttribute("data-title-caption", node.name.toUpperCase())
         clone = document.importNode(template.content, true)
         elNodePanel[0].appendChild(clone)

@@ -18,6 +18,19 @@ export const processCpuLoad = (i, node, data) => {
             getFakeData(100)
         ], {
             ...chartOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 55,
             legend: false,
             boundaries: {
@@ -37,6 +50,7 @@ export const processCpuLoad = (i, node, data) => {
     if (!charts[i].cpuCores) {
         charts[i].cpuCores = chart.segment(elCpuCoresChart[0], threads, {
             height: 80,
+            background: chartBackground,
             padding: 0,
             margin: 0,
             segment: {
@@ -48,7 +62,7 @@ export const processCpuLoad = (i, node, data) => {
                 color: "transparent"
             },
             ghost: {
-                color: "#f0f6fc"
+                color: darkMode ? "rgba(125, 195, 123, .1)" : "#f0f6fc"
             }
         })
         elCpuCoresChart.css({

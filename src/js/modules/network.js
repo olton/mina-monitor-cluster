@@ -17,6 +17,19 @@ export const processNetStat = (i, node, data) => {
             getFakeData(100)
         ], {
             ...chartOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 65,
             boundaries: {
                 maxY: 0
@@ -26,7 +39,8 @@ export const processNetStat = (i, node, data) => {
                 {
                     name: "Tx"
                 }
-            ]
+            ],
+            legend: false
         })
     }
 
@@ -35,6 +49,19 @@ export const processNetStat = (i, node, data) => {
             getFakeData(100)
         ], {
             ...chartOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 65,
             boundaries: {
                 maxY: 0
@@ -44,7 +71,8 @@ export const processNetStat = (i, node, data) => {
                 {
                     name: "Rx"
                 }
-            ]
+            ],
+            legend: false
         })
     }
 

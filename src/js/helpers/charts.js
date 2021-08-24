@@ -105,7 +105,7 @@ export const histogramOptions = {
     legend: {
         position: 'top-left',
         vertical: true,
-        background: Metro.colors.toRGBA('#ffffff', .5),
+        background: Metro.colors.toRGBA('#ffffff', .2),
         margin: {
             left: 4,
             top: 4

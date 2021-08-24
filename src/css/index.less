@@ -214,6 +214,23 @@ body {
     }
 }
 
+.peers-title, .response-title, .tx-title, .rx-title, .process-mem-title, .total-mem-title, .cpu-title {
+    position: absolute;
+    color: var(--color-accent);
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    font-size: 11px;
+}
+
+.response-title, .rx-title {
+    top: 78px;
+}
+
+.total-mem-title {
+    top: 60px;
+}
+
 .peers-count, .tx-count, .rx-count, .response-count {
     position: absolute;
     top: 10px;
@@ -428,6 +445,13 @@ body {
     .big-value {
         font-size: 20px;
     }
+}
+
+.epoch-number.light-donut {
+    display: block;
+}
+.epoch-number.dark-donut {
+    display: none;
 }
 
 @import "dark";

@@ -1,3 +1,61 @@
-:root {
+:not(.light-theme):root {
+    --body-background: #1e2228;
+    --color-text: #adbaa9;
+    --color-text-inverse: #24292e;
+    --color-border: #444c56;
+    --color-panel: #22272e;
+    --color-panel-second: #1b2125;
+    --color-panel-title: #ff8330;
+    --color-accent: #fff;
+    --color-neutral: #b6b6b6;
+    --color-success: #7dc37b;
+    --color-warning: #ff8330;
+    --color-alert: #ea0b0b;
+    --color-info: rgba(27, 161, 226, 0.56);
+    --color-info2: #4db5ff;
+    --color-yellow: #ffdb10;
+    --color-white: #fff;
+    --color-gray: #b6b6b6;
+    --color-active: #4db5ff;
+    --color-stop: #24292e;
+    --color-inactive: #4b4b4b;
+}
 
+:not(.light-theme) {
+    .big-value {
+        color: var(--color-info2);
+    }
+    .big-value-2, .cores-count, .cpu-load, .cpu-temp, .total-mem, .used-mem, .free-mem {
+        color: var(--color-accent);
+    }
+    .height-table {
+        border-color: var(--color-border)!important;
+        * {
+            border-color: var(--color-border)!important;
+        }
+    }
+
+    .max-block, .max-unvalidated, .explorer-height, .block-producer, .snark-worker, .snark-worker-fee {
+        color: var(--color-accent);
+    }
+
+    .yellow-warning {
+        color: var(--color-text-inverse);
+    }
+    .countdown {
+        .part {
+            color: var(--color-accent);
+        }
+    }
+    .text-indicators {
+        background-color: var(--color-panel-second);
+        color: var(--color-text);
+    }
+
+    .epoch-number.light-donut {
+        display: none;
+    }
+    .epoch-number.dark-donut {
+        display: block;
+    }
 }

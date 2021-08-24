@@ -57,6 +57,10 @@ fetch(configFile).then(r => {
     globalThis.darkMode = theme === "auto" ? $.dark : theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
 
+    globalThis.chartLineColor = globalThis.darkMode ? '#3c424b' : "#e5e5e5"
+    globalThis.chartLabelColor = globalThis.darkMode ? "#fff" : "#000"
+    globalThis.chartBackground = globalThis.darkMode ? "#1b2125" : "#ffffff"
+
     registerStateProxy()
 
     const elNodesContainer = $("#nodes-row")

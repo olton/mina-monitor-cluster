@@ -160,10 +160,15 @@
                         <div class="d-flex flex-justify-center flex-align-center flex-column">
                             <div class="row w-100">
                                 <div class="cell-3 text-center pl-0">
-                                    <div id="epoch-number" data-role="donut" data-value="0"
+                                    <div id="epoch-number-light" data-role="donut" data-value="0"
                                          data-hole=".7" data-stroke="#f5f5f5" data-fill="#9C27B0"
                                          data-animate="10" data-size="100%" data-on-draw-value="epochNumberDrawValue"
-                                         data-font-size="18" class="ml-2-minus mt-2"
+                                         data-font-size="18" class="epoch-number ml-2-minus mt-2 light-donut"
+                                    ></div>
+                                    <div id="epoch-number-dark" data-role="donut" data-value="0"
+                                         data-hole=".7" data-stroke="#1b2125" data-fill="#b92ed1" data-background="transparent"
+                                         data-animate="10" data-size="100%" data-on-draw-value="epochNumberDrawValue"
+                                         data-font-size="18" class="epoch-number ml-2-minus mt-2 dark-donut"
                                     ></div>
                                 </div>
                                 <div class="cell-9 border-left bd-system">
@@ -246,7 +251,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="row" id="nodes-row">

@@ -40,6 +40,19 @@ export const processResponse = (i, node, data) => {
             getFakeTriplets(20, 40, 60, 1)
         ], {
             ...histogramOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 65,
             padding: 0,
             boundaries: {
@@ -47,9 +60,10 @@ export const processResponse = (i, node, data) => {
             },
             bars: [{
                 name: "Resp time",
-                stroke: '#fff',
+                stroke: 'transparent',
                 color: Metro.colors.toRGBA("#ff1493", .5)
             }],
+            legend: false
         })
     }
 

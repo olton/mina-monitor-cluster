@@ -28,6 +28,19 @@ export const processMem = (i, node, data) => {
             getFakeData(100)
         ], {
             ...chartOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 80,
             legend: false,
             colors: [Metro.colors.toRGBA('#7dc37b', .5), Metro.colors.toRGBA('#aa00ff', .5)],
@@ -51,9 +64,21 @@ export const processMem = (i, node, data) => {
             getFakeData(100)
         ], {
             ...chartOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 50,
             legend: false,
-            background: "rgba(236,236,236,0.2)",
             boundaries: {
                 maxY: 50
             },

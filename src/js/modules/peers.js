@@ -14,12 +14,26 @@ export const processNodePeers = (i, node, data) => {
             getFakeTriplets(20, 40, 60, 1)
         ], {
             ...histogramOptions,
+            background: chartBackground,
+            axis: {
+                x: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+                y: {
+                    line: {
+                        color: chartLineColor
+                    }
+                },
+            },
             height: 65,
             bars: [{
                 name: "Peers",
-                stroke: '#fff',
+                stroke: 'transparent',
                 color: Metro.colors.toRGBA('#00AFF0', .5)
             }],
+            legend: false
         })
     }
 

@@ -18,7 +18,7 @@ export const updateBalance = () => {
 
     const {total, liquid, locked} = state.balance
 
-    const b = (total/10**9).format(9, null, " ", ".").split(".")
+    const b = Number((total/10**9)).format(9, null, " ", ".").split(".")
     const q = Number((liquid/10**9).toFixed(4)).format(9, null, " ", ".").split(".")
     const l = Number((locked/10**9).toFixed(4)).format(9, null, " ", ".").split(".")
 

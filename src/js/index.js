@@ -80,7 +80,7 @@ fetch(configFile).then(r => {
 
         elNodesContainer.append(
             elNodePanel = $(`<div class='is-node' id='node-${i+1}'>`)
-                .addClass(nodesLength >= 3 ? 'cell-lg-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
+                .addClass(nodesLength >= 3 ? 'cell-lg-6 cell-xl-4' : nodesLength === 2 ? 'cell-lg-6' : 'cell-lg-12')
         )
 
         template = nodesLength === 1 ? document.querySelector("#node-template-1") : document.querySelector("#node-template")

@@ -80,9 +80,9 @@ export const processMem = (i, node, data) => {
             height: 50,
             legend: false,
             boundaries: {
-                maxY: 50
+                maxY: 100
             },
-            colors: [Metro.colors.toRGBA('#7b68ee', .5)],
+            colors: [Metro.colors.toRGBA('#aa00ff', .5)],
             lines: [
                 {
                     name: "Process",

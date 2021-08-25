@@ -32,6 +32,10 @@ export const updateBlockchain = ({resetCountdown = false}) => {
     const epochDurationProgress = (+slot * SLOT_DURATION * 100) / EPOCH_DURATION
     const progress = Metro.getPlugin('#epoch-number', 'donut')
 
+    progress.setColor({
+        "stroke": darkMode ? "#1b2125" : "rgb(245, 245, 245)"
+    })
+
     progress.val(epochDurationProgress)
 
     let epochEnd = datetime(GENESIS_START).addSecond(EPOCH_DURATION/1000 * (+epoch + 1))

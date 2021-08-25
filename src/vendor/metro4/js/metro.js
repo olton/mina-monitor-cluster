@@ -1,7 +1,7 @@
 /*
- * Metro 4 Components Library v4.5.0  (https://metroui.org.ua)
+ * Metro 4 Components Library v4.5.1  (https://metroui.org.ua)
  * Copyright 2012-2021 Sergey Pimenov
- * Built at 12/07/2021 19:32:57
+ * Built at 25/08/2021 16:11:33
  * Licensed under MIT
  */
 /*!
@@ -7196,8 +7196,8 @@ $.noConflict = function() {
 
     var Metro = {
 
-        version: "4.5.0",
-        compileTime: "12/07/2021 19:32:57",
+        version: "4.5.1",
+        compileTime: "25/08/2021 16:11:33",
         buildNumber: "@@build",
         isTouchable: isTouch,
         fullScreenEnabled: document.fullscreenEnabled,
@@ -7705,6 +7705,7 @@ $.noConflict = function() {
             return Metro.$()($(el));
         },
 
+        // TODO add if name is not defined, return one or array of plugins
         getPlugin: function(el, name){
             var _name = normalizeComponentName(name);
             var $el = Metro.get$el(el);
@@ -19506,16 +19507,6 @@ $.noConflict = function() {
             })
 
             title.html(Metro.utils.exec(o.onDrawValue, [title_value + o.cap]));
-
-            // title.animate({
-            //     draw: {
-            //         innerHTML: title_value
-            //     },
-            //     dur: o.animate,
-            //     onFrame: function(){
-            //         this.innerHTML = Metro.utils.exec(o.onDrawValue, [this.innerHTML + o.cap]);
-            //     }
-            // });
         },
 
         val: function(v){
@@ -19539,11 +19530,12 @@ $.noConflict = function() {
         },
 
         setColor: function(obj){
-            var validKeys = ["background, fill, stroke, color"]
+            var validKeys = ["background", "fill", "stroke", "color"]
+            var that = this
 
             $.each(obj, function(key, val){
                 if (validKeys.indexOf(key) !== -1) {
-                    this.options[key] = val
+                    that.options[key] = val
                 }
             })
 
@@ -20790,6 +20782,7 @@ $.noConflict = function() {
             this.isOpen = false;
         },
 
+        // TODO Add control: if no space for drop-down and no space for drop-up, element will must drop-down
         _open: function(el, immediate){
             el = $(el);
 
@@ -20806,6 +20799,10 @@ $.noConflict = function() {
                     // dropdown.element.removeClass("drop-up");
                     if (!Utils.inViewport(dropdown.element[0])) {
                         dropdown.element.addClass("drop-up");
+
+                        if (!Utils.inViewport(dropdown.element[0])) {
+                            dropdown.element.removeClass("drop-up");
+                        }
                     }
                 }
 
@@ -29079,6 +29076,7 @@ $.noConflict = function() {
         clsLabel: "",
         clsGroupName: "",
 
+        onClear: Metro.noop,
         onChange: Metro.noop,
         onUp: Metro.noop,
         onDrop: Metro.noop,
@@ -29395,8 +29393,14 @@ $.noConflict = function() {
 
                 input.clear();
                 that._setPlaceholder();
+
                 e.preventDefault();
                 e.stopPropagation();
+
+                that._fireEvent("clear");
+                that._fireEvent("change", {
+                    selected: that.getSelected()
+                });
             });
 
             element.on(Metro.events.change, function(){
@@ -29647,11 +29651,11 @@ $.noConflict = function() {
 
             if (typeof selected === "string") {
                 _selected = selected.toArray(_delimiter).map(function(v){
-                    return +v;
+                    return isNaN(v) ? v : +v;
                 });
             } else if (Array.isArray(selected)) {
                 _selected = selected.slice().map(function(v){
-                    return +v;
+                    return isNaN(v) ? v : +v;
                 });
             } else {
                 _selected = [];
@@ -29661,7 +29665,7 @@ $.noConflict = function() {
 
             if (typeof op === 'string') {
                 element.html(op);
-            } else if (Utils.isObject(op)) {
+            } else if (Utils.isObject2(op)) {
                 $.each(op, function(key, val){
                     if (Utils.isObject2(val)) {
                         option_group = $("<optgroup label=''>").attr("label", key).appendTo(element);
@@ -29673,7 +29677,7 @@ $.noConflict = function() {
                         });
                     } else {
                         var op = $("<option>").attr("value", key).text(val).appendTo(element);
-                        if (_selected.indexOf(+key) > -1) {
+                        if (_selected.indexOf(key) > -1) {
                             op.prop("selected", true);
                         }
                     }
@@ -32545,6 +32549,8 @@ $.noConflict = function() {
                 $("<label>").addClass((o.material === true ? " switch-material " : " switch ") + element[0].className)
             );
 
+            this.component = container;
+
             check.appendTo(container);
             caption.appendTo(container);
 
@@ -32573,17 +32579,17 @@ $.noConflict = function() {
         },
 
         disable: function(){
-            this.element.data("disabled", true);
-            this.element.parent().addClass("disabled");
+            this.element.prop("disabled", true);
         },
 
         enable: function(){
-            this.element.data("disabled", false);
-            this.element.parent().removeClass("disabled");
+            this.element.prop("disabled", false);
         },
 
         toggleState: function(){
-            if (this.elem.disabled) {
+            var element = this.element;
+
+            if (!element.is(":disabled")) {
                 this.disable();
             } else {
                 this.enable();
@@ -32592,6 +32598,8 @@ $.noConflict = function() {
 
         toggle: function(v){
             var element = this.element;
+
+            if (element.is(":disabled")) return this;
 
             if (!Utils.isValue(v)) {
                 element.prop("checked", !Utils.bool(element.prop("checked")));
@@ -32633,7 +32641,6 @@ $.noConflict = function() {
 
         changeAttribute: function(attr, newVal){
             switch (attr) {
-                case 'disabled': this.toggleState(); break;
                 case 'data-on':
                 case 'data-text-on': this.changeLocale('on', newVal); break;
                 case 'data-off':
@@ -32776,6 +32783,7 @@ $.noConflict = function() {
         onDataLoad: Metro.noop,
         onDataLoadError: Metro.noop,
         onDataLoaded: Metro.noop,
+        onDataLoadEnd: Metro.noop,
         onDataSaveError: Metro.noop,
         onFilterRowAccepted: Metro.noop,
         onFilterRowDeclined: Metro.noop,
@@ -32970,7 +32978,7 @@ $.noConflict = function() {
             var that = this, element = this.element, o = this.options;
             var view, id = element.attr("id"), viewPath;
 
-            o.rows = parseInt(o.rows);
+            o.rows = +o.rows;
 
             this.items = [];
             this.heads = [];
@@ -34565,6 +34573,12 @@ $.noConflict = function() {
 
                             that._createItemsFromJSON(data);
                             that._rebuild(review);
+                            that._resetInspector();
+
+                            that._fireEvent("data-load-end", {
+                                source: o.source,
+                                data: data
+                            });
                         })
                         .catch(function(error){
                             that.activity.hide();
@@ -34933,6 +34947,7 @@ $.noConflict = function() {
     'use strict';
     var Utils = Metro.utils;
     var MaterialTabsDefaultConfig = {
+        wheelStep: 20,
         materialtabsDeferred: 0,
         deep: false,
         fixedTabs: false,
@@ -35023,12 +35038,13 @@ $.noConflict = function() {
                 var tab_next = tab.index() > active_tab.index();
                 var target = tab.children("a").attr("href");
 
+                e.preventDefault();
+
                 if (Utils.isValue(target) && target[0] === "#") {
                     if (tab.hasClass("active")) return;
                     if (tab.hasClass("disabled")) return;
                     if (Utils.exec(o.onBeforeTabOpen, [tab, target, tab_next], this) === false) return;
                     that.openTab(tab, tab_next);
-                    e.preventDefault();
                 }
             });
 
@@ -35045,6 +35061,20 @@ $.noConflict = function() {
                 });
 
             });
+
+            element.on(Metro.events.mousewheel, function(e){
+                if (e.deltaY === undefined) {
+                    return ;
+                }
+
+                var scroll, scrollable = $(this);
+                var dir = e.deltaY > 0 ? -1 : 1;
+                var step = o.wheelStep;
+
+
+                scroll = scrollable.scrollLeft() - ( dir * step);
+                scrollable.scrollLeft(scroll);
+            })
         },
 
         openTab: function(tab, tab_next){

@@ -46,7 +46,7 @@ fetch(configFile).then(r => {
     return r.json()
 })
 .then( config => {
-    const {theme = "auto", nodes = []} = config
+    const {theme = "auto", nodes = [], chartLabels} = config
 
     if (!nodes.length) {
         throw new Error("Nodes is not defined! You must define at least one node!")
@@ -158,6 +158,10 @@ fetch(configFile).then(r => {
         const val = $(this).attr("data-name")
         if (val) copy2clipboard(val)
     })
+
+    if (!chartLabels) {
+        $(".peers-title, .response-title, .tx-title, .rx-title, .process-mem-title, .total-mem-title, .cpu-title").hide()
+    }
 })
 .catch(r => {
     console.log(r)

@@ -17,9 +17,6 @@
     "staticFiles": {
         "staticPath": [
             "src/config.json",
-            "src/config.one.json",
-            "src/config.one.local.json",
-            "src/config.two.json",
             "src/.htaccess"
         ]
     },

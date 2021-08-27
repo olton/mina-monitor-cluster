@@ -1,3 +1,8 @@
+### 2.0.0
++ [x] Changed protocol to websocket
++ [x] Improved **price** visualization
++ [x] Improved **uptime** block
+
 ### 1.0.4
 + [x] Increased chart size to 100 points
 + [x] Added node response chart

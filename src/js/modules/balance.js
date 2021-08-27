@@ -17,14 +17,15 @@ export const updateBalance = () => {
     if (!state.balance) return
 
     const {total, liquid, locked} = state.balance
+    const {precision = 4} = config
 
-    const b = Number((total/10**9)).format(9, null, " ", ".").split(".")
-    const q = Number((liquid/10**9).toFixed(4)).format(9, null, " ", ".").split(".")
-    const l = Number((locked/10**9).toFixed(4)).format(9, null, " ", ".").split(".")
+    const b = Number(total/10**9).format(9, null, " ", ".").split(".")
+    const q = Number(liquid/10**9).format(9, null, " ", ".").split(".")
+    const l = Number(locked/10**9).format(9, null, " ", ".").split(".")
 
-    $("#balance-total").html(`${b[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${b[1]}</div>`)
-    $("#balance-liquid").html(`${q[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${q[1].substring(0, 4)}</div>`)
-    $("#balance-locked").html(`${l[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${l[1].substring(0, 4)}</div>`)
+    $("#balance-total").html(`${b[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${b[1].substring(0, precision)}</div>`)
+    $("#balance-liquid").html(`${q[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${q[1].substring(0, precision)}</div>`)
+    $("#balance-locked").html(`${l[0]}<div class="sub-value mt-2-minus" style="line-height: 2">${l[1].substring(0, precision)}</div>`)
 }
 
 

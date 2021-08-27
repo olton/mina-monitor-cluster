@@ -54,6 +54,8 @@ fetch(configFile).then(r => {
 
     console.log("Monitor config file was loaded successfully")
 
+    globalThis.config = config
+
     globalThis.darkMode = theme === "auto" ? $.dark : theme === "dark"
     $("html").addClass(globalThis.darkMode ? "dark-theme" : "light-theme")
 

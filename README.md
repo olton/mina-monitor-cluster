@@ -4,12 +4,12 @@
   
 # mina-monitor-cluster
 Mina Monitor is an extended graphical version of the `mina client status` command with additional indicators.
-The Monitor shows a Mina network status and health of mina nodes (up to 3x nodes in one frame).
+The Monitor shows a Mina network status and health of mina nodes (up to 3x and more nodes in one frame).
 This is an extended version of [Mina Monitor](https://github.com/olton/mina-node-monitor).
 
 
 **Important!**
-> For using Mina Monitor Cluster you must install actual [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
+> For using Mina Monitor Cluster you must install actual (>=2.0.0) [Mina Monitor Server Side](https://github.com/olton/mina-node-monitor) to the required Mina nodes.
 
 
 ## Key Features
@@ -24,7 +24,7 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 - [x] Displays general information about the site server
 - [x] Convenient live graphs for displaying consumed resources
 - [x] Responsive interface (It is comfortable to look at both PC and phone and tablet)
-- [x] Displaying the status of several (up to 3) nodes on one page
+- [x] Displaying the status of several nodes on one page
 - [x] Cyclic bypass of nodes, polling of general information for the address is carried out sequentially from synchronized nodes
 - [x] Displaying the response rate of a GraphQL node to the main request
 
@@ -63,7 +63,9 @@ Create config file `config.json` in the `src` folder. Below you can see example 
             "secure": false
         }
     ],
-    "theme": "auto"
+    "theme": "dark",
+    "chartLabels": false,
+    "precision": 4
 }
 ```
 

@@ -21,7 +21,7 @@
     --color-inactive: #4b4b4b;
 }
 
-:not(.light-theme) {
+html:not(.light-theme) {
     .big-value {
         color: var(--color-info2);
     }
@@ -42,8 +42,9 @@
     .yellow-warning {
         color: var(--color-text-inverse)!important;
     }
+
     .countdown {
-        .part {
+        .digit {
             color: var(--color-accent);
         }
     }

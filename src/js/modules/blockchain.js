@@ -3,6 +3,7 @@ import {EPOCH_DURATION, GENESIS_START, SLOT_DURATION} from "../helpers/consts";
 
 export const processBlockchain = (i, node, data) => {
     if (!data) return
+    if (isset(data.data.errors, false)) return
     if (!isset(data.data.bestChain[0].protocolState.consensusState, false)) return
 
     const blockchain = data.data.bestChain[0].protocolState.consensusState

@@ -132,17 +132,18 @@ fetch(configFile).then(r => {
                 } catch (e) {
                     console.log(e.message)
                     console.log(event.data)
+                    console.log(e.stack)
                 }
             }
 
             ws.onerror = error => {
-                console.error('Socket encountered error: ', error.message, 'Closing socket');
+                console.error(datetime().format("DD-MM-YYYY HH:mm ") + 'Socket encountered error: ', error.message, 'Closing socket');
                 ws.close();
             }
 
             ws.onclose = event => {
                 $(`#node-${i+1} .node-load-status`).html(IMG_STOP)
-                console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
+                console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
                 setTimeout(connect, 1000)
             }
 

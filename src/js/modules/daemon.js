@@ -73,7 +73,7 @@ export const processDaemonInfo = (i, node, daemon) => {
             elBlockHeightMax.addClass("ani-flash")
         }
         if (unvHeight && diffUnv) {
-            elBlockHeightMax.addClass("ani-flash")
+            elBlockHeightUnv.addClass("ani-flash")
         }
     }
 

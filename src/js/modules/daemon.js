@@ -46,6 +46,7 @@ export const processDaemonInfo = (i, node, daemon) => {
     const diffMax = Math.abs(maxHeight - height) >= 2
     const diffUnv = Math.abs(unvHeight - height) >= 2
     const diffMaxValue = maxHeight - height
+    const diffUnvValue = unvHeight - height
 
     elProducerCog.removeClass("ani-spin")
     elSnarkWorkerCog.removeClass("ani-spin")
@@ -57,23 +58,26 @@ export const processDaemonInfo = (i, node, daemon) => {
         elBlockHeightMax.html(INFINITE)
         elBlockHeightUnv.html(INFINITE)
     } else {
-        elBlockHeight.html(height.format(0, null, " ", ".") + (diffMaxValue && diffMaxValue > 0 ? ` <span class="label-alert text-small ml-1 mt-1-minus">(-${diffMaxValue})</span>` : ""))
         elBlockHeightMax.html(maxHeight.format(0, null, " ", "."))
         elBlockHeightUnv.html(unvHeight.format(0, null, " ", "."))
     }
 
     elBlockHeightContainer.removeClass("bell-alert")
-    elBlockHeightMax.removeClass("ani-flash")
-    elBlockHeightUnv.removeClass("ani-flash")
-    if (syncStatus === 'SYNCED') {
+    elBlockHeightMax.removeClass("alert ani-flash")
+    elBlockHeightUnv.removeClass("alert ani-flash")
+    if (syncStatus === 'SYNCED' || syncStatus === 'CATCHUP') {
         if (diffMax || diffUnv) {
             elBlockHeightContainer.addClass("bell-alert")
         }
         if (maxHeight && diffMax) {
-            elBlockHeightMax.addClass("ani-flash")
-        }
+            elBlockHeightMax.addClass("alert ani-flash")
+            elBlockHeight.html(height.format(0, null, " ", ".") + (diffMaxValue ? ` <span class="label-alert text-small ml-1 mt-1-minus">(${-1 * diffMaxValue})</span>` : ""))
+        } else
         if (unvHeight && diffUnv) {
-            elBlockHeightUnv.addClass("ani-flash")
+            elBlockHeightUnv.addClass("alert ani-flash")
+            elBlockHeight.html(height.format(0, null, " ", ".") + (diffUnvValue ? ` <span class="label-alert text-small ml-1 mt-1-minus">(${-1 * diffUnvValue})</span>` : ""))
+        } else {
+            elBlockHeight.html(height.format(0, null, " ", "."))
         }
     }
 

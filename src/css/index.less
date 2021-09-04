@@ -11,6 +11,7 @@
     --color-success: #7dc37b;
     --color-warning: #ff8330;
     --color-alert: #ea0b0b;
+    --color-alert-soft: #ff6969;
     --color-info: rgba(27, 161, 226, 0.56);
     --color-info2: #4db5ff;
     --color-yellow: #ffdb10;
@@ -103,7 +104,7 @@ body {
 }
 
 * {
-    &.alert, &.warning, &.catchup, &.success {
+    &.alert, &.warning, &.catchup, &.success, &.soft-alert {
         color: var(--color-white)!important;
 
         * {
@@ -113,6 +114,10 @@ body {
     }
 
     &.alert{
+        background: var(--color-alert)!important;
+    }
+
+    &.soft-alert {
         background: var(--color-alert)!important;
     }
 

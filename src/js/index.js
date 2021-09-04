@@ -13,7 +13,6 @@ import {processNetConn, processNetStat} from "./modules/network";
 import {processNodePeers} from "./modules/peers";
 import {processResponse} from "./modules/response";
 import {processHealth} from "./modules/health";
-import {processExplorer} from "./modules/explorer";
 import {registerStateProxy} from "./state/proxy";
 import {processBalance} from "./modules/balance";
 import {processState} from "./modules/state";
@@ -124,7 +123,6 @@ fetch(configFile).then(r => {
                         case 'daemon': processDaemonInfo(i, node, data); break;
                         case 'version': processVersion(i, node, data); break;
                         case 'rewards': processRewards(i, node, data); break;
-                        case 'explorer': processExplorer(i, node, data); break;
                         case 'responseTime': processResponse(i, node, data); break;
                         case 'welcome': console.log(data); break;
                         //default: console.log(action, data)

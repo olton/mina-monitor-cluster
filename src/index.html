@@ -16,14 +16,15 @@
                     <div data-role="panel" data-title-caption="UPTIME TRACKER">
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
-                                <div id="uptime-position" class="big-value">0</div>
-                                <div id="uptime-position-range" class="text-small mb-2">0 .. 0</div>
+                                <span class="mif-chart-line mif-2x"></span>
+                                <div id="uptime-position" class="mt-2 big-value">0</div>
+                                <div id="uptime-position-range" class="text-small">0 .. 0</div>
                                 <div class="text-small fg-normal">
                                     <span class="text-muted">position</span>
                                 </div>
-                                <div id="position-icon" class="mif-infinite"></div>
                             </div>
                             <div class="cell-9 text-center">
+                                <div id="position-icon" class="mif-infinite position-icon"></div>
                                 <div id="uptime-key" class="big-value">0</div>
                                 <div class="text-center text-muted text-small mb-2">tracked address</div>
                                 <div class="row pt-1 border-top bd-system">
@@ -69,6 +70,7 @@
                             </div>
                             <div class="cell-3 border-left bd-system">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <span class="mif-alarm-on mif-2x"></span>
                                     <div class="text-small fg-normal text-center pt-1">
                                         <span class=" text-muted">speed</span>
                                     </div>
@@ -106,6 +108,7 @@
                             </div>
                             <div class="cell-4 border-left bd-system text-center">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <span class="mif-coins mif-2x"></span>
                                     <div class="fg-noraml text-small border-bottom bd-system pb-1">
                                         <div class="text-muted">hi - low</div>
                                         <span id="price-high">0</span>&nbsp;-&nbsp;<span id="price-low">0</span>
@@ -129,13 +132,14 @@
                             <div>
                                 <div class="row pt-1 border-top bd-system">
                                     <div class="cell-6 text-center p-0">
+                                        <span class="mif-unlock unlocked-balance-icon"></span>
                                         <div id="balance-liquid" class="big-value-2 fg-accent">0</div>
                                         <div class="text-small fg-normal w-100 mt-1-minus">
                                             <span class="text-muted">liquid</span>
                                         </div>
                                     </div>
                                     <div class="cell-6 border-left bd-system text-center p-0">
-                                        <span class="mif-lock producer-work"></span>
+                                        <span class="mif-lock locked-balance-icon"></span>
                                         <div id="balance-locked" class="big-value-2 fg-accent">0</div>
                                         <div class="text-small fg-normal w-100 mt-1-minus">
                                             <span class="text-muted">locked</span>

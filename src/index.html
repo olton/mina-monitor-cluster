@@ -50,6 +50,18 @@
                     <!-- Blockchain -->
                     <div data-role="panel" data-title-caption="BLOCKCHAIN">
                         <div class="row m-0">
+                            <div class="cell-3 border-right bd-system">
+                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <span class="mif-alarm-on mif-2x"></span>
+                                    <div class="text-small fg-normal text-center pt-1">
+                                        <span class=" text-muted">speed</span>
+                                    </div>
+                                    <div id="block-speed" class="text-center big-value-2">0</div>
+                                    <div class="text-small fg-normal text-center pt-1">
+                                        <span class=" text-muted">min/block</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="cell-9 text-center">
                                 <div id="block-height" class="big-value">0</div>
                                 <div class="text-small text-muted mb-2">block height</div>
@@ -68,18 +80,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cell-3 border-left bd-system">
-                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-                                    <span class="mif-alarm-on mif-2x"></span>
-                                    <div class="text-small fg-normal text-center pt-1">
-                                        <span class=" text-muted">speed</span>
-                                    </div>
-                                    <div id="block-speed" class="text-center big-value-2">0</div>
-                                    <div class="text-small fg-normal text-center pt-1">
-                                        <span class=" text-muted">min/block</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,20 @@
                     <!-- Price -->
                     <div data-role="panel" data-title-caption="PRICE">
                         <div class="row m-0">
-                            <div class="cell-8 text-center">
+                            <div class="cell-3 border-right bd-system text-center">
+                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
+                                    <span class="mif-coins mif-2x"></span>
+                                    <div class="fg-normal text-small border-bottom bd-system pb-1">
+                                        <div class="text-muted">hi - low</div>
+                                        <span id="price-high">0</span>&nbsp;-&nbsp;<span id="price-low">0</span>
+                                    </div>
+                                    <div id="mina-price" class="big-value-2">0</div>
+                                    <div class="fg-normal">
+                                        <span id="mina-price-currency">usd</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-9 text-center">
                                 <div id="balance-in-currency" class="big-value">0</div>
                                 <div class="text-center text-small text-muted mb-2">balance cost</div>
                                 <div class="row pt-1 border-top bd-system">
@@ -103,19 +116,6 @@
                                         <div class="text-small fg-normal w-100 mt-1-minus">
                                             <span class="text-muted">change %</span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell-4 border-left bd-system text-center">
-                                <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-                                    <span class="mif-coins mif-2x"></span>
-                                    <div class="fg-noraml text-small border-bottom bd-system pb-1">
-                                        <div class="text-muted">hi - low</div>
-                                        <span id="price-high">0</span>&nbsp;-&nbsp;<span id="price-low">0</span>
-                                    </div>
-                                    <div id="mina-price" class="big-value-2">0</div>
-                                    <div class="fg-normal">
-                                        <span id="mina-price-currency">usd</span>
                                     </div>
                                 </div>
                             </div>
@@ -361,20 +361,20 @@
                                 </div>
                                 <div class="text-center h-33">
                                     <div class="used-mem text-bold"></div>
-                                    <div class="reduce-3 total-muted mt-1">%&nbsp; used</div>
+                                    <div class="reduce-3 total-muted mt-1"><div>%</div>used</div>
                                 </div>
                                 <div class="text-center h-33">
                                     <div class="free-mem text-bold"></div>
-                                    <div class="reduce-3 total-muted mt-1">GiB free</div>
+                                    <div class="reduce-3 total-muted mt-1"><div>GiB</div>free</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row flex-justify-center text-small text-muted">
                             <span class="mr-1">MEM</span>
-                            <span class="mif-memory mif-2x" title="Node Memory Usage"></span>&nbsp;<span
-                                class="text-bold fg-accent node-mem">0</span>&nbsp;GiB&nbsp;&nbsp;
-                            <span class="mif-eye mif-2x" title="Process Memory Usage"></span>&nbsp;<span
-                                class="text-bold fg-accent process-mem">0</span>&nbsp;Mb
+                            <span class="mif-memory mif-2x" title="Node Memory Usage"></span>
+                            <span class="text-bold fg-accent node-mem">0</span><span class="ml-1 mr-">GiB</span>
+                            <span class="mif-eye mif-2x ml-1 mr-1" title="Process Memory Usage"></span>
+                            <span class="text-bold fg-accent process-mem">0</span><span class="ml-1 mr-1">Mb</span>
                         </div>
                     </div>
 
@@ -392,11 +392,11 @@
                                 </div>
                                 <div class="text-center h-33">
                                     <div class="cpu-load text-bold"></div>
-                                    <div class="reduce-3 total-muted mt-1">%&nbsp; used</div>
+                                    <div class="reduce-3 total-muted mt-1"><div>%</div>used</div>
                                 </div>
                                 <div class="text-center h-33">
                                     <div class="cpu-temp text-bold"></div>
-                                    <div class="reduce-3 total-muted mt-1">&#8451; temp</div>
+                                    <div class="reduce-3 total-muted mt-1"><div>&#8451;</div>temp</div>
                                 </div>
                             </div>
                         </div>

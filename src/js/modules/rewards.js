@@ -17,7 +17,7 @@ export const updateRewards = () => {
     const coinbaseSupercharge = config.coinbase.supercharge
     let blocks = state.rewards
     let rewards = blocks.reduce((acc, val)=>acc + parseInt(val.transactions.coinbase), 0)
-    let supercharge = 0
+    let supercharge = 0, zero = 0
     let superchargeMina = 0
 
     for(let b of blocks) {
@@ -26,10 +26,15 @@ export const updateRewards = () => {
             supercharge++
             superchargeMina += coinbase - coinbaseRegular
         }
+
+        if (!coinbase) {
+            zero++
+        }
     }
 
     $("#blocks-in-epoch").html(blocks.length)
     $("#rewards-in-epoch").html(rewards / 10**9)
     $("#supercharge-count").html(supercharge)
     $("#supercharge-mina").html(superchargeMina)
+    $("#zero-count").html(zero)
 }

@@ -13,8 +13,8 @@ export const processRewards = (i, node, data) => {
 export const updateRewards = () => {
     if (!state.rewards) return
 
-    const coinbaseRegular = config.coinbase.regular
-    const coinbaseSupercharge = config.coinbase.supercharge
+    const {coinbaseRegular = 720, coinbaseSupercharge = 1440} = config.coinbase
+
     let blocks = state.rewards
     let rewards = blocks.reduce((acc, val)=>acc + parseInt(val.transactions.coinbase), 0)
     let supercharge = 0, zero = 0

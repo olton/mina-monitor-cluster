@@ -7,7 +7,6 @@ export const processRewards = (i, node, data) => {
 
     if (daemons[i]["state"] === "SYNCED") {
         state.rewards = data.data.blocks
-        console.log(state.rewards)
     }
 }
 

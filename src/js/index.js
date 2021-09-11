@@ -37,6 +37,7 @@ globalThis.charts = []
 globalThis.state = null
 globalThis.darkMode = null
 globalThis.wsc = []
+globalThis.daemons = []
 
 fetch(configFile).then(r => {
     if (!r.ok) {
@@ -69,6 +70,10 @@ fetch(configFile).then(r => {
 
     $.each(nodes, (i, node) => {
         let elNodePanel, template, clone
+
+        daemons[i] = {
+            state: "UNKNOWN"
+        }
 
         charts[i] = {
             cpuChart: null,
@@ -140,13 +145,17 @@ fetch(configFile).then(r => {
             }
 
             ws.onclose = event => {
-                $(`#node-${i+1} .node-load-status`).html(IMG_STOP)
+                $(`#node-${i+1} .node-load-status`)
+                    .removeClass("label-success")
+                    .addClass("label-alert")
                 console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
                 setTimeout(connect, 1000)
             }
 
             ws.onopen = event => {
-                $(`#node-${i+1} .node-load-status`).html(IMG_OK)
+                $(`#node-${i+1} .node-load-status`)
+                    .removeClass("label-alert")
+                    .addClass("label-success")
             }
 
             globalThis.wsc.push(ws)

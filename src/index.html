@@ -170,7 +170,7 @@
                                 <div class="cell-9 border-left bd-system">
                                     <div class="text-center">
                                         <div class="text-muted text-small">time left</div>
-                                        <div id="epoch-countdown"></div>
+                                        <div id="epoch-countdown"><div class="countdown">calculating...</div></div>
                                         <div class="end-epoch-text fg-accent text-center text-small border-top bd-system mt-1 pt-1"></div>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="delegators-total" class="big-value">0</div>
                                     <div class="text-small fg-normal">
-                                        <span id="delegators-stack" class="fg-accent text-center text-bold">0</span>
+                                        <span id="delegators-stack" class="big-value-2">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">current</span>
@@ -198,7 +198,7 @@
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="delegators-total-next" class="big-value">0</div>
                                     <div class="text-small fg-normal">
-                                        <span id="delegators-stack-next" class="fg-accent text-center text-bold">0</span>
+                                        <span id="delegators-stack-next" class="big-value-2">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">next</span>
@@ -214,17 +214,27 @@
                     <div data-role="panel" data-title-caption="REWARDS IN EPOCH">
                         <div class="row h-100">
                             <div class="cell-6">
-                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="blocks-in-epoch" class="big-value h-100">0</div>
-                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
+                                <div class="d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="blocks-in-epoch" class="big-value h-100" title="Total won blocks">0</div>
+
+                                    <div class="border-top bd-systm">
+                                        <span id="supercharge-count" class="big-value-2" title="Supercharge blocks">0</span>
+                                    </div>
+
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">blocks</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="cell-6 border-left bd-system">
-                                <div class="h-100 d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="rewards-in-epoch" class="big-value h-100">0</div>
-                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-auto">
+                                <div class="d-flex flex-justify-center flex-align-center flex-column">
+                                    <div id="rewards-in-epoch" class="big-value h-100" title="Total won mina">0</div>
+
+                                    <div class="border-top bd-systm">
+                                        <span id="supercharge-mina" class="big-value-2" title="Supercharged mina">0</span>
+                                    </div>
+
+                                    <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">mina</span>
                                     </div>
                                 </div>
@@ -257,8 +267,9 @@
     <!-- End of General info -->
 
     <template id="node-template">
-        <span class='node-load-status'></span>
-        <span class='mif-eye'></span>
+        <span class='node-load-status label-alert'>
+            <span class="mif-wifi-connect"></span>
+        </span>
         <div class="panel" data-role="panel">
             <div class="d-flex flex-column">
                 <div class="row node-info-general border bd-system">

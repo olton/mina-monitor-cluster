@@ -1,3 +1,5 @@
+import {SYNC_STATE_SYNCED, SYNC_STATE_UNKNOWN} from "../helpers/consts";
+
 export const processState = (i, node, data) => {
     if (!data) return
 
@@ -13,9 +15,13 @@ export const processState = (i, node, data) => {
 
     elSyncStatus.html(data)
 
-    if (data === 'UNKNOWN') {
+    daemons[i]["state"] = data
+
+    if (data === SYNC_STATE_UNKNOWN) {
         elPanel.addClass("disabled")
-    } else if (data !== 'SYNCED' && data !== 'UNKNOWN') {
-        elStateFrame.addClass(data)
+    } else {
+        if (data !== SYNC_STATE_SYNCED) {
+            elStateFrame.addClass(data)
+        }
     }
 }

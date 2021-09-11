@@ -3,10 +3,8 @@ export const processServerInfo = (i, node, data) => {
     const {hostname, osVersion, platform, release, type, version} = data
     const id = `#node-${i+1}`
     const elOsInfo = $(`${id} .os-info`)
-    const elHostname = $(`${id} > .panel > .panel-title > .caption`)
 
     elOsInfo.html(osVersion)
-    elHostname.html(hostname.split(".")[0])
 }
 
 export const processServerCpu = (i, node, data) => {

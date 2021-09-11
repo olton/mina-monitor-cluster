@@ -6,3 +6,10 @@ export const IMG_STOP = `<span class="mif-stop label-alert">`
 export const IMG_OK = `<span class="mif-checkmark label-success">`
 export const INFINITE = `<span class="mif-infinite"></span>`
 export const MSG_CONFIG_READ_ERROR = "Config file read error!"
+
+export const SYNC_STATE_BOOTSTRAP = 'BOOTSTRAP'
+export const SYNC_STATE_CATCHUP = 'CATCHUP'
+export const SYNC_STATE_OFFLINE = 'OFFLINE'
+export const SYNC_STATE_SYNCED = 'SYNCED'
+export const SYNC_STATE_CONNECTING = 'CONNECTING'
+export const SYNC_STATE_UNKNOWN = 'UNKNOWN'

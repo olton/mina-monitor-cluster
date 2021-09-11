@@ -1,15 +1,30 @@
 import {isset} from "../helpers/utils";
-import {GENESIS_START, SLOT_DURATION} from "../helpers/consts";
+import {GENESIS_START, SLOT_DURATION, SYNC_STATE_SYNCED} from "../helpers/consts";
 
 export const processBalance = (i, node, data) => {
     if (!data) return
     if (!isset(data.data.account, false)) return
 
     const {balance, timing} = data.data.account
+    const {total, blockHeight} = balance
 
-    if (!state.balance.total || (balance.total !== state.balance.total) ) {
+    const setState = () => {
         state.balance = balance
         state.timing = timing
+    }
+
+    if (!state.balance.total) {
+        setState()
+    } else {
+        if (state.blockchain && state.blockchain.blockHeight) {
+            if (state.blockchain.blockHeight <= blockHeight) {
+                setState()
+            }
+        } else {
+            if (daemons[i].state === SYNC_STATE_SYNCED && state.balance.total !== total) {
+                setState()
+            }
+        }
     }
 }
 

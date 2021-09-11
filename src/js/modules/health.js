@@ -6,7 +6,7 @@ export const processHealth = (i, node, data) => {
     const elNodeHealthParent = $(`${id} .node-sync-status-container`)
     const ok = data.length === 0
 
-    elNodeHealthParent.removeClass("alert")
+    elNodeHealthParent.removeClass("alert success")
     if (ok) {
         elNodeHealth.html("OK")
     } else {

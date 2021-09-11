@@ -6,6 +6,7 @@
 + [x] Config parameters `price:*`, `intervals:*`, `blockDiff`, `timesToSwitchNode` deprecated
 + [x] To set using host via `HTTPS/WSS` use parameter `https` instead of `secure` in `nodes`
 + [x] Added supercharge info to rewards
++ [x] Added config parameters `coinbase:regular`, `coinbase:supercharge` 
 
 ### 1.0.4
 + [x] Increased chart size to 100 points

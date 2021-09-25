@@ -3,13 +3,19 @@ import {isset} from "../helpers/utils";
 export const processMinaPrice = (i, node, data) => {
     if (!data || !isset(data[0], false)) return
 
-    state.price = data[0]
+    if (!Array.isArray(data)) return
+
+    const price = data[0]
+
+    if (!state.price || datetime(state.price.last_updated).time() < datetime(price.last_updated).time()) {
+        state.price = price
+    }
 }
 
 export const updatePrice = () => {
     if (!state.price) return
 
-    const {current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = state.price
+    const {last_updated, current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = state.price
     const elCurrentPrice = $("#current-price")
     const elCurrency = $("#currency")
     const elPriceChange = $("#price-change")
@@ -18,6 +24,7 @@ export const updatePrice = () => {
     const elPriceArrow = $("#price-arrow")
     const elMinaPrice = $("#mina-price")
     const elMinaPriceCurrency = $("#mina-price-currency")
+    const elPriceUpdated = $("#price-updated")
 
     const priceDelta = +(price_change_24h).toFixed(2)
     const priceDeltaSign = priceDelta > 0 ? "+" : "";
@@ -25,6 +32,7 @@ export const updatePrice = () => {
     const symbol = priceDelta === 0.00 ? `` : `<span class="ani-vertical mif-${+price_change_percentage_24h < 0 ? 'arrow-down fg-red' : 'arrow-up fg-green'}"></span>`
     const priceChange = `<span class="${priceDeltaColor}">${+(price_change_percentage_24h).toFixed(2)}%</span>`
     const totalSupply = +(total_supply).toFixed(0)
+    const lastUpdated = datetime(last_updated)
 
     elMinaPrice.html(`${current_price}`)
     elMinaPriceCurrency.html(currency.toUpperCase())
@@ -33,6 +41,7 @@ export const updatePrice = () => {
     elPriceChange.html(`${priceChange}`)
     elPriceHigh.html(+(ath).toFixed(2))
     elPriceLow.html(+(atl).toFixed(2))
+    elPriceUpdated.html(lastUpdated.format("DD-MM-YYYY HH:mm:ss"))
 
     elPriceArrow.html(`<span class="fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
 }

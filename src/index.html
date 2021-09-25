@@ -52,13 +52,17 @@
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-                                    <span class="mif-alarm-on mif-2x"></span>
+<!--                                    <span class="mif-alarm-on mif-2x"></span>-->
                                     <div class="text-small fg-normal text-center pt-1">
-                                        <span class=" text-muted">speed</span>
+                                        <span class=" text-muted">SPEED</span>
                                     </div>
                                     <div id="block-speed" class="text-center big-value-2">0</div>
-                                    <div class="text-small fg-normal text-center pt-1">
+                                    <div class="text-small fg-normal text-center">
                                         <span class=" text-muted">min/block</span>
+                                    </div>
+                                    <div id="block-speed-slot" class="text-center big-value-2">0</div>
+                                    <div class="text-small fg-normal text-center">
+                                        <span class=" text-muted">slots/block</span>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +90,7 @@
 
                 <div class="cell-md-6 cell-lg-6 cell-xl-3">
                     <!-- Price -->
-                    <div data-role="panel" data-title-caption="PRICE">
+                    <div data-role="panel" data-title-caption="MINA PRICE">
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
@@ -101,21 +105,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cell-9 text-center">
+                            <div class="cell-9 text-center p-0">
                                 <div id="balance-in-currency" class="big-value">0</div>
                                 <div class="text-center text-small text-muted mb-2">balance cost</div>
                                 <div class="row pt-1 border-top bd-system">
-                                    <div class="cell-6 text-center">
+                                    <div class="cell-6 text-center p-0">
                                         <span id="price-arrow" class="big-value-2">0</span>
                                         <div class="text-small fg-normal w-100 mt-1-minus">
                                             <span class="text-muted">change 24h</span>
                                         </div>
                                     </div>
-                                    <div class="cell-6 border-left bd-system text-center">
+                                    <div class="cell-6 border-left bd-system text-center p-0">
                                         <span id="price-change" class="big-value-2">0%</span>
                                         <div class="text-small fg-normal w-100 mt-1-minus">
                                             <span class="text-muted">change %</span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="border-top bd-system mt-1 pt-1">
+                                    <div class="text-small">
+                                        <span class="text-muted mr-1">last updated at</span>
+                                        <span id="price-updated" class="fg-accent">...</span>
                                     </div>
                                 </div>
                             </div>

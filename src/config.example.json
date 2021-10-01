@@ -1,31 +1,26 @@
 {
-    "theme": "auto",
     "nodes": [
         {
-            "name": "server1",
-            "host": "127.0.0.1:8000",
-            "secure": false
+            "name": "Alpha",
+            "host": "host1:8000",
+            "https": false
         },
         {
-            "name": "server2",
-            "host": "127.0.0.2:8000",
-            "secure": false
+            "name": "Beta",
+            "host": "host2:8000",
+            "https": false
         },
         {
-            "name": "server3",
-            "host": "127.0.0.3:8000",
-            "secure": false
+            "name": "Gamma",
+            "host": "host3:8000",
+            "https": false
         }
     ],
-    "intervals": {
-        "system": 60000,
-        "daemon": 15000,
-        "resources": 2000
-    },
-    "price": {
-        "currency": "usd",
-        "update_interval": 60000
-    },
-    "blockDiff": 2,
-    "timesToSwitchNode": 12
+    "theme": "auto",
+    "chartLabels": false,
+    "precision": 4,
+    "coinbase": {
+        "regular": 720,
+        "supercharge": 1440
+    }
 }

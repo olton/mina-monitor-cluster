@@ -32,6 +32,10 @@ export const updateUptime = () => {
             icon = 'bin'
         }
 
+        if (positions.length === 0) {
+            positions = [0,0]
+        }
+
         elUptimePosition.text(position).removeClassBy("label-").addClass(`label-${color}`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         elUptimeRate.text((parseFloat(rate)) + "%")

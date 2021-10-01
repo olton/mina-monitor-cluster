@@ -6,14 +6,14 @@
 
     <title></title>
 </head>
-<body>
+<body class="m4-cloak">
     <!-- General info -->
     <div class="container-fluid">
         <div id="general-info-container">
             <div class="row">
                 <div class="cell-md-6 cell-lg-6 cell-xl-3">
                     <!-- Uptime -->
-                    <div data-role="panel" data-title-caption="UPTIME TRACKER">
+                    <div data-role="panel" data-title-caption="UPTIME LEADERBOARD">
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
                                 <span class="mif-chart-line mif-2x"></span>
@@ -94,7 +94,10 @@
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-                                    <span class="mif-coins mif-2x"></span>
+<!--                                    <span class="mif-coins mif-2x"></span>-->
+                                    <div class="text-small fg-normal text-center pt-1">
+                                        <span class=" text-muted">COST</span>
+                                    </div>
                                     <div class="fg-normal text-small border-bottom bd-system pb-1">
                                         <div class="text-muted">hi - low</div>
                                         <span id="price-high">0</span>&nbsp;-&nbsp;<span id="price-low">0</span>
@@ -124,8 +127,7 @@
                                 </div>
                                 <div class="border-top bd-system mt-1 pt-1">
                                     <div class="text-small">
-                                        <span class="text-muted mr-1">last updated at</span>
-                                        <span id="price-updated" class="fg-accent">...</span>
+                                        <span id="price-updated" class="fg-accent text-bold">...</span>
                                     </div>
                                 </div>
                             </div>

@@ -48,24 +48,28 @@ Create config file `config.json` in the `src` folder. Below you can see example 
 {
     "nodes": [
         {
-            "name": "server1",
-            "host": "ip_address:port",
-            "secure": false
+            "name": "Alpha",
+            "host": "host1:8000",
+            "https": false
         },
         {
-            "name": "server2",
-            "host": "ip_address:port",
-            "secure": false
+            "name": "Beta",
+            "host": "host2:8000",
+            "https": false
         },
         {
-            "name": "server3",
-            "host": "ip_address:port",
-            "secure": false
+            "name": "Gamma",
+            "host": "host3:8000",
+            "https": false
         }
     ],
-    "theme": "dark",
+    "theme": "auto",
     "chartLabels": false,
-    "precision": 4
+    "precision": 4,
+    "coinbase": {
+        "regular": 720,
+        "supercharge": 1440
+    }
 }
 ```
 

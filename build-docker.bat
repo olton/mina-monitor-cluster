@@ -1,0 +1,1 @@
+docker build -t olton/mina-monitor-cluster:%1 -t olton/mina-monitor-cluster:latest .

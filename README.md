@@ -106,7 +106,7 @@ or create text file `config.json` in the `src` folder manually. Below you can se
 }
 ```
 
-In the `host` property you must define addresses of the Mina Monitor Server interfaces.
+> In the `host` property you must define addresses of the Mina Monitor Server interfaces.
 
 Run Monitor
 ```shell

@@ -47,6 +47,12 @@ curl -s https://raw.githubusercontent.com/olton/scripts/master/mina/monitor/clus
 
 ***Important! If you need to specify the target folder, you must indicate a branch or tag.***
 
+### Run
+To run client:
+```shell
+npm start
+```
+
 ### Install via Docker
 
 To install Server via Docker, please read [DOCKER.md](DOCKER.md)
@@ -64,7 +70,13 @@ cd mina-monitor-cluster
 npm install
 ```
 
-Create config file `config.json` in the `src` folder. Below you can see example of the `config`:
+### Create config file
+To create config file with default parameters, you can run:
+```shell
+node src/start --no-start
+```
+
+or create text file `config.json` in the `src` folder manually. Below you can see example of the `config`:
 ```json
 {
     "nodes": [

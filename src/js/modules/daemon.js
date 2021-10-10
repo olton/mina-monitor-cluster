@@ -16,6 +16,8 @@ export const processDaemonInfo = (i, node, daemon) => {
     const elProducerCog = $(`${id} .producer-work`)
     const elSnarkWorkerCog = $(`${id} .snark-worker-work`)
     const elBlockHeightContainer = $(`${id} .block-height-container`)
+    const elCopyAddress = $(`${id} .copy-address`)
+    const elCopyAddressSW = $(`${id} .copy-sw-address`)
 
     const badStates = ['BOOTSTRAP', 'OFFLINE', 'CONNECTING']
 
@@ -89,9 +91,10 @@ export const processDaemonInfo = (i, node, daemon) => {
     }
 
     if (blockProductionKeys && blockProductionKeys.length) {
+        elCopyAddress.attr("data-name", blockProductionKeys[0])
         elProducerCog.addClass("ani-spin")
         elBlockProducer
-            .html(shortAddress(blockProductionKeys[0]))
+            .html(`<a class="fg-accent no-decor" target="_blank" href="https://mina.staketab.com/validator/${blockProductionKeys[0]}">${shortAddress(blockProductionKeys[0])}</a>`)
             .attr("title", blockProductionKeys[0])
             .attr("data-name", blockProductionKeys[0])
     } else {
@@ -99,9 +102,10 @@ export const processDaemonInfo = (i, node, daemon) => {
     }
 
     if (snarkWorker) {
+        elCopyAddressSW.attr("data-name", snarkWorker)
         elSnarkWorkerCog.addClass("ani-spin")
         elSnarkWorker
-            .html(shortAddress(snarkWorker))
+            .html(`<a class="fg-accent no-decor" target="_blank" href="https://mina.staketab.com/validator/${snarkWorker}>${shortAddress(snarkWorker)}</a>`)
             .attr("data-name", snarkWorker)
     } else {
         elSnarkWorker.html("NONE")

@@ -164,7 +164,7 @@ fetch(configFile).then(r => {
         connect()
     })
 
-    $(document).on("click", ".block-producer, .snark-work, .donate-address", function() {
+    $(document).on("click", ".block-producer, .snark-work, .donate-address, .copy-address", function() {
         const val = $(this).attr("data-name")
         if (val) copy2clipboard(val)
     })

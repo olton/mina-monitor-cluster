@@ -1,3 +1,6 @@
+### 2.0.1
++ [x] Added link for addresses to StakeTab Validator Dashboard
+
 ### 2.0.0
 + [x] Changed protocol to websocket
 + [x] Improved **price** visualization

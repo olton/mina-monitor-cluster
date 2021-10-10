@@ -40,7 +40,7 @@ export const updateUptime = () => {
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         elUptimeRate.text((parseFloat(rate)) + "%")
         elUptimeScore.text(Number(score).format(0, null, " ", "."))
-        elUptimeAddress.html("<span class='reduce-1'>"+shortAddress(address.trim())+"</span>")
+        elUptimeAddress.html(`<a target="_blank" href="https://mina.staketab.com/validator/${address.trim()}" class='no-decor big-value reduce-1'>${shortAddress(address.trim())}</a>`)
         elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)
     } else {
         elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)

@@ -16,27 +16,29 @@
                     <div data-role="panel" data-title-caption="UPTIME LEADERBOARD">
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
-                                <span class="mif-chart-line mif-2x"></span>
+                                <div class="text-small fg-normal text-center">
+                                    <span class=" text-muted">TABLE</span>
+                                </div>
                                 <div id="uptime-position" class="mt-2 big-value">0</div>
                                 <div id="uptime-position-range" class="text-small">0 .. 0</div>
-                                <div class="text-small fg-normal">
+                                <div class="text-small fg-normal mt-1">
                                     <span class="text-muted">position</span>
                                 </div>
                             </div>
                             <div class="cell-9 text-center">
                                 <div id="position-icon" class="mif-infinite position-icon"></div>
                                 <div id="uptime-key" class="big-value">0</div>
-                                <div class="text-center text-muted text-small mb-2">tracked address</div>
-                                <div class="row pt-1 border-top bd-system">
+                                <div class="text-center text-muted text-small">tracked address</div>
+                                <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6 text-center">
                                         <div id="uptime-score" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal mt-1-minus">
+                                        <div class="text-small fg-normal">
                                             <span class="text-muted">score</span>
                                         </div>
                                     </div>
                                     <div class="cell-6 border-left bd-system text-center">
                                         <div id="uptime-rate" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal mt-1-minus">
+                                        <div class="text-small fg-normal">
                                             <span class="text-muted">rate</span>
                                         </div>
                                     </div>
@@ -52,8 +54,7 @@
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-<!--                                    <span class="mif-alarm-on mif-2x"></span>-->
-                                    <div class="text-small fg-normal text-center pt-1">
+                                    <div class="text-small fg-normal text-center mt-1-minus">
                                         <span class=" text-muted">SPEED</span>
                                     </div>
                                     <div id="block-speed" class="text-center big-value-2">0</div>
@@ -68,17 +69,17 @@
                             </div>
                             <div class="cell-9 text-center">
                                 <div id="block-height" class="big-value">0</div>
-                                <div class="text-small text-muted mb-2">block height</div>
-                                <div class="row pt-1 border-top bd-system">
+                                <div class="text-small text-muted">block height</div>
+                                <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6">
                                         <div id="slot-number" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                        <div class="text-small fg-normal w-100">
                                             <span class="text-muted">slot</span>
                                         </div>
                                     </div>
                                     <div class="cell-6 border-left bd-system">
                                         <div id="slot-since-genesis" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                        <div class="text-small fg-normal w-100">
                                             <span class="text-muted">total slots</span>
                                         </div>
                                     </div>
@@ -94,8 +95,7 @@
                         <div class="row m-0">
                             <div class="cell-3 border-right bd-system text-center">
                                 <div class="d-flex flex-justify-around flex-align-center flex-column h-100">
-<!--                                    <span class="mif-coins mif-2x"></span>-->
-                                    <div class="text-small fg-normal text-center pt-1">
+                                    <div class="text-small fg-normal text-center mt-1-minus">
                                         <span class=" text-muted">COST</span>
                                     </div>
                                     <div class="fg-normal text-small border-bottom bd-system pb-1">
@@ -111,16 +111,16 @@
                             <div class="cell-9 text-center p-0">
                                 <div id="balance-in-currency" class="big-value">0</div>
                                 <div class="text-center text-small text-muted">balance cost</div>
-                                <div class="row pt-1 border-top bd-system">
+                                <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6 text-center p-0">
                                         <span id="price-arrow" class="big-value-2">0</span>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                        <div class="text-small fg-normal w-100">
                                             <span class="text-muted">change 24h</span>
                                         </div>
                                     </div>
                                     <div class="cell-6 border-left bd-system text-center p-0">
                                         <span id="price-change" class="big-value-2">0%</span>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
+                                        <div class="text-small fg-normal w-100">
                                             <span class="text-muted">change %</span>
                                         </div>
                                     </div>
@@ -140,22 +140,20 @@
                     <div data-role="panel" data-title-caption="BALANCE">
                         <div class="text-center">
                             <div id="balance-total" class="big-value">0</div>
-                            <div class="text-small text-muted">tracked balance</div>
-                            <div>
-                                <div class="row pt-1 border-top bd-system">
-                                    <div class="cell-6 text-center p-0">
-                                        <span class="mif-unlock unlocked-balance-icon"></span>
-                                        <div id="balance-liquid" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
-                                            <span class="text-muted">liquid</span>
-                                        </div>
+                            <div class="text-small text-muted">balance state</div>
+                            <div class="row pt-1 border-top bd-system mt-1">
+                                <div class="cell-6 text-center p-0">
+                                    <span class="mif-unlock unlocked-balance-icon"></span>
+                                    <div id="balance-liquid" class="big-value-2 fg-accent">0</div>
+                                    <div class="text-small fg-normal w-100">
+                                        <span class="text-muted">liquid</span>
                                     </div>
-                                    <div class="cell-6 border-left bd-system text-center p-0">
-                                        <span class="mif-lock locked-balance-icon"></span>
-                                        <div id="balance-locked" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal w-100 mt-1-minus">
-                                            <span class="text-muted">locked</span>
-                                        </div>
+                                </div>
+                                <div class="cell-6 border-left bd-system text-center p-0">
+                                    <span class="mif-lock locked-balance-icon"></span>
+                                    <div id="balance-locked" class="big-value-2 fg-accent">0</div>
+                                    <div class="text-small fg-normal w-100">
+                                        <span class="text-muted">locked</span>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +196,7 @@
                             <div class="cell-6">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="delegators-total" class="big-value">0</div>
-                                    <div class="text-small fg-normal">
+                                    <div class="text-small fg-normal mt-1">
                                         <span id="delegators-stack" class="big-value-2">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
@@ -209,7 +207,7 @@
                             <div class="cell-6 border-left bd-system">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="delegators-total-next" class="big-value">0</div>
-                                    <div class="text-small fg-normal">
+                                    <div class="text-small fg-normal mt-1">
                                         <span id="delegators-stack-next" class="big-value-2">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
@@ -229,7 +227,7 @@
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="blocks-in-epoch" class="big-value h-100" title="Total won blocks">0</div>
 
-                                    <div class="d-flex flex-justify-center flex-align-center flex-row w-100">
+                                    <div class="d-flex flex-justify-center flex-align-center flex-row w-100 mt-1">
                                         <span class="mif-star-full text-muted reduce-2"></span>
                                         <span id="supercharge-count" class="big-value-2 ml-2" title="Supercharge blocks">0</span>
                                         <span class="ml-2 mr-2">&nbsp;</span>
@@ -246,9 +244,10 @@
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
                                     <div id="rewards-in-epoch" class="big-value h-100" title="Total won mina">0</div>
 
-                                    <div class="d-flex flex-justify-center flex-align-center flex-row w-100">
+                                    <div class="d-flex flex-justify-center flex-align-center flex-row w-100 mt-1">
                                         <span class="mif-star-full text-muted reduce-2"></span>
                                         <span id="supercharge-mina" class="big-value-2 ml-2" title="Supercharged mina">0</span>
+                                        <span class="ml-2 mr-2">&nbsp;</span>
                                     </div>
 
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
@@ -312,7 +311,7 @@
                                 <div class="text-center node-health-container">
                                     <span class="mif-warning mif-2x fg-warning ani-flash"></span>
                                     <div class="node-sync-status big-value">NONE</div>
-                                    <div class="text-muted text-small mt-2-minus node-health">UNKNOWN</div>
+                                    <div class="text-muted text-small node-health">UNKNOWN</div>
                                     <div class="catchup-process catchup-process-left">
                                         <span class="mif-arrow-up"></span>
                                     </div>
@@ -330,7 +329,7 @@
                         </div>
                         <div class="row m-0 border-top bd-system">
                             <div class="cell-6 text-center">
-                                <span class="mif-copy copy-address" title="Click to copy address to clipboard"></span>
+                                <span class="mif-copy copy-bp-address" title="Click to copy address to clipboard"></span>
                                 <div class="block-producer reduce-2 text-bold">NONE</div>
                                 <div class="text-muted reduce-4">block producer</div>
                                 <span class="producer-work mif-cog"></span>

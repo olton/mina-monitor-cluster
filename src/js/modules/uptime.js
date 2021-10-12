@@ -1,4 +1,5 @@
 import {shortAddress} from "../helpers/utils";
+import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
 
 export const processUptime = (i, node, data) => {
     if (!data) return
@@ -10,6 +11,7 @@ export const updateUptime = () => {
     if (!state.uptime) return
 
     let {position, address, score, rate, group, positions} = state.uptime
+    let {explorer = ""} = config
 
     const elUptimePosition = $("#uptime-position")
     const elUptimePositionIcon = $("#position-icon")
@@ -36,11 +38,18 @@ export const updateUptime = () => {
             positions = [0,0]
         }
 
+        address = address.trim()
+
         elUptimePosition.text(position).removeClassBy("label-").addClass(`label-${color}`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         elUptimeRate.text((parseFloat(rate)) + "%")
         elUptimeScore.text(Number(score).format(0, null, " ", "."))
-        elUptimeAddress.html(`<a target="_blank" href="https://mina.staketab.com/validator/${address.trim()}" class='no-decor big-value reduce-1'>${shortAddress(address.trim())}</a>`)
+        elUptimeAddress.html(
+            $("<a>")
+                .addClass("big-value no-decor")
+                .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : STAKETAB_EXPLORER) + address)
+                .html(`<span class='reduce-1'>${shortAddress(address)}</span>`)
+        )
         elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)
     } else {
         elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)

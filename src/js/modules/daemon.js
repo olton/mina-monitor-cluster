@@ -1,4 +1,4 @@
-import {INFINITE} from "../helpers/consts";
+import {INFINITE, MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
 import {shortAddress} from "../helpers/utils";
 
 export const processDaemonInfo = (i, node, daemon) => {
@@ -16,7 +16,7 @@ export const processDaemonInfo = (i, node, daemon) => {
     const elProducerCog = $(`${id} .producer-work`)
     const elSnarkWorkerCog = $(`${id} .snark-worker-work`)
     const elBlockHeightContainer = $(`${id} .block-height-container`)
-    const elCopyAddress = $(`${id} .copy-address`)
+    const elCopyAddress = $(`${id} .copy-bp-address`)
     const elCopyAddressSW = $(`${id} .copy-sw-address`)
 
     const badStates = ['BOOTSTRAP', 'OFFLINE', 'CONNECTING']
@@ -35,12 +35,15 @@ export const processDaemonInfo = (i, node, daemon) => {
         snarkWorker,
         uptimeSecs
     } = daemon
+
     const {
         bindIp,
         clientPort,
         externalIp,
         libp2pPort
     } = addrsAndPorts
+
+    let {explorer = ""} = config
 
     const height = +blockchainLength
     const maxHeight = +highestBlockLengthReceived
@@ -91,26 +94,32 @@ export const processDaemonInfo = (i, node, daemon) => {
     }
 
     if (blockProductionKeys && blockProductionKeys.length) {
-        elCopyAddress.attr("data-name", blockProductionKeys[0])
         elProducerCog.addClass("ani-spin")
         elBlockProducer
-            .html(`<a class="fg-accent no-decor" target="_blank" href="https://mina.staketab.com/validator/${blockProductionKeys[0]}">${shortAddress(blockProductionKeys[0])}</a>`)
+            .html(
+                $("<a>")
+                    .addClass("no-decor fg-accent")
+                    .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : STAKETAB_EXPLORER) + blockProductionKeys[0] )
+                    .html(`${shortAddress(blockProductionKeys[0])}`)
+            )
             .attr("title", blockProductionKeys[0])
             .attr("data-name", blockProductionKeys[0])
+        elCopyAddress.show().attr("data-name", blockProductionKeys[0])
     } else {
         elBlockProducer.html("NONE")
+        elCopyAddress.hide()
     }
 
     if (snarkWorker) {
-        elCopyAddressSW.attr("data-name", snarkWorker)
         elSnarkWorkerCog.addClass("ani-spin")
         elSnarkWorker
-            .html(`<a class="fg-accent no-decor" target="_blank" href="https://mina.staketab.com/validator/${snarkWorker}>${shortAddress(snarkWorker)}</a>`)
+            .html(`${shortAddress(snarkWorker)}`)
             .attr("data-name", snarkWorker)
+        elCopyAddressSW.show().attr("data-name", snarkWorker)
     } else {
         elSnarkWorker.html("NONE")
+        elCopyAddressSW.hide()
     }
 
     elSnarkWorkerFee.html(snarkWorkFee / 10**9)
-
 }

@@ -1,5 +1,6 @@
 ### 2.0.1
-+ [x] Added link for addresses to StakeTab Validator Dashboard
++ [x] Added config parameter `explorer: "staketab"|"mina"`
++ [x] Added link for addresses to StakeTab Validator Dashboard or Mina Explorer, use config param `explorer`
 
 ### 2.0.0
 + [x] Changed protocol to websocket

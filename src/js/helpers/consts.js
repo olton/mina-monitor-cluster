@@ -13,3 +13,6 @@ export const SYNC_STATE_OFFLINE = 'OFFLINE'
 export const SYNC_STATE_SYNCED = 'SYNCED'
 export const SYNC_STATE_CONNECTING = 'CONNECTING'
 export const SYNC_STATE_UNKNOWN = 'UNKNOWN'
+
+export const STAKETAB_EXPLORER = `https://mina.staketab.com/validator/`
+export const MINA_EXPLORER = `https://minaexplorer.com/wallet/`

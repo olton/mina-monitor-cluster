@@ -58,6 +58,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1;
 
     .sub-value {
         color: var(--color-text);
@@ -391,12 +392,15 @@ body {
     padding: 4px 8px;
 }
 
-.copy-address, .copy-sw-address {
+.copy-bp-address, .copy-sw-address {
     position: absolute;
     top: 4px;
     left: 4px;
     cursor: pointer;
     z-index: 2;
+    width: 16px;
+    height: 16px;
+    display: block;
 }
 
 .CATCHUP .catchup-process-right,

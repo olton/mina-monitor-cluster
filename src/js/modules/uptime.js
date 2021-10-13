@@ -4,7 +4,8 @@ import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
 export const processUptime = (i, node, data) => {
     if (!data) return
 
-    state.uptime = data
+    if (!state.uptime || state.uptime.timestamp < data.timestamp)
+        state.uptime = data
 }
 
 export const updateUptime = () => {

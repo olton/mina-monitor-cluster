@@ -1,6 +1,7 @@
 ### 2.0.1
 + [x] Added config parameter `explorer: "staketab"|"mina"`
 + [x] Added link for addresses to StakeTab Validator Dashboard or Mina Explorer, use config param `explorer`
++ [x] Added a timestamp when the data was updated for uptime and blockchain data
 
 ### 2.0.0
 + [x] Changed protocol to websocket

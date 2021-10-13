@@ -10,6 +10,7 @@ export const processBlockchain = (i, node, data) => {
     const blockchain = data.data.bestChain[0].protocolState.consensusState
 
     if (!state.blockchain || (state.blockchain.blockHeight < blockchain.blockHeight)) {
+        blockchain.timestamp = datetime()
         state.blockchain = blockchain
     }
 }
@@ -24,12 +25,14 @@ export const updateBlockchain = ({resetCountdown = false}) => {
         blockHeight,
         epoch,
         slot,
-        slotSinceGenesis
+        slotSinceGenesis,
+        timestamp
     } = state.blockchain
 
     $("#slot-number").text(Number(slot).format(0, null, " ", "."))
     $("#slot-since-genesis").text(Number(slotSinceGenesis).format(0, null, " ", "."))
     $("#block-height").text(Number(blockHeight).format(0, null, " ", "."))
+    $("#blockchain-updated").html(timestamp.format("DD-MM-YYYY HH:mm"))
 
     const epochDurationProgress = (+slot * SLOT_DURATION * 100) / EPOCH_DURATION
     const progress = Metro.getPlugin('#epoch-number', 'donut')

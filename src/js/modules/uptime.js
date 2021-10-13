@@ -10,7 +10,7 @@ export const processUptime = (i, node, data) => {
 export const updateUptime = () => {
     if (!state.uptime) return
 
-    let {position, address, score, rate, group, positions} = state.uptime
+    let {position, address, score, rate, group, positions, timestamp} = state.uptime
     let {explorer = ""} = config
 
     const elUptimePosition = $("#uptime-position")
@@ -19,6 +19,7 @@ export const updateUptime = () => {
     const elUptimeScore = $("#uptime-score")
     const elUptimeAddress = $("#uptime-key")
     const elUptimeRange = $("#uptime-position-range")
+    const elUptimeUpdated = $("#uptime-updated")
 
     if (address) {
         let color = "neutral", icon = "infinite"
@@ -51,6 +52,7 @@ export const updateUptime = () => {
                 .html(`<span class='reduce-1'>${shortAddress(address)}</span>`)
         )
         elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)
+        elUptimeUpdated.html(datetime(timestamp*1000).format("DD-MM-YYYY HH:mm"))
     } else {
         elUptimePosition.html("<span class='mif-infinite'>").removeClassBy("label-").addClass(`label-normal`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-normal`).addClass(`mif-infinite`)
@@ -58,5 +60,6 @@ export const updateUptime = () => {
         elUptimeScore.text("NONE")
         elUptimeAddress.html("NONE")
         elUptimeRange.html(`0 .. 0`)
+        elUptimeUpdated.html(`no time`)
     }
 }

@@ -284,6 +284,11 @@ body {
 .rx-count {
     top: 70px;
 }
+
+.tx-chart, .rx-chart {
+    min-height: 65px;
+}
+
 .response-count {
     top: 80px;
 }
@@ -401,6 +406,15 @@ body {
     width: 16px;
     height: 16px;
     display: block;
+}
+
+.not-connected {
+    border: 1px solid red!important;
+    background-color: #efefef;
+
+    & > * {
+        opacity: .3!important;
+    }
 }
 
 .CATCHUP .catchup-process-right,

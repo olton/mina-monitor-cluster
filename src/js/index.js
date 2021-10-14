@@ -97,6 +97,7 @@ fetch(configFile).then(r => {
         template.content.querySelector(".panel").setAttribute("data-title-caption", node.name.toUpperCase())
         clone = document.importNode(template.content, true)
         elNodePanel[0].appendChild(clone)
+        elNodePanel.children(".panel").addClass("not-connected")
 
         const connect = () => {
             const ws = new WebSocket(`${node.https ? 'wss' : 'ws'}://${node.host}`)
@@ -145,6 +146,7 @@ fetch(configFile).then(r => {
             }
 
             ws.onclose = event => {
+                $(`#node-${i+1} > .panel`).addClass("not-connected")
                 $(`#node-${i+1} .node-load-status`)
                     .removeClass("label-success")
                     .addClass("label-alert")
@@ -153,9 +155,11 @@ fetch(configFile).then(r => {
             }
 
             ws.onopen = event => {
+                $(`#node-${i+1} > .panel`).removeClass("not-connected")
                 $(`#node-${i+1} .node-load-status`)
                     .removeClass("label-alert")
                     .addClass("label-success")
+                console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Connected to ', node.name);
             }
 
             globalThis.wsc.push(ws)

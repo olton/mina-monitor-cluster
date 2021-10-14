@@ -1,5 +1,6 @@
 import {isset} from "../helpers/utils";
 import {EPOCH_DURATION, GENESIS_START, SLOT_DURATION} from "../helpers/consts";
+import {disco} from "../helpers/disco";
 
 export const processBlockchain = (i, node, data) => {
     if (!data) return
@@ -20,6 +21,10 @@ export const updateBlockchain = ({resetCountdown = false}) => {
     if (!state.blockchain) return
 
     const elEpochCountdown = $("#epoch-countdown")
+    const elSlotNumber = $("#slot-number")
+    const elSlotsTotalNumber = $("#slot-since-genesis")
+    const elBlockHeight = $("#block-height")
+    const elBlockchainUpdated = $("#blockchain-updated")
 
     const {
         blockHeight,
@@ -29,10 +34,10 @@ export const updateBlockchain = ({resetCountdown = false}) => {
         timestamp
     } = state.blockchain
 
-    $("#slot-number").text(Number(slot).format(0, null, " ", "."))
-    $("#slot-since-genesis").text(Number(slotSinceGenesis).format(0, null, " ", "."))
-    $("#block-height").text(Number(blockHeight).format(0, null, " ", "."))
-    $("#blockchain-updated").html(timestamp.format("DD-MM-YYYY HH:mm"))
+    elSlotNumber.text(Number(slot).format(0, null, " ", "."))
+    elSlotsTotalNumber.text(Number(slotSinceGenesis).format(0, null, " ", "."))
+    elBlockHeight.text(Number(blockHeight).format(0, null, " ", "."))
+    elBlockchainUpdated.html(timestamp.format("DD-MM-YYYY HH:mm"))
 
     const epochDurationProgress = (+slot * SLOT_DURATION * 100) / EPOCH_DURATION
     const progress = Metro.getPlugin('#epoch-number', 'donut')

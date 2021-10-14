@@ -1,5 +1,6 @@
 import {shortAddress} from "../helpers/utils";
 import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
+import {disco} from "../helpers/disco";
 
 export const processUptime = (i, node, data) => {
     if (!data) return

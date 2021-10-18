@@ -3,8 +3,8 @@
     "version": "2.0.0",
     "license": "MIT",
     "scripts": {
-        "client": "shx rm -rf .output/* && parcel serve ./src/index.html --out-dir .output --target browser -p 2222",
-        "start": "shx rm -rf .output/* && parcel serve ./src/index.html --open --out-dir .output --target browser",
+        "client": "shx rm -rf .output/* && parcel serve ./src/index.html --out-dir .output -p 2222",
+        "start": "shx rm -rf .output/* && parcel serve ./src/index.html --open --out-dir .output",
         "prebuild": "shx rm -rf build/*",
         "build": "parcel build ./src/index.html --out-dir build --no-source-maps --public-url ."
     },

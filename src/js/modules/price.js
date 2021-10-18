@@ -42,7 +42,7 @@ export const updatePrice = () => {
     elPriceChange.html(`${priceChange}`)
     elPriceHigh.html(+(ath).toFixed(2))
     elPriceLow.html(+(atl).toFixed(2))
-    elPriceUpdated.html(lastUpdated.format("DD-MM-YYYY HH:mm:ss"))
+    elPriceUpdated.html(lastUpdated.format("DD-MM-YYYY HH:mm"))
 
     elPriceArrow.html(`<span class="fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
 }

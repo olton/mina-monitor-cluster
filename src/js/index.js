@@ -3,7 +3,7 @@ import "../vendor/metro4/css/metro-all.css"
 import "../css/index.less"
 import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
-import {IMG_OK, IMG_STOP, TITLE, MSG_CONFIG_READ_ERROR} from "./helpers/consts"
+import {TITLE, MSG_CONFIG_READ_ERROR} from "./helpers/consts"
 import {copy2clipboard} from "./helpers/utils";
 import {processServerCpu, processServerInfo, processServerTime} from "./modules/server-info";
 import {processCpuLoad, processCpuTemp} from "./modules/cpu";
@@ -24,7 +24,6 @@ import {processMinaPrice} from "./modules/price";
 import {processRewards} from "./modules/rewards";
 import {processNextBlock} from "./modules/next-block";
 import {processVersion} from "./modules/version";
-
 
 const version = `2.0.0`
 
@@ -130,8 +129,8 @@ fetch(configFile).then(r => {
                         case 'version': processVersion(i, node, data); break;
                         case 'rewards': processRewards(i, node, data); break;
                         case 'responseTime': processResponse(i, node, data); break;
-                        case 'welcome': console.log(data); break;
-                        //default: console.log(action, data)
+                        // case 'welcome': console.log(data); break;
+                        // default: console.log(action, data)
                     }
                 } catch (e) {
                     console.log(e.message)
@@ -159,7 +158,7 @@ fetch(configFile).then(r => {
                 $(`#node-${i+1} .node-load-status`)
                     .removeClass("label-alert")
                     .addClass("label-success")
-                console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Connected to ', node.name);
+                console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Connected to ' + node.name);
             }
 
             globalThis.wsc.push(ws)

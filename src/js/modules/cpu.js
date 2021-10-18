@@ -91,7 +91,7 @@ export const processCpuTemp = (i, node, data) => {
     const elContainer = elCpuTemp.parent()
 
     let length = data.cores.length
-    let tempAvg = (data.cores.reduce((acc, v)=>acc+ +v, 0) / length).toFixed(0)
+    let tempAvg = length ? (data.cores.reduce((acc, v)=>acc+ +v, 0) / length).toFixed(0) : data.main
 
     if (isNaN(tempAvg)) tempAvg = "-"
 

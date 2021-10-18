@@ -1,8 +1,12 @@
+import {SYNC_STATE_SYNCED} from "../helpers/consts";
+
 export const processNextBlock = (i, node, data) => {
     if (isNaN(data)) return
 
     if (isNaN(state.nextBlock) || state.nextBlock !== data) {
-        state.nextBlock = data
+        if (globalThis.daemons[i].state === SYNC_STATE_SYNCED) {
+            state.nextBlock = data
+        }
     }
 }
 

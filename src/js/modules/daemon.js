@@ -45,6 +45,8 @@ export const processDaemonInfo = (i, node, daemon) => {
 
     let {explorer = ""} = config
 
+    globalThis.daemons[i].state = syncStatus
+
     const height = +blockchainLength
     const maxHeight = +highestBlockLengthReceived
     const unvHeight = +highestUnvalidatedBlockLengthReceived

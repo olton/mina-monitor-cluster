@@ -1,3 +1,7 @@
+### 2.0.2
++ [x] Next block info updates only from synced nodes
++ [x] Fixed displaying cpu temp when no cores 
+
 ### 2.0.1
 + [x] Added config parameter `explorer: "staketab"|"mina"`
 + [x] Added link for addresses to StakeTab Validator Dashboard or Mina Explorer, use config param `explorer`

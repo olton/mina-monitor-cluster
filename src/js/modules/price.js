@@ -1,22 +1,59 @@
 import {isset} from "../helpers/utils";
-import {disco} from "../helpers/disco";
+import {parseTime} from "../helpers/parse-time";
+
+const getPriceIndex = (curr = 'usd') => {
+    let i = -1, result = -1
+    for(let p of state.price) {
+        i++
+        if (p.currency === curr) {
+            result = i
+            break
+        }
+    }
+
+    return result
+}
 
 export const processMinaPrice = (i, node, data) => {
     if (!data || !isset(data[0], false)) return
 
     if (!Array.isArray(data)) return
 
-    const price = data[0]
+    for (let val of data) {
+        const curr = val.currency
+        const index = getPriceIndex(curr)
 
-    if (!state.price || datetime(state.price.last_updated).time() < datetime(price.last_updated).time()) {
-        state.price = price
+        val.node = node
+
+        if (index === -1) {
+            state.price.push(val)
+        } else {
+            if (datetime(state.price[index].last_updated).time() < datetime(val.last_updated).time()) {
+                state.price[index] = val
+            }
+        }
     }
 }
 
-export const updatePrice = () => {
-    if (!state.price) return
+export const processRotatePrice = () => {
+    const length = state.price.length
 
-    const {last_updated, current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = state.price
+    if (globalThis.priceIndex >= length) {
+        globalThis.priceIndex = 0
+    }
+
+    if (length) {
+        updatePrice(state.price[globalThis.priceIndex])
+        globalThis.priceIndex++
+    }
+
+    setTimeout(processRotatePrice, parseTime(length ? "30s" : 0))
+}
+
+export const updatePrice = (price) => {
+    if (!price) return
+
+    const {node, last_updated, current_price = 0, price_change_24h = 0, price_change_percentage_24h = 0, total_supply = 0, currency = 'xxx', ath = 0, atl = 0} = price
     const elCurrentPrice = $("#current-price")
     const elCurrency = $("#currency")
     const elPriceChange = $("#price-change")
@@ -45,4 +82,11 @@ export const updatePrice = () => {
     elPriceUpdated.html(lastUpdated.format("DD-MM-YYYY HH:mm"))
 
     elPriceArrow.html(`<span class="fg-accent ${priceDeltaColor}">${priceDeltaSign}${priceDelta}</span>${symbol}`)
+
+    if (!state.balance) return
+
+    const balance = +state.balance.total
+    const u = (balance/10**9 * current_price).format(4, null, " ", ".").split(".")
+
+    $("#balance-in-currency").html(`${u[0]}<div class="sub-value reduce-5 mt-2-minus" style="line-height: 2">&nbsp;${u[1]}</div>`)
 }

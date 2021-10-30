@@ -1,5 +1,6 @@
 export const processDelegations = (i, node, data) => {
     if (!data) return
+    if (!data.current.count) return
 
     state.delegations = data
 }

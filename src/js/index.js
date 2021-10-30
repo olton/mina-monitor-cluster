@@ -20,7 +20,7 @@ import {processBlockchain} from "./modules/blockchain";
 import {processSpeed} from "./modules/speed";
 import {processUptime} from "./modules/uptime";
 import {processDelegations} from "./modules/delegations";
-import {processMinaPrice} from "./modules/price";
+import {processMinaPrice, processRotatePrice} from "./modules/price";
 import {processRewards} from "./modules/rewards";
 import {processNextBlock} from "./modules/next-block";
 import {processVersion} from "./modules/version";
@@ -37,6 +37,7 @@ globalThis.state = null
 globalThis.darkMode = null
 globalThis.wsc = []
 globalThis.daemons = []
+globalThis.priceIndex = 0
 
 fetch(configFile).then(r => {
     if (!r.ok) {
@@ -175,6 +176,9 @@ fetch(configFile).then(r => {
     if (!chartLabels) {
         $(".peers-title, .response-title, .tx-title, .rx-title, .process-mem-title, .total-mem-title, .cpu-title").hide()
     }
+
+    // Run subprocesses
+    processRotatePrice()
 })
 .catch(r => {
     console.log(r)

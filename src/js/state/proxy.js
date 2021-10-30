@@ -12,7 +12,7 @@ export const registerStateProxy = () => {
         uptime: null,
         balance: 0,
         timing: null,
-        price: null,
+        price: [],
         rewards: null,
         speed: 0,
         consensus: null,
@@ -23,13 +23,13 @@ export const registerStateProxy = () => {
             if (prop === 'balance') {
                 obj[prop] = val
                 updateBalance()
-                updateBalanceCost()
+                // updateBalanceCost()
             }
-            if (prop === 'price') {
-                obj[prop] = val
-                updatePrice()
-                updateBalanceCost()
-            }
+            // if (prop === 'price') {
+            //     obj[prop] = val
+            //     updatePrice()
+            //     updateBalanceCost()
+            // }
             if (prop === 'uptime') {
                 obj[prop] = val
                 updateUptime()

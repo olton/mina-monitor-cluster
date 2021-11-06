@@ -3,6 +3,7 @@
 + [x] Fixed displaying cpu temp when no cores 
 + [x] Added multi-currency support
 + [x] Fixed update rewards for new epoch
++ [x] Fixed displaying uptime position group places
 
 ### 2.0.1
 + [x] Added config parameter `explorer: "staketab"|"mina"`

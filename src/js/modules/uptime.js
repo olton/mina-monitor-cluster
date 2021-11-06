@@ -37,6 +37,8 @@ export const updateUptime = () => {
             icon = 'bin'
         }
 
+        positions.sort()
+
         if (positions.length === 0) {
             positions = [0,0]
         }

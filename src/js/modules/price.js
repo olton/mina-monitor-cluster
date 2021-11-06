@@ -37,6 +37,7 @@ export const processMinaPrice = (i, node, data) => {
 
 export const processRotatePrice = () => {
     const length = state.price.length
+    const {currencySwitch = "30s"} = config
 
     if (globalThis.priceIndex >= length) {
         globalThis.priceIndex = 0
@@ -47,7 +48,7 @@ export const processRotatePrice = () => {
         globalThis.priceIndex++
     }
 
-    setTimeout(processRotatePrice, parseTime(length ? "30s" : 0))
+    setTimeout(processRotatePrice, parseTime(length ? currencySwitch : 0))
 }
 
 export const updatePrice = (price) => {

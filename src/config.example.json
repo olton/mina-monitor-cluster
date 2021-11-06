@@ -23,5 +23,6 @@
         "regular": 720,
         "supercharge": 1440
     },
-    "explorer": "staketab"
+    "explorer": "staketab",
+    "currencySwitch": "10s"
 }

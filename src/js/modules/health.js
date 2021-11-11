@@ -6,11 +6,11 @@ export const processHealth = (i, node, data) => {
     const elNodeHealthParent = $(`${id} .node-sync-status-container`)
     const ok = data.length === 0
 
-    elNodeHealthParent.removeClass("alert success")
+    elNodeHealthParent.removeClass("health-alert")
     if (ok) {
         elNodeHealth.html("OK")
     } else {
         elNodeHealth.html(data.join(", "))
-        elNodeHealthParent.addClass("alert")
+        elNodeHealthParent.addClass("health-alert")
     }
 }

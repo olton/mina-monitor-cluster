@@ -105,7 +105,7 @@ body {
 }
 
 * {
-    &.alert, &.warning, &.catchup, &.success, &.soft-alert {
+    &.alert, &.warning, &.catchup, &.success, &.soft-alert, .health-alert {
         color: var(--color-white)!important;
 
         * {
@@ -114,7 +114,7 @@ body {
         }
     }
 
-    &.alert{
+    &.alert, .health-alert{
         background: var(--color-alert)!important;
     }
 

@@ -1,3 +1,6 @@
+### 2.0.3
++ [x] Fixed adding health alert class
+
 ### 2.0.2
 + [x] Next block info updates only from synced nodes
 + [x] Fixed displaying cpu temp when no cores 

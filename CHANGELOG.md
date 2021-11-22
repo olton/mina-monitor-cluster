@@ -1,5 +1,6 @@
 ### 2.0.3
 + [x] Fixed adding health alert class
++ [x] Minor visual improvements 
 
 ### 2.0.2
 + [x] Next block info updates only from synced nodes

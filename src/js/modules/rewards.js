@@ -32,8 +32,8 @@ export const updateRewards = () => {
         }
     }
 
-    $("#blocks-in-epoch").html(blocks.length)
-    $("#rewards-in-epoch").html(rewards / 10**9)
+    $("#blocks-in-epoch").html(+(blocks.length).format(0, null, " ", "."))
+    $("#rewards-in-epoch").html((rewards / 10**9).format(0, null, " ", "."))
     $("#supercharge-count").html(supercharge)
     $("#supercharge-mina").html(superchargeMina)
     $("#zero-count").html(zero)

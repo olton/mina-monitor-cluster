@@ -1,10 +1,11 @@
-import {updateBalance, updateBalanceCost, updateTiming} from "../modules/balance";
-import {updatePrice} from "../modules/price";
+import {updateBalance, updateTiming} from "../modules/balance";
 import {updateUptime} from "../modules/uptime";
 import {updateBlockchain} from "../modules/blockchain";
 import {updateRewards} from "../modules/rewards";
 import {updateDelegations} from "../modules/delegations";
 import {updateNextBlock} from "../modules/next-block";
+import {updateLatestBlock} from "../modules/latest-block";
+import {updateExplorerSummary} from "../modules/explorer-summary";
 
 export const registerStateProxy = () => {
     globalThis.state = new Proxy({
@@ -17,19 +18,15 @@ export const registerStateProxy = () => {
         speed: 0,
         consensus: null,
         delegations: null,
-        nextBlock: null
+        nextBlock: null,
+        explorerSummary: null,
+        latestBlock: null
     }, {
         set(obj, prop, val) {
             if (prop === 'balance') {
                 obj[prop] = val
                 updateBalance()
-                // updateBalanceCost()
             }
-            // if (prop === 'price') {
-            //     obj[prop] = val
-            //     updatePrice()
-            //     updateBalanceCost()
-            // }
             if (prop === 'uptime') {
                 obj[prop] = val
                 updateUptime()
@@ -54,6 +51,14 @@ export const registerStateProxy = () => {
             if (prop === 'nextBlock') {
                 obj[prop] = val
                 updateNextBlock()
+            }
+            if (prop === 'explorerSummary') {
+                obj[prop] = val
+                updateExplorerSummary()
+            }
+            if (prop === 'latestBlock') {
+                obj[prop] = val
+                updateLatestBlock()
             }
 
             return true

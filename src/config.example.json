@@ -24,5 +24,6 @@
         "supercharge": 1440
     },
     "explorer": "staketab",
-    "currencySwitch": "10s"
+    "currencySwitch": "10s",
+    "blockDiff": 3
 }

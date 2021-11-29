@@ -73,8 +73,17 @@
                                 </div>
                             </div>
                             <div class="cell-9 text-center">
-                                <div id="block-height" class="big-value">0</div>
-                                <div class="text-small text-muted">block height</div>
+                                <div class="row">
+                                    <div class="cell-8">
+                                        <div id="block-height" class="big-value">0</div>
+                                        <div class="text-small text-muted">block height</div>
+                                    </div>
+                                    <div class="cell-4 border-left bd-default c-pointer">
+                                        <div id="explorer-block-height" class="big-value-3" title="Mina Explorer Block Height">0</div>
+                                        <div class="text-small text-muted">explorer</div>
+<!--                                        <div id="explorer-slot" class="big-value-3 border-top bd-default" title="Mina Explorer Slot">0</div>-->
+                                    </div>
+                                </div>
                                 <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6 p-0">
                                         <div id="slot-number" class="big-value-2 fg-accent">0</div>
@@ -367,14 +376,18 @@
                 </div>
 
                 <div class="row border bd-system mt-1 height-wrapper p-1">
-                    <div class="cell-8 p-0">
+                    <div class="cell-3 text-center border-right bd-default">
+                        <div class="explorer-block-height big-value-3">0</div>
+                        <div class="text-small text-muted mt-1-minus">explorer</div>
+                    </div>
+                    <div class="cell-6 p-0">
                         <div class="block-height-container mt-1">
                             <span class="bell mif-bell ani-ring"></span>
                             <div class="block-height big-value mt-0 pt-0">0</div>
                             <div class="text-small text-muted">height</div>
                         </div>
                     </div>
-                    <div class="cell-4 p-0">
+                    <div class="cell-3 p-0">
                         <table class="table text-small subcompact cell-border mt-2 height-table">
                             <tr>
                                 <td>max:</td>

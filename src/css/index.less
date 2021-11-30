@@ -112,7 +112,7 @@ body {
 }
 
 * {
-    &.alert, &.warning, &.catchup, &.success, &.soft-alert, .health-alert {
+    &.alert, &.warning, &.catchup, &.success, &.soft-alert, .health-alert, .exp-alert {
         color: var(--color-white)!important;
 
         * {
@@ -126,7 +126,11 @@ body {
     }
 
     &.soft-alert {
-        background: var(--color-alert)!important;
+        background: var(--color-alert-soft)!important;
+    }
+
+    &.exp-alert {
+        background: var(--color-info3)!important;
     }
 
     &.yellow-warning{

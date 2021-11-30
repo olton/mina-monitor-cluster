@@ -4,7 +4,7 @@ import {updateBlockchain} from "../modules/blockchain";
 import {updateRewards} from "../modules/rewards";
 import {updateDelegations} from "../modules/delegations";
 import {updateNextBlock} from "../modules/next-block";
-import {updateLatestBlock} from "../modules/latest-block";
+import {updateLatestBlocks} from "../modules/latest-block";
 import {updateExplorerSummary} from "../modules/explorer-summary";
 
 export const registerStateProxy = () => {
@@ -20,7 +20,7 @@ export const registerStateProxy = () => {
         delegations: null,
         nextBlock: null,
         explorerSummary: null,
-        latestBlock: null
+        latestBlocks: null
     }, {
         set(obj, prop, val) {
             if (prop === 'balance') {
@@ -56,9 +56,9 @@ export const registerStateProxy = () => {
                 obj[prop] = val
                 updateExplorerSummary()
             }
-            if (prop === 'latestBlock') {
+            if (prop === 'latestBlocks') {
                 obj[prop] = val
-                updateLatestBlock()
+                updateLatestBlocks()
             }
 
             return true

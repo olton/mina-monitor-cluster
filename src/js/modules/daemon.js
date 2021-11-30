@@ -96,10 +96,10 @@ export const processDaemonInfo = (i, node, daemon) => {
     if (fullSynced && state.explorerSummary) {
         const {blockchainLength: exHeight = 0} = state.explorerSummary
         const nodeDiffWithExplorer = +exHeight - +height
-        elExplorerHeight.html((+exHeight).format(0, null, " ", "."))
-        elExplorerHeight.parent().removeClass("alert")
+
+        elExplorerHeight.parent().removeClass("exp-alert")
         if (nodeDiffWithExplorer !== 0 && Math.abs(nodeDiffWithExplorer) >= blockDiff) {
-            elExplorerHeight.parent().addClass("alert")
+            elExplorerHeight.parent().addClass("exp-alert")
         }
     }
 

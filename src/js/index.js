@@ -24,7 +24,7 @@ import {processMinaPrice, processRotatePrice} from "./modules/price";
 import {processRewards} from "./modules/rewards";
 import {processNextBlock} from "./modules/next-block";
 import {processVersion} from "./modules/version";
-import {processLatestBlock} from "./modules/latest-block";
+import {processLatestBlocks} from "./modules/latest-block";
 import {processExplorerSummary} from "./modules/explorer-summary";
 
 const version = `2.0.0`
@@ -135,7 +135,7 @@ fetch(configFile).then(r => {
                         case 'version': processVersion(i, node, data); break;
                         case 'rewards': processRewards(i, node, data); break;
                         case 'responseTime': processResponse(i, node, data); break;
-                        case 'latestBlock': processLatestBlock(i, node, data); break;
+                        case 'latestBlocks': processLatestBlocks(i, node, data); break;
                         case 'explorerSummary': processExplorerSummary(i, node, data); break;
                         // case 'welcome': console.log(data); break;
                         // default: console.log(action, data)

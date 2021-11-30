@@ -21,10 +21,12 @@ export const updateExplorerSummary = () => {
         totalCurrency
     } = state.explorerSummary
 
-    const elExplorerHeight = $("#explorer-block-height")
-    const elExplorerHeightParent = elExplorerHeight.parent()
-
-    elExplorerHeight.html((+blockchainLength).format(0, null, " ", "."))
+    // const elExplorerHeight = $("#explorer-block-height")
+    // const elExplorerHeightNodes = $(".explorer-block-height")
+    // const elExplorerHeightParent = elExplorerHeight.parent()
+    //
+    // elExplorerHeight.html((+blockchainLength).format(0, null, " ", "."))
+    // elExplorerHeightNodes.html((+blockchainLength).format(0, null, " ", "."))
 
     if (!state.blockchain) return
 
@@ -35,11 +37,19 @@ export const updateExplorerSummary = () => {
         slotSinceGenesis
     } = state.blockchain
 
-    let heightDiff = +blockchainLength - +blockHeight
     let {blockDiff = 3} = config
 
-    elExplorerHeightParent.removeClass("alert")
-    if (heightDiff !== 0 && Math.abs(heightDiff) >= blockDiff) {
-        elExplorerHeightParent.addClass("alert")
-    }
+    $.each(daemons, (i, daemon) => {
+        const nodeId = `#node-${i+1}`
+        const elExplorerHeight = $(`${nodeId} .explorer-block-height`)
+        const elExplorerHeightParent = elExplorerHeight.parent()
+        let heightDiff = Math.abs(+blockchainLength - daemon.height)
+
+        elExplorerHeight.html((+blockchainLength).format(0, null, " ", "."))
+
+        elExplorerHeightParent.removeClass("exp-alert")
+        if (heightDiff >= blockDiff) {
+            elExplorerHeightParent.addClass("exp-alert")
+        }
+    })
 }

@@ -1,3 +1,6 @@
+### 2.0.4
++ [x] Added data from Mina Explorer: latest block, current block height
+
 ### 2.0.3
 + [x] Fixed adding health alert class
 + [x] Minor visual improvements 

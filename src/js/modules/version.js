@@ -8,3 +8,12 @@ export const processVersion = (i, node, data) => {
 
     elVersionNumber.html(shortAddress(data, 7))
 }
+
+export const processMonitorVersion = (i, node, data) => {
+    if (!data) return
+
+    const id = `#node-${i+1}`
+    const elVersionNumber = $(`${id} .monitor-version`)
+
+    elVersionNumber.html(data)
+}

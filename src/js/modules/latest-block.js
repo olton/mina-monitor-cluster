@@ -1,20 +1,21 @@
 import {shortAddress} from "../helpers/utils";
 import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
 
-export const processLatestBlocks = (i, node, data) => {
-    if (!data || !Array.isArray(data) || !data.length) return
+export const processLatestBlock = (i, node, data) => {
+    console.log(data)
+    if (!data) return
 
-    state.latestBlocks = data[0]
+    state.latestBlock = data
 }
 
-export const updateLatestBlocks = () => {
-    if (!state.latestBlocks) return
+export const updateLatestBlock = () => {
+    if (!state.latestBlock) return
 
     const {
         blockHeight = 0,
         creator = "",
         dateTime
-    } = state.latestBlocks
+    } = state.latestBlock
 
     const elLatestBlockHeight = $("#latest-block-height")
     const elCreatorBlockMedal = $("#creator-block-medal")

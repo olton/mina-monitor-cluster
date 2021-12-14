@@ -1,4 +1,4 @@
-### 2.0.4
+### 2.1.0
 + [x] Added data from Mina Explorer: latest block, current block height
 
 ### 2.0.3

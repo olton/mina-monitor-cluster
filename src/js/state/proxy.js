@@ -4,8 +4,9 @@ import {updateBlockchain} from "../modules/blockchain";
 import {updateRewards} from "../modules/rewards";
 import {updateDelegations} from "../modules/delegations";
 import {updateNextBlock} from "../modules/next-block";
-import {updateLatestBlocks} from "../modules/latest-block";
+import {updateLatestBlock} from "../modules/latest-block";
 import {updateExplorerSummary} from "../modules/explorer-summary";
+import {updateExplorerHeight} from "../modules/explorer-height";
 
 export const registerStateProxy = () => {
     globalThis.state = new Proxy({
@@ -20,7 +21,8 @@ export const registerStateProxy = () => {
         delegations: null,
         nextBlock: null,
         explorerSummary: null,
-        latestBlocks: null
+        explorerHeight: null,
+        latestBlock: null
     }, {
         set(obj, prop, val) {
             if (prop === 'balance') {
@@ -56,9 +58,13 @@ export const registerStateProxy = () => {
                 obj[prop] = val
                 updateExplorerSummary()
             }
-            if (prop === 'latestBlocks') {
+            if (prop === 'explorerHeight') {
                 obj[prop] = val
-                updateLatestBlocks()
+                updateExplorerHeight()
+            }
+            if (prop === 'latestBlock') {
+                obj[prop] = val
+                updateLatestBlock()
             }
 
             return true

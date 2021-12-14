@@ -8,4 +8,5 @@ coverage
 *.log
 *.bat
 config*.json
+*config.json
 !config.example.json

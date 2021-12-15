@@ -29,7 +29,7 @@ export const copy2clipboard = (str) => {
     document.body.removeChild(el)
 }
 
-export const shortAddress = (v, l = 5) => `<span>${v.substring(0, l) + ' ... ' + v.substring(v.length - l)}</span>`
+export const shortAddress = (v, l = 5) => `<span>${v.substring(0, l) + '...' + v.substring(v.length - l)}</span>`
 
 export const rand = (min, max) => Math.floor(min + Math.random() * (max + 1 - min))
 

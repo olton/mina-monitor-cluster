@@ -2,7 +2,6 @@ import {shortAddress} from "../helpers/utils";
 import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
 
 export const processLatestBlock = (i, node, data) => {
-    console.log(data)
     if (!data) return
 
     state.latestBlock = data

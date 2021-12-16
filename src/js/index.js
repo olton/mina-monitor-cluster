@@ -27,6 +27,7 @@ import {processVersion, processMonitorVersion} from "./modules/version";
 import {processLatestBlock} from "./modules/latest-block";
 import {processExplorerSummary} from "./modules/explorer-summary";
 import {processExplorerHeight} from "./modules/explorer-height";
+import {processHttps} from "./modules/https";
 
 const version = `2.0.0`
 
@@ -140,6 +141,7 @@ fetch(configFile).then(r => {
                         case 'explorerSummary': processExplorerSummary(i, node, data); break;
                         case 'explorerHeight': processExplorerHeight(i, node, data); break;
                         case 'monitorVersion': processMonitorVersion(i, node, data); break;
+                        case 'https': processHttps(i, node, data); break;
                         // case 'welcome': console.log(data); break;
                         // default: console.log(action, data)
                     }
@@ -168,7 +170,7 @@ fetch(configFile).then(r => {
                 $(`#node-${i+1} > .panel`).removeClass("not-connected")
                 $(`#node-${i+1} .node-load-status`)
                     .removeClass("label-alert")
-                    .addClass("label-success")
+                    // .addClass("label-success")
                 console.log(datetime().format("DD-MM-YYYY HH:mm ") + 'Connected to ' + node.name);
             }
 

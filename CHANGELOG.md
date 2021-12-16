@@ -1,6 +1,7 @@
 ### 2.1.0
 + [x] Added data from Mina Explorer: latest block, current block height
 + [x] Added information about Mina Monitor Version for each node
++ [x] Added indication for start node in https mode
 
 ### 2.0.3
 + [x] Fixed adding health alert class

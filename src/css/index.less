@@ -209,12 +209,21 @@ body {
     }
 }
 
-.node-load-status {
+.node-load-status, .node-https-status {
     display: block;
     position: absolute;
     top: 16px;
     right: 20px;
     z-index: 100;
+}
+
+.node-https-status {
+    right: auto;
+    left: 20px;
+
+    &.https-false {
+        display: none;
+    }
 }
 
 .block-height-container {

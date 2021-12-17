@@ -3,6 +3,7 @@
 + [x] Added information about Mina Monitor Version for each node
 + [x] Added indication for start node in https mode
 + [x] Fixed incorrect size of epoch donut for window size between 1200px and 1400px
++ [x] Added support for wide screens: to five nodes in one row
 
 ### 2.0.3
 + [x] Fixed adding health alert class

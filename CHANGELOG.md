@@ -2,6 +2,7 @@
 + [x] Added data from Mina Explorer: latest block, current block height
 + [x] Added information about Mina Monitor Version for each node
 + [x] Added indication for start node in https mode
++ [x] Fixed incorrect size of epoch donut for window size between 1200px and 1400px
 
 ### 2.0.3
 + [x] Fixed adding health alert class

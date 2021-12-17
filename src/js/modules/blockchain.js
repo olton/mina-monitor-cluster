@@ -55,7 +55,11 @@ export const updateBlockchain = ({resetCountdown = false}) => {
 
     if (resetCountdown) {
         elEpochCountdown.find(".countdown").remove()
-        countdown = $("<div>").attr("data-role", "countdown").attr("data-date", epochEnd.format("YYYY/MM/DD HH:mm")).attr("data-animate", "none").appendTo(elEpochCountdown)
+        countdown = $("<div>")
+            .attr("data-role", "countdown")
+            .attr("data-date", epochEnd.format("YYYY/MM/DD HH:mm"))
+            .attr("data-animate", "none")
+            .appendTo(elEpochCountdown)
         Metro.makePlugin(countdown, "countdown")
     }
 }

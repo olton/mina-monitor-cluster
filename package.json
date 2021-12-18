@@ -18,6 +18,10 @@
     "staticFiles": {
         "staticPath": [
             "src/config.json",
+            "src/1-config.json",
+            "src/2-config.json",
+            "src/3-config.json",
+            "src/4-config.json",
             "src/.htaccess"
         ]
     },

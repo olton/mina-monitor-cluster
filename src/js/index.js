@@ -95,9 +95,21 @@ fetch(configFile).then(r => {
             responseChartStartPoint: 200,
         }
 
+        let nodeAdditionalClass = 'cell-lg-4'
+
+        if (nodesLength === 2) {
+            nodeAdditionalClass = 'cell-md-6'
+        } else if (nodesLength === 3) {
+            nodeAdditionalClass = 'cell-xl-4 cell-lg-6'
+        } else if (nodesLength === 4) {
+            nodeAdditionalClass = 'cell-xxxl-3 cell-lg-6'
+        } else if (nodesLength >= 5) {
+            nodeAdditionalClass = 'cell-xxxxxl-fifth cell-xxxl-3 cell-lg-6 cell-xl-4'
+        }
+
         elNodesContainer.append(
             elNodePanel = $(`<div class='is-node' id='node-${i+1}'>`)
-                .addClass(nodesLength >= 3 ? 'cell-xxxxxl-fifth cell-xxxl-3 cell-lg-6 cell-xl-4' : 'cell-lg-6')
+                .addClass(nodeAdditionalClass)
         )
 
         template = document.querySelector("#node-template")

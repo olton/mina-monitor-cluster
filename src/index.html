@@ -19,8 +19,8 @@
                                 <div class="text-small fg-normal text-center">
                                     <span class=" text-muted">TABLE</span>
                                 </div>
-                                <div id="uptime-position" class="mt-2 big-value">0</div>
-                                <div id="uptime-position-range" class="text-small mt-2">0 .. 0</div>
+                                <div id="uptime-position" class="mt-2 big-value" title="Position in Leaderboard">0</div>
+                                <div id="uptime-position-range" class="text-small mt-2" title="Position range">0 .. 0</div>
                                 <div class="text-small fg-normal mt-1">
                                     <span class="text-muted">position</span>
                                 </div>
@@ -215,9 +215,9 @@
                         <div class="row">
                             <div class="cell-6">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="delegators-total" class="big-value">0</div>
+                                    <div id="delegators-total" class="big-value" title="Delegations count">0</div>
                                     <div class="text-small fg-normal mt-1">
-                                        <span id="delegators-stack" class="big-value-2">0</span>
+                                        <span id="delegators-stack" class="big-value-2" title="Stake for Epoch">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">current</span>
@@ -226,9 +226,9 @@
                             </div>
                             <div class="cell-6 border-left bd-system">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="delegators-total-next" class="big-value">0</div>
+                                    <div id="delegators-total-next" class="big-value" title="Delegations count">0</div>
                                     <div class="text-small fg-normal mt-1">
-                                        <span id="delegators-stack-next" class="big-value-2">0</span>
+                                        <span id="delegators-stack-next" class="big-value-2" title="Stake for Epoch">0</span>
                                     </div>
                                     <div class="text-small fg-normal border-top bd-system w-100 text-center mt-1">
                                         <span class="text-muted">next</span>
@@ -303,10 +303,10 @@
     <!-- End of General info -->
 
     <template id="node-template">
-        <span class='node-https-status https-false'>
+        <span class='node-https-status https-false' title="HTTPS/WSS">
             <span class="mif-lock"></span>
         </span>
-        <span class='node-load-status label-alert'>
+        <span class='node-load-status label-alert' title="Connect status">
             <span class="mif-wifi-connect"></span>
         </span>
         <div class="panel" data-role="panel">

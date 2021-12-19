@@ -25,13 +25,16 @@ html:not(.light-theme) {
     .big-value {
         color: var(--color-info2);
     }
+
     .big-value-2, .cores-count, .cpu-load, .cpu-temp, .total-mem, .used-mem, .free-mem {
         color: var(--color-accent);
     }
+
     .height-table {
-        border-color: var(--color-border)!important;
+        border-color: var(--color-border) !important;
+
         * {
-            border-color: var(--color-border)!important;
+            border-color: var(--color-border) !important;
         }
     }
 
@@ -40,7 +43,7 @@ html:not(.light-theme) {
     }
 
     .yellow-warning {
-        color: var(--color-text-inverse)!important;
+        color: var(--color-text-inverse) !important;
     }
 
     .countdown {
@@ -48,8 +51,19 @@ html:not(.light-theme) {
             color: var(--color-accent);
         }
     }
+
     .text-indicators {
         background-color: var(--color-panel-second);
         color: var(--color-text);
+    }
+
+    .node-load-status, .node-https-status {
+        color: var(--color-text);
+    }
+
+    .is-node > .panel {
+        &.disabled {
+            opacity: .2;
+        }
     }
 }

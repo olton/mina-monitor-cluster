@@ -17,8 +17,7 @@
     },
     "staticFiles": {
         "staticPath": [
-            "src/config.json",
-            "src/.htaccess"
+            "src/config.json"
         ]
     },
     "browserslist": [

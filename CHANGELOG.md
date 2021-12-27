@@ -1,3 +1,6 @@
+### 2.1.1
++ [x] Christmas edition
+
 ### 2.1.0
 + [x] Added data from Mina Explorer: latest block, current block height
 + [x] Added information about Mina Monitor Version for each node

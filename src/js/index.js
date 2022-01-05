@@ -31,7 +31,7 @@ import {processExplorerSummary} from "./modules/explorer-summary";
 import {processExplorerHeight} from "./modules/explorer-height";
 import {processHttps} from "./modules/https";
 
-const version = `2.1.0`
+const version = `2.1.1`
 
 $("title").text(TITLE.replace('%VER%', version))
 $("#version").text(version)

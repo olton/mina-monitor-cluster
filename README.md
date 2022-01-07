@@ -34,27 +34,7 @@ This is an extended version of [Mina Monitor](https://github.com/olton/mina-node
 
 ## Installation
 
-### Install via Bash
-
-To install default `master` branch into folder `~/mina-monitor-cluster`, you can use command:
-
-```shell
-curl -s https://raw.githubusercontent.com/olton/scripts/master/mina/monitor/cluster/install.sh | bash -s
-```
-
-If you need to install specified branch or tag into a specified folder, you must define ones on the end of command:
-
-```shell
-curl -s https://raw.githubusercontent.com/olton/scripts/master/mina/monitor/cluster/install.sh | bash -s -- branch_or_tag target_folder
-```
-
-***Important! If you need to specify the target folder, you must indicate a branch or tag.***
-
-### Run
-To run client:
-```shell
-npm start
-```
+[How-to install cluster](https://github.com/olton/scripts/tree/master/mina/monitor/cluster) with one-line installer.
 
 ### Install via Docker
 
@@ -105,7 +85,10 @@ or create text file `config.json` in the `src` folder manually. Below you can se
     "coinbase": {
         "regular": 720,
         "supercharge": 1440
-    }
+    },
+    "explorer": "staketab",
+    "currencySwitch": "10s",
+    "blockDiff": 2
 }
 ```
 

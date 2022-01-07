@@ -8,19 +8,21 @@ sudo docker run \
   --name mina_monitor_cluster \
   -p 2222:2222 \
   -d olton/mina_monitor_cluster:latest \
-  -nodes 1.1.1.1:8000
-  -nodes 2.2.2.2:8000:true
-  -theme dark
+  --nodes "1.1.1.1:8000, 2.2.2.2:8000:true"
+  --theme dark
 ```
 
 ### Set Mina Monitor Server parameters
 you can redefine config parameters with command line arguments:
-- `-nodes` - define Mina Monitor Server `name:host_or_ip:port:secure`, you can define several hosts
-- `-theme` - set client theme, default `auto`
-- `-chartLabels` - show\hide chart labels, default `false`
-- `-precision` - Mina values precision, default `4`
-- `-coinbase:regular` - Mina coinbase regular, default `720`
-- `-coinbase:supercharge` - Mina coinbase supercharge, default `1440`
+- `--nodes` - define Mina Monitor Server `name:host_or_ip:port:secure`, you can define several hosts
+- `--theme` - set client theme, default `auto`
+- `--chartLabels` - show\hide chart labels, default `false`
+- `--precision` - Mina values precision, default `4`
+- `--coinbase:regular` - Mina coinbase regular, default `720`
+- `--coinbase:supercharge` - Mina coinbase supercharge, default `1440`
+- `--explorer` - "staketab",
+- `--currencySwitch` - "10s",
+- `--blockDiff` - 2
 
 This command overwrite three config parameters:
 
@@ -40,6 +42,9 @@ This command overwrite three config parameters:
     "coinbase": {
         "regular": 720,
         "supercharge": 1440
-    }
+    },    
+    "explorer": "staketab",
+    "currencySwitch": "10s",
+    "blockDiff": 2
 }
 ```

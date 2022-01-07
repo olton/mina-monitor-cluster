@@ -1,3 +1,6 @@
+### 2.1.2
++ [x] Changed algorithm for analyze command line arguments. Now for config parameter with value you must use format `--PARNAME value`, format `-PARNAME` reserved for flags
+
 ### 2.1.1
 + [x] Christmas edition
 

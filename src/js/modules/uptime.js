@@ -1,5 +1,5 @@
 import {shortAddress} from "../helpers/utils";
-import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
+import {MINA_EXPLORER, MINATAUR_EXPLORER} from "../helpers/consts";
 import {disco} from "../helpers/disco";
 
 export const processUptime = (i, node, data) => {
@@ -52,7 +52,7 @@ export const updateUptime = () => {
         elUptimeAddress.html(
             $("<a>")
                 .addClass("big-value no-decor")
-                .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : STAKETAB_EXPLORER) + address)
+                .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : MINATAUR_EXPLORER) + address)
                 .html(`<span class='reduce-1'>${shortAddress(address)}</span>`)
         )
         elUptimeRange.html(`${positions[0]} .. ${positions[positions.length - 1]}`)

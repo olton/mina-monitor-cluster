@@ -1,5 +1,5 @@
 import {shortAddress} from "../helpers/utils";
-import {MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
+import {MINA_EXPLORER, MINATAUR_EXPLORER} from "../helpers/consts";
 
 export const processLatestBlock = (i, node, data) => {
     if (!data) return
@@ -21,18 +21,18 @@ export const updateLatestBlock = () => {
     const elLatestBlockCreator = $("#latest-block-creator")
     const elLatestBlockTime = $("#latest-block-datetime")
     const blockDate = datetime(dateTime)
-    const {explorer = "staketab"} = config
+    const {explorer = "minataur"} = config
 
     elLatestBlockHeight.html((+blockHeight).format(0, null, " ", "."))
     elLatestBlockCreator.html(
         $("<a>")
             .addClass("no-decor fg-accent")
-            .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : STAKETAB_EXPLORER) + creator )
+            .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : MINATAUR_EXPLORER) + creator )
             .html(shortAddress(creator))
     )
     elLatestBlockTime.html(blockDate.format("HH:mm"))
 
-    const {address = ""} = state.uptime
+    const {address = ""} = state.uptime || {}
 
     elCreatorBlockMedal.hide()
     if (creator === address) {

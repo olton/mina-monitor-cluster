@@ -3,8 +3,6 @@ import "../vendor/metro4/css/metro-all.css"
 import "../css/index.less"
 import "../vendor/metro4/js/metro"
 import "../vendor/chart/chart"
-import "../vendor/chrismas-balls/css/christmas-balls.css"
-import "../vendor/chrismas-balls/js/christmas-balls"
 import {TITLE, MSG_CONFIG_READ_ERROR} from "./helpers/consts"
 import {copy2clipboard} from "./helpers/utils";
 import {processServerCpu, processServerInfo, processServerTime} from "./modules/server-info";

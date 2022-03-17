@@ -1,4 +1,4 @@
-import {INFINITE, MINA_EXPLORER, STAKETAB_EXPLORER} from "../helpers/consts";
+import {INFINITE, MINA_EXPLORER, MINATAUR_EXPLORER} from "../helpers/consts";
 import {shortAddress} from "../helpers/utils";
 
 export const processDaemonInfo = (i, node, daemon) => {
@@ -116,7 +116,7 @@ export const processDaemonInfo = (i, node, daemon) => {
             .html(
                 $("<a>")
                     .addClass("no-decor fg-accent")
-                    .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : STAKETAB_EXPLORER) + blockProductionKeys[0] )
+                    .attr("href", (explorer.toLowerCase() === "mina" ? MINA_EXPLORER : MINATAUR_EXPLORER) + blockProductionKeys[0] )
                     .html(`${shortAddress(blockProductionKeys[0])}`)
             )
             .attr("title", blockProductionKeys[0])

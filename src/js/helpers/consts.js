@@ -14,5 +14,5 @@ export const SYNC_STATE_SYNCED = 'SYNCED'
 export const SYNC_STATE_CONNECTING = 'CONNECTING'
 export const SYNC_STATE_UNKNOWN = 'UNKNOWN'
 
-export const STAKETAB_EXPLORER = `https://mina.staketab.com/validator/`
+export const MINATAUR_EXPLORER = `https://minataur.net/address/`
 export const MINA_EXPLORER = `https://minaexplorer.com/wallet/`

@@ -1,5 +1,8 @@
 ### 2.1.2
 + [x] Changed algorithm for analyze command line arguments. Now for config parameter with value you must use format `--PARNAME value`, format `-PARNAME` reserved for flags
++ [x] Added vesting info to balance data block
++ [x] Removed links to Staketab, added links to Minataur
++ [x] Removed Christmas balls 
 
 ### 2.1.1
 + [x] Christmas edition

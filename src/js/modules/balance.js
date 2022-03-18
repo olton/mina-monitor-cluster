@@ -68,7 +68,7 @@ export const updateTiming = () => {
     } else {
         if (+vesting_increment) {
             $("#unlock-date").html(`
-                <span>Inc <strong>${vesting_increment/10**9}</strong> each <strong>${vesting_period}</strong> slot(s)</span>
+                <span>Unlock <strong>${vesting_increment/10**9}</strong> each <strong>${vesting_period}</strong> slot(s)</span>
             `)
         } else {
             $("#unlock-date").html(`Nothing to unlock`)

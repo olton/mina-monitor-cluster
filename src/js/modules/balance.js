@@ -58,10 +58,20 @@ export const updateBalanceCost = () => {
 export const updateTiming = () => {
     if (!state.timing) return
 
-    const {cliff_time, cliff_amount} = state.timing
+    const {cliff_time, cliff_amount, vesting_increment, vesting_period} = state.timing
     const genStart = datetime(GENESIS_START)
     const nextTime = genStart.addSecond(cliff_time * (SLOT_DURATION/1000))
 
-    $(`#cliff-amount`).html((cliff_amount/10**9).format(0, null, " ", "."))
-    $(`#cliff-time`).html(nextTime.format("DD-MM-YYYY HH:mm"))
+    if (nextTime.time() > datetime().time()) {
+        $(`#cliff-amount`).html((cliff_amount / 10 ** 9).format(0, null, " ", "."))
+        $(`#cliff-time`).html(nextTime.format("DD-MM-YYYY HH:mm"))
+    } else {
+        if (+vesting_increment) {
+            $("#unlock-date").html(`
+                <span>Inc <strong>${vesting_increment/10**9}</strong> each <strong>${vesting_period}</strong> slot(s)</span>
+            `)
+        } else {
+            $("#unlock-date").html(`Nothing to unlock`)
+        }
+    }
 }

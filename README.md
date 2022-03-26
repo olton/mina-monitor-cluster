@@ -7,7 +7,15 @@ Mina Monitor is an extended graphical version of the `mina client status` comman
 The Monitor shows a Mina network status and health of mina nodes (up to 3x and more nodes in one frame).
 This is an extended version of [Mina Monitor](https://github.com/olton/mina-node-monitor).
 
+# Support Me
+You can support me with donation MINA to address:
+> B62qnyk1g4S6zCxg9p4gorrFgZQv61BnhPkQ6s2uSrYd1fxD2qLTrG2
+
+Or PayPal to address:
+> serhii@pimenov.com.ua
+
 ## Thanks to 
++ [x] Me for [Minataur](https://minataur.net/)
 + [x] Gareth Davies for [Mina Explorer](https://minaexplorer.com/)
 + [x] StakeTab Team for [Validator Dashboard](https://mina.staketab.com//)
 

@@ -14,7 +14,7 @@ export const updateUptime = () => {
 
     console.log(state.uptime)
 
-    let {position, public_key: address, score, rate, range} = state.uptime.uptime
+    let {position, public_key: address, score, rate, range, segment_timestamp} = state.uptime.uptime
     let {explorer = ""} = config
 
     const elUptimePosition = $("#uptime-position")
@@ -52,7 +52,8 @@ export const updateUptime = () => {
                 .html(`<span class='reduce-1'>${shortAddress(address)}</span>`)
         )
         elUptimeRange.html(`${range.min} .. ${range.max}`)
-        elUptimeUpdated.html(datetime().format("DD-MM-YYYY HH:mm"))
+
+        elUptimeUpdated.html(datetime(segment_timestamp).format("DD MMM HH:mm"))
 
         drawUptimeLine(state.uptime.line)
     } else {
@@ -103,7 +104,7 @@ export const drawUptimeLine = data => {
 
     chart.lineChart("#uptime-line", [points], {
         ...areaDefaultOptions,
-        height: 40,
+        height: 45,
         padding: {
             left: 0,
             top: 0,

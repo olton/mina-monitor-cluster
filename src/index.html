@@ -19,32 +19,38 @@
                                 <div class="text-small fg-normal text-center">
                                     <span class=" text-muted">TABLE</span>
                                 </div>
-                                <div id="uptime-position" class="mt-2 big-value" title="Position in Leaderboard">0</div>
-                                <div id="uptime-position-range" class="text-small mt-2" title="Position range">0 .. 0</div>
                                 <div class="text-small fg-normal mt-1">
                                     <span class="text-muted">position</span>
                                 </div>
+                                <div id="uptime-position" class="big-value" title="Position in Leaderboard">0</div>
+                                <div class="text-small fg-normal mt-2">
+                                    <span class="text-muted">in range</span>
+                                </div>
+                                <div id="uptime-position-range" class="text-small" title="Position range">0 .. 0</div>
                             </div>
                             <div class="cell-9 text-center">
                                 <div id="position-icon" class="mif-infinite position-icon"></div>
-                                <div id="uptime-key" class="big-value">0</div>
+                                <div id="uptime-key" class="mt-2-minus">0</div>
                                 <div class="text-center text-muted text-small">tracked address</div>
                                 <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6 text-center p-0">
                                         <div id="uptime-score" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal">
+                                        <div class="text-small fg-normal lh-1">
                                             <span class="text-muted">score</span>
                                         </div>
                                     </div>
                                     <div class="cell-6 border-left bd-system text-center p-0">
                                         <div id="uptime-rate" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal">
+                                        <div class="text-small fg-normal lh-1">
                                             <span class="text-muted">rate</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="border-top bd-system mt-1 pt-1">
-                                    <div class="text-small">
+                                <div class="border-top bd-system pt-2">
+                                    <div id="uptime-line-top">0</div>
+                                    <div id="uptime-line-bottom">0</div>
+                                    <div id="uptime-line"></div>
+                                    <div class="text-small d-none">
                                         <span id="uptime-updated" class="fg-accent text-bold">...</span>
                                     </div>
                                 </div>
@@ -506,6 +512,6 @@
         </div>
     </template>
 
-    <script src="js/index.js"></script>
+    <script type="module" src="js/index.js"></script>
 </body>
 </html>

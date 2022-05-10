@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime'
+// import 'regenerator-runtime/runtime'
 import "../vendor/metro4/css/metro-all.css"
 import "../css/index.less"
 import "../vendor/metro4/js/metro"

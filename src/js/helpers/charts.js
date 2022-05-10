@@ -154,3 +154,54 @@ export const histogramOptions = {
     onDrawLabelX: () => "",
     onDrawLabelY: () => ""
 }
+
+export const areaDefaultOptions = {
+    axis: {
+        x: {
+            line: {
+                color: "#fafbfc",
+                shortLineSize: 0
+            },
+            label: {
+                count: 10,
+                fixed: 0,
+                color: "#24292e",
+                font: {
+                    size: 10
+                }
+            },
+            skip: 2,
+        },
+        y: {
+            line: {
+                color: "#fafbfc"
+            },
+            label: {
+                count: 10,
+                fixed: 0,
+                color: "#24292e",
+                font: {
+                    size: 10
+                },
+                skip: 2,
+                align: "left",
+                shift: {
+                    x: 20
+                },
+                showMin: false,
+                showLabel: false
+            }
+        }
+    },
+    border: false,
+    legend: {
+        vertical: true,
+        position: "top-right",
+        margin: {
+            top: 10
+        },
+        border: {
+            color: 'transparent'
+        }
+    },
+}

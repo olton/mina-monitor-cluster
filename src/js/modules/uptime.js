@@ -24,7 +24,7 @@ export const updateUptime = () => {
     const elUptimeUpdated = $("#uptime-updated")
 
     if (address) {
-        let color = "neutral", icon = "infinite"
+        let color = "neutral", icon = "infinite", pos_color = 'fg-green'
 
         if (Metro.utils.between(position, 0, 150, true)) {
             color = 'success'
@@ -32,14 +32,16 @@ export const updateUptime = () => {
         } else if (Metro.utils.between(position, 151, 200, true)) {
             color = 'warning'
             icon = 'warning'
+            pos_color = 'fg-orange'
         } else if (Metro.utils.between(position, 201, 240, true)) {
             color = 'alert'
             icon = 'bin'
+            pos_color = 'fg-red'
         }
 
         address = address.trim()
 
-        elUptimePosition.text(position).removeClassBy("label-").addClass(`label-${color}`)
+        elUptimePosition.text(position).removeClassBy("fg-").addClass(`${pos_color}`)
         elUptimePositionIcon.removeClassBy("label-").removeClassBy("mif-").addClass(`label-${color}`).addClass(`mif-${icon}`)
         elUptimeRate.text((parseFloat(rate)) + "%")
         elUptimeScore.text(Number(score).format(0, null, " ", "."))

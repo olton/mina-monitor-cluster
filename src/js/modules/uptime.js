@@ -12,8 +12,6 @@ export const processUptime = (i, node, data) => {
 export const updateUptime = () => {
     if (!state.uptime) return
 
-    console.log(state.uptime)
-
     let {position, public_key: address, score, rate, range, segment_timestamp} = state.uptime.uptime
     let {explorer = ""} = config
 

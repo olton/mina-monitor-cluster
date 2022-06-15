@@ -195,13 +195,16 @@ export const areaDefaultOptions = {
     },
     border: false,
     legend: {
-        vertical: true,
+        vertical: false,
         position: "top-right",
         margin: {
-            top: 10
+            top: 0
         },
         border: {
             color: 'transparent'
+        },
+        font: {
+            size: 10
         }
     },
 }

@@ -24,10 +24,11 @@
                                 </div>
                                 <div id="uptime-position" class="big-value" title="Position in Leaderboard">0</div>
                                 <div class="text-small fg-normal mt-1">
-                                    <span class="text-muted">in range</span>
+                                    <span class="text-muted">by sidecar</span>
                                 </div>
-                                <div id="uptime-position-range" class="text-small" title="Position range">0 .. 0</div>
-                                <div id="uptime-updated" class="reduce-4 mt-1 border-top bd-system pt-1" title="Updated"></div>
+                                <div id="uptime-position-sidecar" class="text-small" title="Position by sidecar uptime">0</div>
+                                <div id="uptime-updated" class="reduce-3 mt-1 border-top bd-system pt-2" title="Updated"></div>
+                                <div class="reduce-4 text-muted">updated</div>
                             </div>
                             <div class="cell-9 text-center">
                                 <div id="position-icon" class="mif-infinite position-icon"></div>
@@ -35,16 +36,26 @@
                                 <div class="text-center text-muted text-small">tracked address</div>
                                 <div class="row pt-1 border-top bd-system mt-1">
                                     <div class="cell-6 text-center p-0">
-                                        <div id="uptime-score" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal lh-1">
-                                            <span class="text-muted">score</span>
+                                        <div class="big-value-2 fg-accent">
+                                            <div class="reduce-1" id="uptime-score">0</div>
                                         </div>
+                                        <div class="big-value-2 fg-accent mt-1">
+                                            <div class="reduce-3" id="uptime-score-sidecar">0</div>
+                                        </div>
+<!--                                        <div class="text-small fg-normal lh-1">-->
+<!--                                            <span class="text-muted">score</span>-->
+<!--                                        </div>-->
                                     </div>
                                     <div class="cell-6 border-left bd-system text-center p-0">
-                                        <div id="uptime-rate" class="big-value-2 fg-accent">0</div>
-                                        <div class="text-small fg-normal lh-1">
-                                            <span class="text-muted">rate</span>
+                                        <div class="big-value-2 fg-accent">
+                                            <div class="reduce-1" id="uptime-rate">0</div>
                                         </div>
+                                        <div class="big-value-2 fg-accent mt-1">
+                                            <div class="reduce-3" id="uptime-rate-sidecar">0</div>
+                                        </div>
+<!--                                        <div class="text-small fg-normal lh-1">-->
+<!--                                            <span class="text-muted">rate</span>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="border-top bd-system pt-2 mt-1">
@@ -253,7 +264,7 @@
                         <div class="row h-100">
                             <div class="cell-6">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="blocks-in-epoch" class="h3 mb-2 fg-cyan h-100" title="Total won blocks">0</div>
+                                    <div id="blocks-in-epoch" class="h3 mb-2 fg-green h-100" title="Total won blocks">0</div>
 
                                     <div class="d-flex flex-justify-center flex-align-center flex-row w-100 mt-1">
                                         <span class="mif-star-full text-muted reduce-2"></span>
@@ -270,7 +281,7 @@
                             </div>
                             <div class="cell-6 border-left bd-system">
                                 <div class="d-flex flex-justify-center flex-align-center flex-column">
-                                    <div id="rewards-in-epoch" class="h3 mb-2 fg-violet h-100" title="Total won mina">0</div>
+                                    <div id="rewards-in-epoch" class="h3 mb-2 fg-green h-100" title="Total won mina">0</div>
 
                                     <div class="d-flex flex-justify-center flex-align-center flex-row w-100 mt-1">
                                         <span class="mif-star-full text-muted reduce-2"></span>

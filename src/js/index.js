@@ -34,7 +34,7 @@ const version = `2.1.2`
 $("title").text(TITLE.replace('%VER%', version))
 $("#version").text(version)
 
-const configFile = "./config.json"
+let configFile = "./config.json"
 
 globalThis.charts = []
 globalThis.state = null
@@ -120,6 +120,7 @@ fetch(configFile).then(r => {
 
         const connect = () => {
             const ws = new WebSocket(`${node.https ? 'wss' : 'ws'}://${node.host}`)
+
             ws.onmessage = event => {
                 try {
                     const content = JSON.parse(event.data)
